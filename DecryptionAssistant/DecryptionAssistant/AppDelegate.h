@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GlobalStatus.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (strong, nonatomic) UIWindow *window;
+
+/// root切换
+/// @param toPageType toPageType description
+-(void)changeRootWithToPageType: (ToPageType)toPageType;
 
 @end
 

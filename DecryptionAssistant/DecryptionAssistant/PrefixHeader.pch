@@ -1,0 +1,43 @@
+//
+//  PrefixHeader.pch
+//  DecryptionAssistant
+//
+//  Created by Granger on 2019/10/22.
+//  Copyright © 2019 granger. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __OBJC__
+#import <AFNetworking.h>
+#import <ReactiveCocoa.h>
+#import <YYText/YYText.h>
+#import <YYModel/YYModel.h>
+#import <YYImage/YYImage.h>
+#import <YYCategories/YYCategories.h>
+#import <MMKV/MMKV.h>
+#import <YYCache/YYCache.h>
+#import <YYWebImage/YYWebImage.h>
+#import <SDAutoLayout/SDAutoLayout.h>
+#import <JKCategories/JKCategories.h>
+#import "FMKeychain.h"
+#import "UtilsMacro.h"
+#import "ToastManager.h"
+#import "UIColor+Hex.h"
+#import "MJRefresh.h"
+#import "AppDelegate.h"
+#import <Masonry.h>
+#import "HotAreaButton.h"
+#import "KDMRAppHeaderMacro.h"
+#import <LEEAlert/LEEAlert.h>
+#import "GlobalStatus.h"
+#import "NSString+Validation.h"
+#import "HudView.h"
+#import "UIImage+UIImageExtras.h"
+#import <LocalAuthentication/LocalAuthentication.h>
+#import "YZAuthID.h"
+
+#endif
+
+#endif /* PrefixHeader_pch */
