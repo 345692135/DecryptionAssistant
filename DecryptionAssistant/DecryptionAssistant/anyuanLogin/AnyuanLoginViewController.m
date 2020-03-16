@@ -777,10 +777,11 @@
     NSString* ip = self.serverField.text;
     NSString* account = self.emailField.text;
     NSString* password = self.passField.text;
+    NSString* port = self.portField.text;
     
     //初始化
     [[MISPMailHelper sharedInstance] handleInitOperationWithIp:ip
-                                                          port:@"50068"
+                                                          port:port
                                                            key:@"6666"
                                                     completion:^(BOOL ifSuccess)
      {
@@ -823,11 +824,11 @@
                               }];
                                */
                               NSLog(@"--------跳转-------");
-                              [weakSelf dismissViewControllerAnimated:YES completion:^{
-                                  if (weakSelf.backBlock) {
-                                      weakSelf.backBlock();
-                                  }
-                              }];
+//                              [weakSelf dismissViewControllerAnimated:YES completion:^{
+//                                  if (weakSelf.backBlock) {
+//                                      weakSelf.backBlock();
+//                                  }
+//                              }];
                               
                           }
                       }
