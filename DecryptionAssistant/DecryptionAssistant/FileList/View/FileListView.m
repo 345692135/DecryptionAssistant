@@ -30,7 +30,6 @@
 - (void)initWithView {
     [self addSubview:self.bgIV];
     [self addSubview:self.tableView];
-    [self addSubview:self.button_done];
 
 }
 
@@ -46,8 +45,13 @@
 
 -(void)initWithViewFrame
 {
+    WS(weakSelf);
     [self.bgIV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self);
+        make.edges.equalTo(weakSelf);
+    }];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(weakSelf);
     }];
     
 }
@@ -97,7 +101,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return kYSBL(50);
+    return kYSBL(60);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

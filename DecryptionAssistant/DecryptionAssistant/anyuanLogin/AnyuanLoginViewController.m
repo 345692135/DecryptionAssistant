@@ -11,6 +11,7 @@
 #import "GPLoadingView.h"
 #import "MISPMailHelper.h"
 #import "CGMacros.h"
+#import "FileListViewController.h"
 
 @interface AnyuanLoginViewController ()<UITextFieldDelegate>
 {
@@ -829,6 +830,11 @@
 //                                      weakSelf.backBlock();
 //                                  }
 //                              }];
+                              dispatch_async_on_main_queue(^{
+                                  FileListViewController *vc = [FileListViewController new];
+                                  vc.modalPresentationStyle = 0;
+                                  [weakSelf.navigationController pushViewController:vc animated:YES];
+                              });
                               
                           }
                       }

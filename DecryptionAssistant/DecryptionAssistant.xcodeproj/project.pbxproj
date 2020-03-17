@@ -92,6 +92,7 @@
 		8ECB5984241F830B0021CE39 /* FileListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB5983241F830B0021CE39 /* FileListViewController.m */; };
 		8ECB5987241F83D60021CE39 /* FileListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB5986241F83D60021CE39 /* FileListView.m */; };
 		8ECB598B241F84420021CE39 /* FileListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB598A241F84420021CE39 /* FileListTableViewCell.m */; };
+		8ECB598D241F8A300021CE39 /* safemail_top_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ECB598C241F8A300021CE39 /* safemail_top_back@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -239,6 +240,7 @@
 		8ECB5986241F83D60021CE39 /* FileListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileListView.m; sourceTree = "<group>"; };
 		8ECB5989241F84420021CE39 /* FileListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileListTableViewCell.h; sourceTree = "<group>"; };
 		8ECB598A241F84420021CE39 /* FileListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileListTableViewCell.m; sourceTree = "<group>"; };
+		8ECB598C241F8A300021CE39 /* safemail_top_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safemail_top_back@2x.png"; sourceTree = "<group>"; };
 		D4790B08D5940638C9E89E32 /* Pods-DecryptionAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecryptionAssistant.release.xcconfig"; path = "Target Support Files/Pods-DecryptionAssistant/Pods-DecryptionAssistant.release.xcconfig"; sourceTree = "<group>"; };
 		FBE48145F010DD333D6ADA78 /* libPods-DecryptionAssistant.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DecryptionAssistant.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -558,6 +560,7 @@
 		8ECB594F241F74B70021CE39 /* Resouse */ = {
 			isa = PBXGroup;
 			children = (
+				8ECB598C241F8A300021CE39 /* safemail_top_back@2x.png */,
 				8ECB5950241F74B70021CE39 /* audio@2x.png */,
 				8ECB5951241F74B70021CE39 /* ps@2x.png */,
 				8ECB5952241F74B70021CE39 /* zip@2x.png */,
@@ -727,6 +730,7 @@
 				8ECB5975241F74B70021CE39 /* login@2x.png in Resources */,
 				8ECB5972241F74B70021CE39 /* file@2x.png in Resources */,
 				8ECB5968241F74B70021CE39 /* ps@2x.png in Resources */,
+				8ECB598D241F8A300021CE39 /* safemail_top_back@2x.png in Resources */,
 				8ECB5973241F74B70021CE39 /* photo@2x.png in Resources */,
 				8ECB5970241F74B70021CE39 /* flash@2x.png in Resources */,
 				8ECB596E241F74B70021CE39 /* bt@2x.png in Resources */,

@@ -12,6 +12,7 @@
 
 @property (nonatomic,strong) UIImageView *iconIV;
 @property (nonatomic,strong) UILabel *fileLabel;
+@property (nonatomic,strong) UILabel *lineLabel;
 
 @end
 
@@ -37,6 +38,7 @@
     self.backgroundColor = [UIColor clearColor];
     [self addSubview:self.iconIV];
     [self addSubview:self.fileLabel];
+    [self addSubview:self.lineLabel];
     
 }
 
@@ -51,18 +53,26 @@
 
 -(void)initWithViewFrame
 {
+    WS(weakSelf);
     [self.iconIV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self);
-        make.centerY.equalTo(self);
-        make.width.mas_equalTo(kYSBL(42));
-        make.height.mas_equalTo(kYSBL(42));
+        make.left.equalTo(weakSelf).offset(kYSBL(15));
+        make.centerY.equalTo(weakSelf);
+        make.width.mas_equalTo(kYSBL(30));
+        make.height.mas_equalTo(kYSBL(33));
     }];
     
     [self.fileLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-           make.left.equalTo(self.iconIV.mas_right).offset(kYSBL(7));
-           make.centerY.equalTo(self);
-           make.right.equalTo(self);
-           make.height.mas_equalTo(kYSBL(42));
+       make.left.equalTo(weakSelf.iconIV.mas_right).offset(kYSBL(15));
+       make.centerY.equalTo(weakSelf);
+       make.right.equalTo(weakSelf).offset(kYSBL(-15));
+       make.height.equalTo(weakSelf);
+    }];
+    
+    [self.lineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+       make.left.equalTo(weakSelf).offset(kYSBL(10));
+       make.bottom.equalTo(weakSelf.fileLabel);
+       make.right.equalTo(weakSelf);
+       make.height.mas_equalTo(0.5);
     }];
     
 }
@@ -89,10 +99,19 @@
     return _fileLabel;
 }
 
+-(UILabel*)lineLabel
+{
+    if (!_lineLabel) {
+        _lineLabel = [UILabel new];
+        _lineLabel.backgroundColor = UIColorHex(0xd7d7d7);
+    }
+    return _lineLabel;
+}
+
 -(void)setFileName:(NSString *)fileName {
     _fileName = [fileName copy];
-//    _emailLabel.text = _accountName;
 //    [self.iconIV setName:accountName address:accountName];
+    self.fileLabel.text = fileName;
     [self layoutIfNeeded];
 }
 

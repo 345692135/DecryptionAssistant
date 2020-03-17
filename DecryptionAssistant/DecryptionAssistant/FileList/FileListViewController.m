@@ -7,8 +7,11 @@
 //
 
 #import "FileListViewController.h"
+#import "FileListView.h"
 
 @interface FileListViewController ()
+
+@property (nonatomic, strong) FileListView *fileListView;
 
 @end
 
@@ -16,17 +19,51 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self initView];
+    [self initWithViewFrame];
+    [self initEvent];
+    
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)initView {
+    [self.leftButton setTitle:@"" forState:UIControlStateNormal];
+    [self.leftButton setImage:[UIImage imageNamed:@"safemail_top_back"] forState:UIControlStateNormal];
+    [self.navigationView addSubview:self.leftButton];
+    self.navigationView.backgroundColor = RGB(0, 164, 102);
+    
+    self.titleLabel.text = @"文件列表";
+    self.titleLabel.textColor = [UIColor whiteColor];
+    [self.navigationView addSubview:self.titleLabel];
+    
+    [self.view addSubview:self.fileListView];
+    
 }
-*/
+
+-(void)initEvent {
+    
+}
+
+-(void)initWithViewFrame {
+    WS(weakSelf);
+    [self.fileListView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(weakSelf.view);
+        make.top.equalTo(weakSelf.navigationView.mas_bottom);
+    }];
+}
+
+//-(void)loginHandleByUserName:(NSString*)userName password:(NSString*)password {
+//
+//
+//}
+
+#pragma mark -懒加载
+
+-(FileListView*)fileListView {
+    if (!_fileListView) {
+        _fileListView = [FileListView new];
+    }
+    return _fileListView;
+}
 
 @end
