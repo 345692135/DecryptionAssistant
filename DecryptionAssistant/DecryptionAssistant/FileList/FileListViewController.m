@@ -23,6 +23,8 @@
     [self initWithViewFrame];
     [self initEvent];
     
+    [self initData];
+    
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
 }
 
@@ -64,6 +66,11 @@
         _fileListView = [FileListView new];
     }
     return _fileListView;
+}
+
+-(void)initData {
+    NSArray *files = [NSArray arrayWithObjects:@"主动加密.txt",@"研发部绝密.txt",@"商务部加密.txt",@"售后培训.txt",@"encvlog.txt",@"工程实施部.txt",@"研发部机密.txt",@"普密1.txt", nil];
+    [self.fileListView updateViewWithFiles:files];
 }
 
 @end

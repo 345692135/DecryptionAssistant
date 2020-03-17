@@ -93,6 +93,14 @@
 		8ECB5987241F83D60021CE39 /* FileListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB5986241F83D60021CE39 /* FileListView.m */; };
 		8ECB598B241F84420021CE39 /* FileListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB598A241F84420021CE39 /* FileListTableViewCell.m */; };
 		8ECB598D241F8A300021CE39 /* safemail_top_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ECB598C241F8A300021CE39 /* safemail_top_back@2x.png */; };
+		8ECB599724205EF60021CE39 /* 主动加密.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ECB598F24205EF60021CE39 /* 主动加密.txt */; };
+		8ECB599824205EF60021CE39 /* 研发部绝密.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ECB599024205EF60021CE39 /* 研发部绝密.txt */; };
+		8ECB599924205EF60021CE39 /* 商务部加密.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ECB599124205EF60021CE39 /* 商务部加密.txt */; };
+		8ECB599A24205EF60021CE39 /* 售后培训.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ECB599224205EF60021CE39 /* 售后培训.txt */; };
+		8ECB599B24205EF60021CE39 /* encvlog.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ECB599324205EF60021CE39 /* encvlog.txt */; };
+		8ECB599C24205EF60021CE39 /* 工程实施部.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ECB599424205EF60021CE39 /* 工程实施部.txt */; };
+		8ECB599D24205EF60021CE39 /* 研发部机密.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ECB599524205EF60021CE39 /* 研发部机密.txt */; };
+		8ECB599E24205EF60021CE39 /* 普密1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ECB599624205EF60021CE39 /* 普密1.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -241,6 +249,14 @@
 		8ECB5989241F84420021CE39 /* FileListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileListTableViewCell.h; sourceTree = "<group>"; };
 		8ECB598A241F84420021CE39 /* FileListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileListTableViewCell.m; sourceTree = "<group>"; };
 		8ECB598C241F8A300021CE39 /* safemail_top_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safemail_top_back@2x.png"; sourceTree = "<group>"; };
+		8ECB598F24205EF60021CE39 /* 主动加密.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "主动加密.txt"; sourceTree = "<group>"; };
+		8ECB599024205EF60021CE39 /* 研发部绝密.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "研发部绝密.txt"; sourceTree = "<group>"; };
+		8ECB599124205EF60021CE39 /* 商务部加密.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "商务部加密.txt"; sourceTree = "<group>"; };
+		8ECB599224205EF60021CE39 /* 售后培训.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "售后培训.txt"; sourceTree = "<group>"; };
+		8ECB599324205EF60021CE39 /* encvlog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = encvlog.txt; sourceTree = "<group>"; };
+		8ECB599424205EF60021CE39 /* 工程实施部.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "工程实施部.txt"; sourceTree = "<group>"; };
+		8ECB599524205EF60021CE39 /* 研发部机密.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "研发部机密.txt"; sourceTree = "<group>"; };
+		8ECB599624205EF60021CE39 /* 普密1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "普密1.txt"; sourceTree = "<group>"; };
 		D4790B08D5940638C9E89E32 /* Pods-DecryptionAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecryptionAssistant.release.xcconfig"; path = "Target Support Files/Pods-DecryptionAssistant/Pods-DecryptionAssistant.release.xcconfig"; sourceTree = "<group>"; };
 		FBE48145F010DD333D6ADA78 /* libPods-DecryptionAssistant.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DecryptionAssistant.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -297,6 +313,7 @@
 				8E487851241F2B6B00DA9963 /* Assets.xcassets */,
 				8E487853241F2B6B00DA9963 /* LaunchScreen.storyboard */,
 				8E487856241F2B6B00DA9963 /* Info.plist */,
+				8ECB598E24205EF60021CE39 /* File */,
 				8ECB594F241F74B70021CE39 /* Resouse */,
 				8E48797D241F5F5B00DA9963 /* PrefixHeader.pch */,
 				8E487857241F2B6B00DA9963 /* main.m */,
@@ -633,6 +650,21 @@
 			path = cell;
 			sourceTree = "<group>";
 		};
+		8ECB598E24205EF60021CE39 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				8ECB598F24205EF60021CE39 /* 主动加密.txt */,
+				8ECB599024205EF60021CE39 /* 研发部绝密.txt */,
+				8ECB599124205EF60021CE39 /* 商务部加密.txt */,
+				8ECB599224205EF60021CE39 /* 售后培训.txt */,
+				8ECB599324205EF60021CE39 /* encvlog.txt */,
+				8ECB599424205EF60021CE39 /* 工程实施部.txt */,
+				8ECB599524205EF60021CE39 /* 研发部机密.txt */,
+				8ECB599624205EF60021CE39 /* 普密1.txt */,
+			);
+			path = File;
+			sourceTree = "<group>";
+		};
 		9B724B50026C5E1F7D59104D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -713,30 +745,38 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ECB599724205EF60021CE39 /* 主动加密.txt in Resources */,
 				8ECB596F241F74B70021CE39 /* account@2x.png in Resources */,
+				8ECB599924205EF60021CE39 /* 商务部加密.txt in Resources */,
 				8E487855241F2B6B00DA9963 /* LaunchScreen.storyboard in Resources */,
 				8ECB593A241F6EC30021CE39 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				8E487852241F2B6B00DA9963 /* Assets.xcassets in Resources */,
+				8ECB599D24205EF60021CE39 /* 研发部机密.txt in Resources */,
 				8ECB5974241F74B70021CE39 /* excel@2x.png in Resources */,
 				8ECB5979241F74B70021CE39 /* mv@2x.png in Resources */,
 				8ECB597C241F74B70021CE39 /* ai@2x.png in Resources */,
 				8ECB5976241F74B70021CE39 /* port@2x.png in Resources */,
+				8ECB599C24205EF60021CE39 /* 工程实施部.txt in Resources */,
 				8E487850241F2B6900DA9963 /* Main.storyboard in Resources */,
 				8ECB597B241F74B70021CE39 /* unknown@2x.png in Resources */,
 				8ECB596D241F74B70021CE39 /* launch@2x.png in Resources */,
 				8ECB597A241F74B70021CE39 /* pdf@2x.png in Resources */,
 				8ECB596B241F74B70021CE39 /* IP@2x.png in Resources */,
 				8ECB5967241F74B70021CE39 /* audio@2x.png in Resources */,
+				8ECB599E24205EF60021CE39 /* 普密1.txt in Resources */,
 				8ECB5975241F74B70021CE39 /* login@2x.png in Resources */,
 				8ECB5972241F74B70021CE39 /* file@2x.png in Resources */,
 				8ECB5968241F74B70021CE39 /* ps@2x.png in Resources */,
 				8ECB598D241F8A300021CE39 /* safemail_top_back@2x.png in Resources */,
 				8ECB5973241F74B70021CE39 /* photo@2x.png in Resources */,
 				8ECB5970241F74B70021CE39 /* flash@2x.png in Resources */,
+				8ECB599824205EF60021CE39 /* 研发部绝密.txt in Resources */,
 				8ECB596E241F74B70021CE39 /* bt@2x.png in Resources */,
+				8ECB599A24205EF60021CE39 /* 售后培训.txt in Resources */,
 				8ECB597D241F74B70021CE39 /* ae@2x.png in Resources */,
 				8ECB5977241F74B70021CE39 /* ppt@2x.png in Resources */,
 				8ECB596C241F74B70021CE39 /* txt@2x.png in Resources */,
+				8ECB599B24205EF60021CE39 /* encvlog.txt in Resources */,
 				8ECB5978241F74B70021CE39 /* word@2x.png in Resources */,
 				8ECB5969241F74B70021CE39 /* zip@2x.png in Resources */,
 				8ECB596A241F74B70021CE39 /* password@2x.png in Resources */,

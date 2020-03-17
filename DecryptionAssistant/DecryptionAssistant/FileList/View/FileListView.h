@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 //@property (nonatomic,copy) FinishBlock finishBlock;
 
+-(void)updateViewWithFiles:(NSArray*)files;
+
 @end
 
 NS_ASSUME_NONNULL_END

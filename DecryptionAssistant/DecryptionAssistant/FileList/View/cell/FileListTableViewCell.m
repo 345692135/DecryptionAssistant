@@ -110,13 +110,22 @@
 
 -(void)setFileName:(NSString *)fileName {
     _fileName = [fileName copy];
-//    [self.iconIV setName:accountName address:accountName];
     self.fileLabel.text = fileName;
+    self.iconIV.image = [UIImage imageNamed:[self getImageNameWithFileName:fileName]];
     [self layoutIfNeeded];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
+
+-(NSString*)getImageNameWithFileName:(NSString*)fileName {
+    NSString* typeString = [fileName componentsSeparatedByString:@"."][1];
+    NSString *imageName = @"unknown";
+    if ([typeString isEqualToString:@"txt"] || [typeString isEqualToString:@"text"]) {
+        imageName = @"txt";
+    }
+    return imageName;
 }
 
 @end

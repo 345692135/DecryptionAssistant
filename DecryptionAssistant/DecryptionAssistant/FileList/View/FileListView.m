@@ -13,6 +13,7 @@
 
 @property (nonatomic,strong) UIImageView *bgIV;
 @property (nonatomic, strong) UITableView* tableView;
+@property (nonatomic, strong) NSMutableArray* files;
 
 @end
 
@@ -78,12 +79,19 @@
     return _tableView;
 }
 
+-(NSMutableArray*)files {
+    if (!_files) {
+        _files = [NSMutableArray new];
+    }
+    return _files;
+}
+
 
 #pragma mark -UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.files.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -91,7 +99,7 @@
     static NSString* cellIdentifier = @"FileListTableViewCell";
     
     FileListTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    cell.fileName = @"test.txt";
+    cell.fileName = self.files[indexPath.row];
     
     return cell;
 }
@@ -106,6 +114,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+-(void)updateViewWithFiles:(NSArray*)files {
+    if (files.count) {
+        [self.files addObjectsFromArray:files];
+    }
+    [self.tableView reloadData];
 }
 
 @end
