@@ -10,11 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//typedef void(^FinishBlock)(void);
+typedef void(^DidSelectBlock)(NSString *fileName);
 
 @interface FileListView : UIView
 
-//@property (nonatomic,copy) FinishBlock finishBlock;
+@property (nonatomic,copy) DidSelectBlock didSelectBlock;
 
 -(void)updateViewWithFiles:(NSArray*)files;
 

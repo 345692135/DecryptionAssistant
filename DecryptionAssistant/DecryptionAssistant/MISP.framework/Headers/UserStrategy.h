@@ -53,4 +53,6 @@
 
 -(NSArray*) analysisStrategyForSS5Key:(NSArray*)rows;
 
+-(NSArray*) analysisStrategyForApproveFileKey:(NSArray*)rows;
+
 @end

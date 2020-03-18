@@ -44,7 +44,6 @@
 		8ECB58F4241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB58F3241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.m */; };
 		8ECB590A241F68F70021CE39 /* MISPMailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB5907241F68F70021CE39 /* MISPMailHelper.m */; };
 		8ECB590B241F68F70021CE39 /* CGChinasecMailPackTaskData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB5908241F68F70021CE39 /* CGChinasecMailPackTaskData.m */; };
-		8ECB590F241F69830021CE39 /* MISP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ECB590E241F69830021CE39 /* MISP.framework */; };
 		8ECB5913241F6A3B0021CE39 /* CGMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB5911241F6A3B0021CE39 /* CGMacros.m */; };
 		8ECB5915241F6B210021CE39 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ECB5914241F6B210021CE39 /* libz.tbd */; };
 		8ECB5917241F6B280021CE39 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ECB5916241F6B280021CE39 /* libz.1.2.5.tbd */; };
@@ -101,6 +100,9 @@
 		8ECB599C24205EF60021CE39 /* 工程实施部.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ECB599424205EF60021CE39 /* 工程实施部.txt */; };
 		8ECB599D24205EF60021CE39 /* 研发部机密.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ECB599524205EF60021CE39 /* 研发部机密.txt */; };
 		8ECB599E24205EF60021CE39 /* 普密1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8ECB599624205EF60021CE39 /* 普密1.txt */; };
+		8ECB59A22420B7040021CE39 /* MISP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ECB59A12420B7040021CE39 /* MISP.framework */; };
+		8ECB59A52420C8630021CE39 /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB59A32420C8630021CE39 /* FileUtil.m */; };
+		8ECB59A82420CDD30021CE39 /* NSData+UTF8.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB59A72420CDD30021CE39 /* NSData+UTF8.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -180,7 +182,6 @@
 		8ECB5907241F68F70021CE39 /* MISPMailHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MISPMailHelper.m; sourceTree = "<group>"; };
 		8ECB5908241F68F70021CE39 /* CGChinasecMailPackTaskData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGChinasecMailPackTaskData.m; sourceTree = "<group>"; };
 		8ECB5909241F68F70021CE39 /* MISPMailHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MISPMailHelper.h; sourceTree = "<group>"; };
-		8ECB590E241F69830021CE39 /* MISP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MISP.framework; path = DecryptionAssistant/MISP.framework; sourceTree = "<group>"; };
 		8ECB5911241F6A3B0021CE39 /* CGMacros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGMacros.m; sourceTree = "<group>"; };
 		8ECB5912241F6A3B0021CE39 /* CGMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGMacros.h; sourceTree = "<group>"; };
 		8ECB5914241F6B210021CE39 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -257,6 +258,11 @@
 		8ECB599424205EF60021CE39 /* 工程实施部.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "工程实施部.txt"; sourceTree = "<group>"; };
 		8ECB599524205EF60021CE39 /* 研发部机密.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "研发部机密.txt"; sourceTree = "<group>"; };
 		8ECB599624205EF60021CE39 /* 普密1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "普密1.txt"; sourceTree = "<group>"; };
+		8ECB59A12420B7040021CE39 /* MISP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MISP.framework; path = DecryptionAssistant/MISP.framework; sourceTree = "<group>"; };
+		8ECB59A32420C8630021CE39 /* FileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUtil.m; sourceTree = "<group>"; };
+		8ECB59A42420C8630021CE39 /* FileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtil.h; sourceTree = "<group>"; };
+		8ECB59A62420CDD30021CE39 /* NSData+UTF8.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+UTF8.h"; sourceTree = "<group>"; };
+		8ECB59A72420CDD30021CE39 /* NSData+UTF8.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+UTF8.m"; sourceTree = "<group>"; };
 		D4790B08D5940638C9E89E32 /* Pods-DecryptionAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecryptionAssistant.release.xcconfig"; path = "Target Support Files/Pods-DecryptionAssistant/Pods-DecryptionAssistant.release.xcconfig"; sourceTree = "<group>"; };
 		FBE48145F010DD333D6ADA78 /* libPods-DecryptionAssistant.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DecryptionAssistant.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -266,10 +272,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ECB59A22420B7040021CE39 /* MISP.framework in Frameworks */,
 				8ECB594E241F70F80021CE39 /* libxml2.tbd in Frameworks */,
 				8ECB5917241F6B280021CE39 /* libz.1.2.5.tbd in Frameworks */,
 				8ECB5915241F6B210021CE39 /* libz.tbd in Frameworks */,
-				8ECB590F241F69830021CE39 /* MISP.framework in Frameworks */,
 				075148F8F1BB5AFC9707C444 /* libPods-DecryptionAssistant.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +344,8 @@
 		8E48785F241F48B700DA9963 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8ECB59A42420C8630021CE39 /* FileUtil.h */,
+				8ECB59A32420C8630021CE39 /* FileUtil.m */,
 				8E48786F241F490800DA9963 /* BaseRequest.h */,
 				8E48786B241F490800DA9963 /* BaseRequest.m */,
 				8E48786D241F490800DA9963 /* BaseViewModel.h */,
@@ -376,6 +384,8 @@
 				8E4878C0241F56E100DA9963 /* NavUtils */,
 				8E4878B6241F4DB900DA9963 /* LoadingView */,
 				8E487875241F499000DA9963 /* View */,
+				8ECB59A62420CDD30021CE39 /* NSData+UTF8.h */,
+				8ECB59A72420CDD30021CE39 /* NSData+UTF8.m */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -510,10 +520,10 @@
 		8ECB5905241F68F70021CE39 /* MISPMailHelper */ = {
 			isa = PBXGroup;
 			children = (
-				8ECB5906241F68F70021CE39 /* CGChinasecMailPackTaskData.h */,
-				8ECB5907241F68F70021CE39 /* MISPMailHelper.m */,
-				8ECB5908241F68F70021CE39 /* CGChinasecMailPackTaskData.m */,
 				8ECB5909241F68F70021CE39 /* MISPMailHelper.h */,
+				8ECB5907241F68F70021CE39 /* MISPMailHelper.m */,
+				8ECB5906241F68F70021CE39 /* CGChinasecMailPackTaskData.h */,
+				8ECB5908241F68F70021CE39 /* CGChinasecMailPackTaskData.m */,
 			);
 			path = MISPMailHelper;
 			sourceTree = "<group>";
@@ -677,10 +687,10 @@
 		F9C8D20B9B7C6C7BD14CC027 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8ECB59A12420B7040021CE39 /* MISP.framework */,
 				8ECB594D241F70F80021CE39 /* libxml2.tbd */,
 				8ECB5916241F6B280021CE39 /* libz.1.2.5.tbd */,
 				8ECB5914241F6B210021CE39 /* libz.tbd */,
-				8ECB590E241F69830021CE39 /* MISP.framework */,
 				FBE48145F010DD333D6ADA78 /* libPods-DecryptionAssistant.a */,
 			);
 			name = Frameworks;
@@ -857,6 +867,7 @@
 				8E48786A241F48B700DA9963 /* BaseModel.m in Sources */,
 				8ECB594A241F6F3B0021CE39 /* CGAlertView.m in Sources */,
 				8E487976241F5F2D00DA9963 /* NSArray+NSArray_description.m in Sources */,
+				8ECB59A82420CDD30021CE39 /* NSData+UTF8.m in Sources */,
 				8ECB5984241F830B0021CE39 /* FileListViewController.m in Sources */,
 				8E487970241F5F2D00DA9963 /* UIView+VWAutoTest.m in Sources */,
 				8ECB594B241F6F3B0021CE39 /* CGWaitingViewManager.m in Sources */,
@@ -866,6 +877,7 @@
 				8ECB5940241F6EC30021CE39 /* ChineseInclude.m in Sources */,
 				8ECB593F241F6EC30021CE39 /* PinYinForObjc.m in Sources */,
 				8ECB5924241F6E8E0021CE39 /* UIWindow+YzdHUD.m in Sources */,
+				8ECB59A52420C8630021CE39 /* FileUtil.m in Sources */,
 				8ECB593B241F6EC30021CE39 /* PinyinHelper.m in Sources */,
 				8ECB5925241F6E8E0021CE39 /* YzdHUDImageView.m in Sources */,
 				8ECB58F4241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.m in Sources */,

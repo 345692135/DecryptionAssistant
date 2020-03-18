@@ -43,7 +43,10 @@
 }
 
 -(void)initEvent {
-    
+    WS(weakSelf);
+    self.fileListView.didSelectBlock = ^(NSString * _Nonnull fileName) {
+        [weakSelf readLocalTextFromFileName:fileName];
+    };
 }
 
 -(void)initWithViewFrame {
@@ -71,6 +74,11 @@
 -(void)initData {
     NSArray *files = [NSArray arrayWithObjects:@"主动加密.txt",@"研发部绝密.txt",@"商务部加密.txt",@"售后培训.txt",@"encvlog.txt",@"工程实施部.txt",@"研发部机密.txt",@"普密1.txt", nil];
     [self.fileListView updateViewWithFiles:files];
+}
+
+-(void)readLocalTextFromFileName:(NSString*)fileName {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@""];
+    [self.baseViewModel decryptionFileWithFilePath:filePath];
 }
 
 @end

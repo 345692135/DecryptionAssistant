@@ -34,9 +34,6 @@
  */
 + (id)dataWithEncryptContentsOfFile:(NSString *)path;
 
-//😆
-+ (id)dataWithEncryptContentsOfData:(NSData *)data;
-
 /*!
  @method dataWithEncryptContentsOfAttachedFile:path
  @abstract read data from encrypt attached file
@@ -62,7 +59,7 @@
  */
 + (id)dataWithEncryptContentsOfAttachedData:(NSData *)data;
 
-//判断解密是否成功 😆
-- (BOOL)isEncData;
+//解密加密的二进制流数据
++ (id)dataWithEncryptContentsOfFileData:(NSData *)data;
 
 @end

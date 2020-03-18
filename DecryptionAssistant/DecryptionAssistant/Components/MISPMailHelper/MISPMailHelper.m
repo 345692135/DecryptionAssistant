@@ -19,6 +19,7 @@
 #import "CGChinasecMailPackTaskData.h"
 //#import "CGAddressData.h"
 #import <MISP/UserSrategyHelper.h>
+#import <MISP/CryptoCoreData.h>
 
 //#import <MISP/AccountManagement.h>
 //#import <MISP/BusinessProcess/AccountManagement/AccountManagement.h>
@@ -582,13 +583,13 @@ static MISPMailHelper* _sharedInstance = nil;
 
 - (void)fetchStrategyWithCompletion:(void (^)(BOOL ifSuccess))completion
 {
-    AuthentificationManager* actManager = [AuthentificationManager getInstance];
-    id<ICertify> certify = [actManager getUserNameCertifyPrivder];
-    [certify fetchStrategyWithCompletion:^(BOOL ifSuccess) {
-        if (completion) {
-            completion(ifSuccess);
-        }
-    }];
+//    AuthentificationManager* actManager = [AuthentificationManager getInstance];
+//    id<ICertify> certify = [actManager getUserNameCertifyPrivder];
+//    [certify fetchStrategyWithCompletion:^(BOOL ifSuccess) {
+//        if (completion) {
+//            completion(ifSuccess);
+//        }
+//    }];
 }
 
 #pragma mark -
@@ -676,47 +677,47 @@ static MISPMailHelper* _sharedInstance = nil;
 {
     NSMutableArray* mailType_friendMail = [[NSMutableArray alloc] init];
     
-    //获取策略
-    MailStrategyAnalysis *analysis = [MailStrategyAnalysis sharedInstance];
-    NSArray* addressDataDicArray = [self addressDataDicArrayWithAddressDataArray:addressDatas];
-    NSMutableSet* userListSet = [[NSMutableSet alloc] initWithArray:addressDataDicArray];
-    NSArray* sendListProperty = [analysis getSendAddressDataDicList:userListSet];
-    //将策略相同的用户合并起来
-    for (MailStrategyProperty* property in sendListProperty) {
-        NSLog(@"action = %@, level = %@", property.encAction, property.level);
-        NSString* encAction = property.encAction;
-        NSString* level = property.level;
-        if ([encAction isEqualToString:@"DENY"]) {
-            continue;
-        }
-        
-        //获取/创建taskData
-        CGChinasecMailPackTaskData* taskData_target = nil;
-        for (CGChinasecMailPackTaskData* taskData in mailType_friendMail) {
-            if ([taskData.encAction isEqualToString:encAction]) {
-                if ([encAction isEqualToString:@"ENCALL"]
-                    || [encAction isEqualToString:@"ENCATT"]) {
-                    if ([taskData.level isEqualToString:level]) {//要确保密级一致
-                        taskData_target = taskData;
-                        break;
-                    }
-                }
-                else {
-                    taskData_target = taskData;
-                    break;
-                }
-            }
-        }
-        if (!taskData_target) {
-            taskData_target = [[CGChinasecMailPackTaskData alloc] initWithEncAction:encAction level:level];
-            [mailType_friendMail addObject:taskData_target];
-        }
-        
-        //为taskData设置用户列表
-        
-        NSArray* addressDataArray = [self addressDataArrayWithAddressDataDicArray:property.userList];
-        [taskData_target.userList addObjectsFromArray:addressDataArray];
-    }
+//    //获取策略
+//    MailStrategyAnalysis *analysis = [MailStrategyAnalysis sharedInstance];
+//    NSArray* addressDataDicArray = [self addressDataDicArrayWithAddressDataArray:addressDatas];
+//    NSMutableSet* userListSet = [[NSMutableSet alloc] initWithArray:addressDataDicArray];
+//    NSArray* sendListProperty = [analysis getSendAddressDataDicList:userListSet];
+//    //将策略相同的用户合并起来
+//    for (MailStrategyProperty* property in sendListProperty) {
+//        NSLog(@"action = %@, level = %@", property.encAction, property.level);
+//        NSString* encAction = property.encAction;
+//        NSString* level = property.level;
+//        if ([encAction isEqualToString:@"DENY"]) {
+//            continue;
+//        }
+//        
+//        //获取/创建taskData
+//        CGChinasecMailPackTaskData* taskData_target = nil;
+//        for (CGChinasecMailPackTaskData* taskData in mailType_friendMail) {
+//            if ([taskData.encAction isEqualToString:encAction]) {
+//                if ([encAction isEqualToString:@"ENCALL"]
+//                    || [encAction isEqualToString:@"ENCATT"]) {
+//                    if ([taskData.level isEqualToString:level]) {//要确保密级一致
+//                        taskData_target = taskData;
+//                        break;
+//                    }
+//                }
+//                else {
+//                    taskData_target = taskData;
+//                    break;
+//                }
+//            }
+//        }
+//        if (!taskData_target) {
+//            taskData_target = [[CGChinasecMailPackTaskData alloc] initWithEncAction:encAction level:level];
+//            [mailType_friendMail addObject:taskData_target];
+//        }
+//        
+//        //为taskData设置用户列表
+//        
+//        NSArray* addressDataArray = [self addressDataArrayWithAddressDataDicArray:property.userList];
+//        [taskData_target.userList addObjectsFromArray:addressDataArray];
+//    }
     return mailType_friendMail;
 }
 

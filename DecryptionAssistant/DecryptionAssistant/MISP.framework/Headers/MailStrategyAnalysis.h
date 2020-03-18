@@ -13,6 +13,11 @@
 + (id)sharedInstance;
 
 - (NSArray *)getSendMailList:(NSMutableSet *)userList;
-- (NSArray *)getSendAddressDataDicList:(NSMutableSet *)addressDataDicList;//😆
+//是否有
+-(BOOL)haveEncStrategy;
+-(BOOL)havePlainStrategy;
+-(NSArray *)getPlainStrategy;
+
+- (BOOL) haveCarryAttachedFile; //add by lijuan 20170603
 
 @end

@@ -16,4 +16,11 @@
 
 + (BOOL)isEncryptFile:(NSString*)path;
 
+
+//是否是加密文件数据
++ (BOOL)isEncryptFileData:(NSData *)data;
+
+//是否是加密文件
+- (BOOL)isEncData;
+
 @end

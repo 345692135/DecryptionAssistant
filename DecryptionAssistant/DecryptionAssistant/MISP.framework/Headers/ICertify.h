@@ -38,7 +38,4 @@
 //get active account SID
 - (NSString*)getActiveAccountSID;
 
-//获取策略😆
-- (void)fetchStrategyWithCompletion:(void (^)(BOOL ifSuccess))completion;
-
 @end

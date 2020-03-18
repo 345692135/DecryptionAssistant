@@ -113,7 +113,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (self.didSelectBlock) {
+        self.didSelectBlock(self.files[indexPath.row]);
+    }
 }
 
 -(void)updateViewWithFiles:(NSArray*)files {

@@ -810,6 +810,7 @@
 
                           }
                           else {
+                              
 //                              strongSelf.loginBtn.enabled = YES;
                               STOP_SHOW_WAIT_MESSAGE();
 
@@ -824,12 +825,8 @@
                                   [presentingViewController presentViewController:v animated:YES completion:nil];
                               }];
                                */
+                              
                               NSLog(@"--------跳转-------");
-//                              [weakSelf dismissViewControllerAnimated:YES completion:^{
-//                                  if (weakSelf.backBlock) {
-//                                      weakSelf.backBlock();
-//                                  }
-//                              }];
                               dispatch_async_on_main_queue(^{
                                   FileListViewController *vc = [FileListViewController new];
                                   vc.modalPresentationStyle = 0;

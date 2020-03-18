@@ -48,6 +48,10 @@
 		<data>
 		iLWp2bpqwHXWqd1EAqoTt/ODe0Y=
 		</data>
+		<key>Headers/ConfigManager.h</key>
+		<data>
+		gkVLZ5GwjakA19Dcx44vETN3Dfg=
+		</data>
 		<key>Headers/Context.h</key>
 		<data>
 		7Im2K5eLvSUd4AbH9o16ake2XPs=
@@ -58,7 +62,7 @@
 		</data>
 		<key>Headers/CryptoCoreData.h</key>
 		<data>
-		NU6CJsrQz0wMaIx0fMvuBPcFyYg=
+		hg80r3r9sqGMCEaGwW/RlEKPtKI=
 		</data>
 		<key>Headers/CustomHTTPProtocol.h</key>
 		<data>
@@ -106,7 +110,7 @@
 		</data>
 		<key>Headers/ICertify.h</key>
 		<data>
-		WRoerKWhK2kD3riWtS9AYmFhUis=
+		DNPiAqVJrsm3nt8PF9qsX6atigo=
 		</data>
 		<key>Headers/IConfig.h</key>
 		<data>
@@ -120,13 +124,57 @@
 		<data>
 		jxfPMAqGy8W8xd/CE5uWjks1bq4=
 		</data>
+		<key>Headers/LogUploadAttachedFile.h</key>
+		<data>
+		cS4ZbjxUUacL4pCE2KDSR37b//Y=
+		</data>
+		<key>Headers/LogUploadInterface.h</key>
+		<data>
+		csUhHBTaE6O/prAwIqArM1W7TGA=
+		</data>
+		<key>Headers/MCApprovalCodeMarco.h</key>
+		<data>
+		vNMqCnBZCr5QY0tv97KE8fz2L48=
+		</data>
+		<key>Headers/MCApprovalConvertUtil.h</key>
+		<data>
+		mj1/mwdCIsJvIYr4VaLZwcIgL7g=
+		</data>
+		<key>Headers/MCApprovalManager.h</key>
+		<data>
+		taLHg/xo2px0hExEcCZavEBCEws=
+		</data>
+		<key>Headers/MCApprovalModel.h</key>
+		<data>
+		zCsbd7Ci7NcXmyOXbRvYXm7mMfU=
+		</data>
+		<key>Headers/MCApproveFileManager.h</key>
+		<data>
+		KTHRDiFKAavgSggY5uaIR2gV2kM=
+		</data>
+		<key>Headers/MCApproveFileModel.h</key>
+		<data>
+		vmjF+C3CQALFkIcfJMhfuk7rgjw=
+		</data>
+		<key>Headers/MCApproveFileTCPAccess.h</key>
+		<data>
+		I/TAwHnvaGQEFw+we+x79kBesiM=
+		</data>
+		<key>Headers/MCApproveTCPParamProvider.h</key>
+		<data>
+		IbOw7lADVqXpUH7nBWvCmD/qvak=
+		</data>
 		<key>Headers/MISP.h</key>
 		<data>
 		u97TC70NnHLJBQTnGzzZT9smYCg=
 		</data>
+		<key>Headers/MailPlainProperty.h</key>
+		<data>
+		d5TBqh6R7F3nyN80rOflJuI3E2g=
+		</data>
 		<key>Headers/MailStrategyAnalysis.h</key>
 		<data>
-		+7hdKoHQUsWulZUvwjLFmC6gxNw=
+		daUoR1GTtlM7UkObGGyvd9N0tzI=
 		</data>
 		<key>Headers/MailStrategyProperty.h</key>
 		<data>
@@ -150,11 +198,15 @@
 		</data>
 		<key>Headers/NSData+CryptoEmail.h</key>
 		<data>
-		3TQBvOW4FZYpA5fcscBgUPJXcec=
+		eIkLzc+bMmYuEFuxFoIb2vuWZmQ=
+		</data>
+		<key>Headers/NSData+DecryptApproveFile.h</key>
+		<data>
+		l93gasf2UxG/Sni5zOcsJXSJ0Hc=
 		</data>
 		<key>Headers/NSMutableData+Crypto.h</key>
 		<data>
-		DB+YzK/Lco+K0AXiERbzGdUYYm0=
+		+/cWyk5Hi1vQmMznl+OGXe/ENrU=
 		</data>
 		<key>Headers/NetAccessBase.h</key>
 		<data>
@@ -230,7 +282,7 @@
 		</data>
 		<key>Headers/UserStrategy.h</key>
 		<data>
-		hnACiTq4SX9Lh1EZqb2fqdvtWo0=
+		Ul7uG5dUZcTs4Vilji5vBSJ7nS4=
 		</data>
 		<key>Headers/UserStrategyItem.h</key>
 		<data>
@@ -254,7 +306,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		BhrpcFFnZXPa+qi7hz7Y4UEL3kI=
+		ehIEmBGCDuZbs31A3tpXq7a+rYE=
 		</data>
 		<key>KeychainAccessGroups.plist</key>
 		<data>
@@ -263,10 +315,6 @@
 		<key>Modules/module.modulemap</key>
 		<data>
 		mkPujnerZpGXmG6ofBWubJygel0=
-		</data>
-		<key>PrivateHeaders/CGConfigManager.h</key>
-		<data>
-		HIPu22532ZXY/AnBX39ZzyUKq6E=
 		</data>
 		<key>dh1024.pem</key>
 		<data>
@@ -288,6 +336,15 @@
 		<data>
 		CKgnkYlT8cFzprkjET5ArPSCV/U=
 		</data>
+		<key>en.lproj/InfoPlist.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			zmV6UqBSo6r1NOz798vd5O4zTBA=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -412,6 +469,17 @@
 			/lzFkc1Idv4OCSmMaZD9aokaJY+79OEIMYYIhdfuYAk=
 			</data>
 		</dict>
+		<key>Headers/ConfigManager.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			gkVLZ5GwjakA19Dcx44vETN3Dfg=
+			</data>
+			<key>hash2</key>
+			<data>
+			h7Bv7S1R9kBB+bBrMJt6C7cUtQgdcB9FosUPtN4SlqQ=
+			</data>
+		</dict>
 		<key>Headers/Context.h</key>
 		<dict>
 			<key>hash</key>
@@ -438,11 +506,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			NU6CJsrQz0wMaIx0fMvuBPcFyYg=
+			hg80r3r9sqGMCEaGwW/RlEKPtKI=
 			</data>
 			<key>hash2</key>
 			<data>
-			d0qPtX8o496e8A/0+9A8BGiXsceXbnD2JWMe4Hg9C/8=
+			N/huLp5Fq50GHxdgHfGb8SRISmx46fQOs1jECz2T4G8=
 			</data>
 		</dict>
 		<key>Headers/CustomHTTPProtocol.h</key>
@@ -570,11 +638,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			WRoerKWhK2kD3riWtS9AYmFhUis=
+			DNPiAqVJrsm3nt8PF9qsX6atigo=
 			</data>
 			<key>hash2</key>
 			<data>
-			5HYJ0PGTWBQhTFGjSBFK+/x7TmDky2UJSr4DZQ44nn4=
+			WlgIAbvadK79VwaATT0EKo3modNEGfX7kvrAiRxq2lA=
 			</data>
 		</dict>
 		<key>Headers/IConfig.h</key>
@@ -610,6 +678,116 @@
 			V1Xo/RHF2VhteKzdbYeJ8pxy2r1nWAxCl9N5nzVazHY=
 			</data>
 		</dict>
+		<key>Headers/LogUploadAttachedFile.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cS4ZbjxUUacL4pCE2KDSR37b//Y=
+			</data>
+			<key>hash2</key>
+			<data>
+			ojLZQt8DGh1q5SEzhX1W9uVMHtIrL2D+g2ko2uvzK60=
+			</data>
+		</dict>
+		<key>Headers/LogUploadInterface.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			csUhHBTaE6O/prAwIqArM1W7TGA=
+			</data>
+			<key>hash2</key>
+			<data>
+			FGqP21zusrKmE25oG/ZJLEg+pnvNSr3HyDL2tvj0Y7Y=
+			</data>
+		</dict>
+		<key>Headers/MCApprovalCodeMarco.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			vNMqCnBZCr5QY0tv97KE8fz2L48=
+			</data>
+			<key>hash2</key>
+			<data>
+			56Mzid1IRS+VQZ6tv+ryfRWJiLQZySZwWOuD2nM1X68=
+			</data>
+		</dict>
+		<key>Headers/MCApprovalConvertUtil.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			mj1/mwdCIsJvIYr4VaLZwcIgL7g=
+			</data>
+			<key>hash2</key>
+			<data>
+			X2ub9A+1ZO3ulR9JiBKB7RgT+zjDrDMM27fcAzZT+dA=
+			</data>
+		</dict>
+		<key>Headers/MCApprovalManager.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			taLHg/xo2px0hExEcCZavEBCEws=
+			</data>
+			<key>hash2</key>
+			<data>
+			aN0ImPX8zTpbaIbieRulJD+4X2qVMVvURcJx8lV/g8I=
+			</data>
+		</dict>
+		<key>Headers/MCApprovalModel.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			zCsbd7Ci7NcXmyOXbRvYXm7mMfU=
+			</data>
+			<key>hash2</key>
+			<data>
+			EFbqxsY67xQsCXYProIPU9PxZ/b4lVCaCiakXJKjd9E=
+			</data>
+		</dict>
+		<key>Headers/MCApproveFileManager.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			KTHRDiFKAavgSggY5uaIR2gV2kM=
+			</data>
+			<key>hash2</key>
+			<data>
+			xx1ew7Psci/tPbWzyGBP7gtZcRDdJizz2DN/Mfradis=
+			</data>
+		</dict>
+		<key>Headers/MCApproveFileModel.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			vmjF+C3CQALFkIcfJMhfuk7rgjw=
+			</data>
+			<key>hash2</key>
+			<data>
+			Sflp/0jFl9M2ctLYGuLmJhJt0pqwioen+fvosEOT67g=
+			</data>
+		</dict>
+		<key>Headers/MCApproveFileTCPAccess.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			I/TAwHnvaGQEFw+we+x79kBesiM=
+			</data>
+			<key>hash2</key>
+			<data>
+			EGS3OSY/WyRI/Yta0eo5QB5zSVX7nsWBoApmSil21z4=
+			</data>
+		</dict>
+		<key>Headers/MCApproveTCPParamProvider.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			IbOw7lADVqXpUH7nBWvCmD/qvak=
+			</data>
+			<key>hash2</key>
+			<data>
+			yDbRuIOISHDb2kvNlyLScpjJNKmaYv1qs/OdcEn1CAY=
+			</data>
+		</dict>
 		<key>Headers/MISP.h</key>
 		<dict>
 			<key>hash</key>
@@ -621,15 +799,26 @@
 			ROwfyck6wYV18ei5LKW2TAmAtbcDOEtayDAvYqa+nm8=
 			</data>
 		</dict>
+		<key>Headers/MailPlainProperty.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			d5TBqh6R7F3nyN80rOflJuI3E2g=
+			</data>
+			<key>hash2</key>
+			<data>
+			qiOwQbLSaaN8WodeiB8EXbdtkGnA4tMh9EbVzmZMdBA=
+			</data>
+		</dict>
 		<key>Headers/MailStrategyAnalysis.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+7hdKoHQUsWulZUvwjLFmC6gxNw=
+			daUoR1GTtlM7UkObGGyvd9N0tzI=
 			</data>
 			<key>hash2</key>
 			<data>
-			lU3EX7v6GXipQLDgJ6iXW+hBxXFRMqDIsaLwsQXOY8k=
+			VqrufI6xjiTMlENX688lenGgL5V1EmZXdXMWsbCrCO8=
 			</data>
 		</dict>
 		<key>Headers/MailStrategyProperty.h</key>
@@ -691,22 +880,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3TQBvOW4FZYpA5fcscBgUPJXcec=
+			eIkLzc+bMmYuEFuxFoIb2vuWZmQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			diFiyiKCwod4ClPJqP5g7dLgjnVzpLB/ATnX7VkVwp4=
+			6haEW8zCZBgzTwXSioUMOsl4vzpXdzL/HJNegg8Yn9w=
+			</data>
+		</dict>
+		<key>Headers/NSData+DecryptApproveFile.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			l93gasf2UxG/Sni5zOcsJXSJ0Hc=
+			</data>
+			<key>hash2</key>
+			<data>
+			6Js4ioC+ZZTc6Tw3WYU3U/MkxmBsQ6bvhMHu8jNy8kU=
 			</data>
 		</dict>
 		<key>Headers/NSMutableData+Crypto.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			DB+YzK/Lco+K0AXiERbzGdUYYm0=
+			+/cWyk5Hi1vQmMznl+OGXe/ENrU=
 			</data>
 			<key>hash2</key>
 			<data>
-			wFPnwbugBpQylBxSZZml4MGyVPy4IJYS+SskiYix3VY=
+			vtu0ZOLa4Pi1aXET+WeNY8Zfqly975mTlqFetUXUde8=
 			</data>
 		</dict>
 		<key>Headers/NetAccessBase.h</key>
@@ -911,11 +1111,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hnACiTq4SX9Lh1EZqb2fqdvtWo0=
+			Ul7uG5dUZcTs4Vilji5vBSJ7nS4=
 			</data>
 			<key>hash2</key>
 			<data>
-			UiQh3Db7f7hzEz+Rh9fvyX4Lo73lltXcm+zapnMW5jQ=
+			MwkPLEnt72XUMc/jJxW0ejZgMco1iuOMftJtAKCbOcI=
 			</data>
 		</dict>
 		<key>Headers/UserStrategyItem.h</key>
@@ -995,17 +1195,6 @@
 			NJE08DiDSNMt45gOoLqL9eIHkXXH+cwFtBG1Mr32kg0=
 			</data>
 		</dict>
-		<key>PrivateHeaders/CGConfigManager.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			HIPu22532ZXY/AnBX39ZzyUKq6E=
-			</data>
-			<key>hash2</key>
-			<data>
-			sse4rGBfxxreu9BjhRZTMVR8pEHX/kezQgToxaP2tt0=
-			</data>
-		</dict>
 		<key>dh1024.pem</key>
 		<dict>
 			<key>hash</key>
@@ -1061,10 +1250,23 @@
 			Fvgku5LCVetiz7EUYBQEm+aLjqRic618OvtYXEdVVok=
 			</data>
 		</dict>
+		<key>en.lproj/InfoPlist.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			zmV6UqBSo6r1NOz798vd5O4zTBA=
+			</data>
+			<key>hash2</key>
+			<data>
+			kmHsztpgjvF0JW5f3HdMHm49z1M0CcG8OT1JDQHHE/E=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>^.*</key>
+		<key>^</key>
 		<true/>
 		<key>^.*\.lproj/</key>
 		<dict>
@@ -1079,11 +1281,6 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
-		</dict>
-		<key>^Base\.lproj/</key>
-		<dict>
-			<key>weight</key>
-			<real>1010</real>
 		</dict>
 		<key>^version.plist$</key>
 		<true/>
@@ -1095,12 +1292,24 @@
 			<key>weight</key>
 			<real>11</real>
 		</dict>
+		<key>^</key>
+		<dict>
+			<key>weight</key>
+			<real>20</real>
+		</dict>
 		<key>^(.*/)?\.DS_Store$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
 			<real>2000</real>
+		</dict>
+		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
+		<dict>
+			<key>nested</key>
+			<true/>
+			<key>weight</key>
+			<real>10</real>
 		</dict>
 		<key>^.*</key>
 		<true/>
@@ -1117,11 +1326,6 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
-		</dict>
-		<key>^Base\.lproj/</key>
-		<dict>
-			<key>weight</key>
-			<real>1010</real>
 		</dict>
 		<key>^Info\.plist$</key>
 		<dict>
@@ -1136,6 +1340,13 @@
 			<true/>
 			<key>weight</key>
 			<real>20</real>
+		</dict>
+		<key>^[^/]+$</key>
+		<dict>
+			<key>nested</key>
+			<true/>
+			<key>weight</key>
+			<real>10</real>
 		</dict>
 		<key>^embedded\.provisionprofile$</key>
 		<dict>

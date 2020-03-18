@@ -26,4 +26,6 @@
 
 - (id)initWithAttachedFileLabelHead:(NSData*)label;
 
+- (id)initWithApproveFileElectronLabelHead:(NSData*)label;
+
 @end
