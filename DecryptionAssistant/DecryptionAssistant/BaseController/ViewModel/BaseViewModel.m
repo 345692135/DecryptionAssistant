@@ -7,14 +7,7 @@
 //
 
 #import "BaseViewModel.h"
-//#import <MISP/NSData+CryptoEmail.h>
-//#import <MISP/NSMutableData+Crypto.h>
-//#import <MISP/CryptoCoreData.h>
-//#import <MISP/SecLevelKeyHelper.h>
-//#import <MISP/EncryptSQLiteManager.h>
-//#import <MISP/SystemStrategy.h>
-//#import "FileUtil.h"
-//#import "NSData+UTF8.h"
+#import "MISPMailHelper.h"
 
 @interface BaseViewModel ()<NSURLSessionDelegate>
 
@@ -39,33 +32,9 @@
 
 
 -(void)decryptionFileWithFilePath:(NSString*)filePath {
-//
-//    NSDictionary *dictionary = [CryptoCoreData getLevelKeysDictionary];
-////    NSDictionary *LevelNameDic = [SystemStrategy getLevelNameListWithRandID:dictionary.allKeys];
-////    NSLog(@"LevelNameDic=%@",LevelNameDic);
-//
-//    BOOL iRet = [NSMutableData isEncryptFile:filePath];
-//    if (iRet) {
-//
-//        NSData * decryptData = [NSData dataWithEncryptContentsOfFile: filePath];
-//        NSMutableData *muData = [NSMutableData dataWithData:decryptData];
-//
-//        /*
-//        Abstract:解密结果判断
-//        @return isEncData YES:解密失败 NO：解密成功
-//        */
-//        BOOL isEncData = [muData isEncData];
-//        NSLog(@":::::%d",isEncData);
-//        if (!isEncData) {
-//            NSString *string = muData.utf8ToString;
-////            NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-//            NSLog(@"string=%@.",string);
-//            NSString *string2 = [FileUtil saveFileToLocal:muData.UTF8Data fileName:@"test.txt"];
-//            NSLog(@"string=%@.",string2);
-//        }
-//
-//
-//    }
+    [MISPMailHelper.sharedInstance decryptionFileWithFilePath:filePath completion:^(NSString *text) {
+        
+    }];
 
 }
 

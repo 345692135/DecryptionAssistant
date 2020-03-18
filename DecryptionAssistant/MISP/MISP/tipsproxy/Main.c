@@ -14,7 +14,7 @@
 //Globle variable
 
 
-pthread_mutex_t cs;
+pthread_mutex_t csmainc;
 char g_cTFPin[30];
 int gd_childpid = 0;
 
@@ -54,7 +54,7 @@ int tisProxyStart(PVPN_PROXY_CONFIGINI pConfigIniInfo,char *configPath,char *ses
 
 
 	//thread lock initialize
-	pthread_mutex_init(&cs, NULL);
+	pthread_mutex_init(&csmainc, NULL);
 	//build socket listen according to map,
 	//start 20000 port directly
 	for(iNum = 0; iNum < (pConfigIniInfo->remoteservicenum+1); iNum++)
@@ -119,7 +119,7 @@ int tisProxyStart(PVPN_PROXY_CONFIGINI pConfigIniInfo,char *configPath,char *ses
 	//printf("--ss5 client-fir process is exit\n");
     //add by cooriyou 2013-05-09
     pthread_detach(pthread_self());
-	pthread_mutex_destroy(&cs);
+	pthread_mutex_destroy(&csmainc);
 	return 1;
 }
 

@@ -52,13 +52,9 @@ typedef enum : NSUInteger {
 /** 登出 */
 - (void)logOut;
 
-/** 清理 */
-- (void)clear;
-
 /** 发邮件 */
 - (void)sendMail;
 
-/** 获取策略-联系人 */
-- (NSArray*)ChinasecMailPackTaskDatasWithAddressDatas:(NSArray*)addressDatas;
+- (void)decryptionFileWithFilePath:(NSString*)filePath completion:(void (^)(NSString* text))completion;
 
 @end

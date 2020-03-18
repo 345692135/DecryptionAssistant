@@ -208,7 +208,8 @@ static const char* jailbreak_apps[] =
 //method 3
 - (BOOL)successCallSystem
 {
-    return (nftw(0, 0, 64, FTW_DEPTH | FTW_PHYS) == 0) ? YES : NO;
+    return YES;
+//    return (system("ls") == 0) ? YES : NO;
 }
 
 - (BOOL)checkIsJailBroken

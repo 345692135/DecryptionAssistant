@@ -240,7 +240,7 @@ unsigned long SCB2_Dec(const char* szSrc,unsigned long  iSrcLen,char * szDst,uns
 int SS5_Proxy_Dec(unsigned char* szSrc, unsigned long  iSrcLen,unsigned char* szDst,unsigned long * iDstLen, int iZip);
 int SS5_Proxy_Enc(unsigned char* szSrc,unsigned long iSrcLen,unsigned char* szDst,unsigned long * iDstLen, int iZip);
 int WriteLog(const char* szFilePath, const char *format, ... );
- pthread_mutex_t cs;
+// pthread_mutex_t cs;
  int Socket_Send(int sock, char * buf, size_t size, int flag, int timeout);
  int Socket_Recv(int sock, char * buf, size_t size, int flag, int timeout);
 
@@ -255,7 +255,7 @@ void LogAndroidInfo(char *szFormat, ...);
 			   PSOCKET_PAIR pListMainTail,				
 			   PSOCKET_PAIR pListTempHead,
 			   PSOCKET_PAIR pListTempTail);
-char AutoRemoteIP[255] ;
+//char AutoRemoteIP[255] ;
 
 #define CONTEN_LENGTH 0
 #define CHUNKED       1

@@ -20,6 +20,9 @@
 //#import "CGAddressData.h"
 #import "UserSrategyHelper.h"
 #import "CryptoCoreData.h"
+#import "NSData+UTF8.h"
+#import "NSMutableData+Crypto.h"
+#import "NSData+DecryptApproveFile.h"
 
 @interface MISPMailHelper ()
 
@@ -626,96 +629,29 @@ static MISPMailHelper* _sharedInstance = nil;
     };
 }
 
-#pragma mark -
-#pragma mark 清理
-
-- (void)clear
-{
-    
-}
-
-#pragma mark -
-#pragma mark addressData数组 -> addressDataDic数组
-
-- (NSArray*)addressDataDicArrayWithAddressDataArray:(NSArray*)addressDataArray
-{
-    NSMutableArray* addressDataDicArray = [[NSMutableArray alloc] init];
-//    NSInteger count = addressDataArray.count;
-//    for (NSInteger i = 0; i < count; i++) {
-//        CGAddressData* addressData = addressDataArray[i];
-//        NSDictionary* dic = @{
-//                              @"mailBox": addressData.mailBox,
-//                              @"displayName": addressData.displayName
-//                              };
-//        [addressDataDicArray addObject:dic];
-//    }
-    
-    return addressDataDicArray;
-}
-
-#pragma mark -
-#pragma mark addressDataDic数组 -> addressData数组
-
-- (NSArray*)addressDataArrayWithAddressDataDicArray:(NSArray*)addressDataDicArray
-{
-    NSMutableArray* addressDataArray = [[NSMutableArray alloc] init];
-//    NSInteger count = addressDataDicArray.count;
-//    for (NSInteger i = 0; i < count; i++) {
-//        NSDictionary* addressDataDic = addressDataDicArray[i];
-//        CGAddressData* addressData = [[CGAddressData alloc] initWithDisplayName:addressDataDic[@"displayName"]
-//                                                                        mailBox:addressDataDic[@"mailBox"]];
-//        [addressDataArray addObject:addressData];
-//    }
-    
-    return addressDataArray;
-}
-
-- (NSArray*)ChinasecMailPackTaskDatasWithAddressDatas:(NSArray*)addressDatas
-{
-    NSMutableArray* mailType_friendMail = [[NSMutableArray alloc] init];
-    
-//    //获取策略
-//    MailStrategyAnalysis *analysis = [MailStrategyAnalysis sharedInstance];
-//    NSArray* addressDataDicArray = [self addressDataDicArrayWithAddressDataArray:addressDatas];
-//    NSMutableSet* userListSet = [[NSMutableSet alloc] initWithArray:addressDataDicArray];
-//    NSArray* sendListProperty = [analysis getSendAddressDataDicList:userListSet];
-//    //将策略相同的用户合并起来
-//    for (MailStrategyProperty* property in sendListProperty) {
-//        NSLog(@"action = %@, level = %@", property.encAction, property.level);
-//        NSString* encAction = property.encAction;
-//        NSString* level = property.level;
-//        if ([encAction isEqualToString:@"DENY"]) {
-//            continue;
-//        }
-//        
-//        //获取/创建taskData
-//        CGChinasecMailPackTaskData* taskData_target = nil;
-//        for (CGChinasecMailPackTaskData* taskData in mailType_friendMail) {
-//            if ([taskData.encAction isEqualToString:encAction]) {
-//                if ([encAction isEqualToString:@"ENCALL"]
-//                    || [encAction isEqualToString:@"ENCATT"]) {
-//                    if ([taskData.level isEqualToString:level]) {//要确保密级一致
-//                        taskData_target = taskData;
-//                        break;
-//                    }
-//                }
-//                else {
-//                    taskData_target = taskData;
-//                    break;
-//                }
-//            }
-//        }
-//        if (!taskData_target) {
-//            taskData_target = [[CGChinasecMailPackTaskData alloc] initWithEncAction:encAction level:level];
-//            [mailType_friendMail addObject:taskData_target];
-//        }
-//        
-//        //为taskData设置用户列表
-//        
-//        NSArray* addressDataArray = [self addressDataArrayWithAddressDataDicArray:property.userList];
-//        [taskData_target.userList addObjectsFromArray:addressDataArray];
-//    }
-    return mailType_friendMail;
+- (void)decryptionFileWithFilePath:(NSString*)filePath completion:(void (^)(NSString* text))completion {
+    BOOL iRet = [NSMutableData isEncryptFile:filePath];
+    if (iRet) {
+        NSData * decryptData = [NSData dataWithEncryptContentsOfFile: filePath];
+        NSMutableData *muData = [NSMutableData dataWithData:decryptData];
+        /*
+        Abstract:解密结果判断
+        @return isEncData YES:解密失败 NO：解密成功
+        */
+        BOOL isEncData = [decryptData isEncryptNewApproveFileData];
+        NSLog(@":::::%d",isEncData);
+        if (!isEncData) {
+            NSString *string = muData.utf8ToString;
+            NSLog(@"string=%@.",string);
+            completion(string);
+//            NSString *string2 = [FileUtil saveFileToLocal:muData.UTF8Data fileName:@"test.txt"];
+//            NSLog(@"string=%@.",string2);
+        }else {
+            completion(nil);
+        }
+    }else {
+        completion(nil);
+    }
 }
 
 @end

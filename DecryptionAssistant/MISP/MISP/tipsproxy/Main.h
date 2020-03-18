@@ -1,7 +1,7 @@
 #ifndef __MAIN_H__
 #define __MAIN_H__
 
-pthread_mutex_t cs;
+//pthread_mutex_t cs;
 #define PERMISSION_APPLY_MAP_LOCAL_BINDPORT			"8080"
 #define PERMISSION_APPLY_MAP_REMOTE_IP				"127.0.0.1"
 #define PERMISSION_APPLY_MAP_REMOTE_PORT				"80"

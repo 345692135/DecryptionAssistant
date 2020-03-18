@@ -1395,7 +1395,6 @@
 		8ECB5BE12421FFF40021CE39 /* pk12err.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pk12err.c; sourceTree = "<group>"; };
 		8ECB5BE22421FFF40021CE39 /* p12_init.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = p12_init.c; sourceTree = "<group>"; };
 		8ECB5BE32421FFF40021CE39 /* p12_p8d.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = p12_p8d.c; sourceTree = "<group>"; };
-		8ECB5BE42421FFF40021CE39 /* pkcs12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkcs12.h; sourceTree = "<group>"; };
 		8ECB5BE52421FFF40021CE39 /* p12_decr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = p12_decr.c; sourceTree = "<group>"; };
 		8ECB5BE62421FFF40021CE39 /* p12_attr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = p12_attr.c; sourceTree = "<group>"; };
 		8ECB5BE72421FFF40021CE39 /* p12_p8e.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = p12_p8e.c; sourceTree = "<group>"; };
@@ -2020,10 +2019,10 @@
 		8E487874241F499000DA9963 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				8ECB5905241F68F70021CE39 /* MISPMailHelper */,
 				8ECB5928241F6EC30021CE39 /* search */,
 				8ECB5918241F6E8D0021CE39 /* HUD */,
 				8ECB5910241F6A3B0021CE39 /* tools */,
-				8ECB5905241F68F70021CE39 /* MISPMailHelper */,
 				8E487952241F5F2D00DA9963 /* Category */,
 				8E4878BD241F56E100DA9963 /* FMKeychain */,
 				8E4878C0241F56E100DA9963 /* NavUtils */,
@@ -3221,7 +3220,6 @@
 				8ECB5BE12421FFF40021CE39 /* pk12err.c */,
 				8ECB5BE22421FFF40021CE39 /* p12_init.c */,
 				8ECB5BE32421FFF40021CE39 /* p12_p8d.c */,
-				8ECB5BE42421FFF40021CE39 /* pkcs12.h */,
 				8ECB5BE52421FFF40021CE39 /* p12_decr.c */,
 				8ECB5BE62421FFF40021CE39 /* p12_attr.c */,
 				8ECB5BE72421FFF40021CE39 /* p12_p8e.c */,
@@ -5073,7 +5071,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sain.DecryptionAssistant;
 				PRODUCT_NAME = "解密助手";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -5147,7 +5145,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sain.DecryptionAssistant;
 				PRODUCT_NAME = "解密助手";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};

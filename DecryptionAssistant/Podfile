@@ -5,7 +5,7 @@ target 'DecryptionAssistant' do
 pod 'AFNetworking','~> 3.1.0'
 pod 'MJRefresh','~> 3.1.15.1'
 pod 'ReactiveCocoa',:git => 'https://github.com/zhao0/ReactiveCocoa.git', :tag => '2.5.2'
-pod 'FMDB/SQLCipher','~> 2.7.2'
+#pod 'FMDB/SQLCipher','~> 2.7.2'
 pod 'SDAutoLayout','~> 2.2.0'
 pod 'IQKeyboardManager','~> 5.0.7'
 pod 'Toast','~> 4.0.0'
