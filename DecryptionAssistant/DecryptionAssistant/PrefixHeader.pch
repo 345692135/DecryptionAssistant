@@ -10,6 +10,81 @@
 #define PrefixHeader_pch
 
 #ifdef __OBJC__
+
+typedef void* AccountHandle;    //user account handle
+
+typedef long MODULEID;          //bussiness module id
+typedef unsigned char BYTE;
+typedef unsigned long DWORD;
+typedef unsigned short WORD;
+
+//Client System Version
+
+#define SYSTEM_VERSION @"Mob Safe V3.2.1.20170712"
+
+//System User
+#define SYSTEM_DEFAULT_USER_SID     @"86108274-39398501-00000000-00000000"
+#define SYSTEM_SYSTEMSTRATEGY_SID   @"86108274-39398501-00000000-10000000"
+
+//MOUDLE ID define
+#define BUSINESS_PROCESS 0xE000
+#define BUSINESS_PROCESS_ACCOUNT_MANAGEMENT  BUSINESS_PROCESS|0x0001
+
+//Time out define
+#define TCP_CONNECT_TIMEOUT 15
+#define TCP_TIMEOUT 30
+#define UDP_TIMEOUT -1
+
+
+#define SUCCESSED                               0
+//Error define
+#define SYSTEM_IP_PORT_ERROR                    0x801
+#define SYSTEM_CANNOT_CONTENT_TO_INIT_SERVER    0x802
+#define SYSTEM_GET_PRODUCT_KEY_ERROR            0x803
+#define SYSTEM_SETUP_GET_CONFIG_IP_PORT_ERROR   0x804
+#define SYSTEM_SETUP_CREATE_INIT_COMMAND_ERROR  0x805
+#define SYSTEM_NETWORK_TIMEOUT                  0x806
+#define SYSTEM_INIT_SYSTEMSTRATEGY_ERROR        0x807
+#define SYSTEM_INIT_NOMALUSERSTRATEGY_ERROR     0x808
+#define SYSTEM_INIT_AUTHORSTRATEGY_ERROR        0x809
+#define SYSTEM_INIT_GUID_ERROR                  0x80A
+
+#define SYSTEM_INER_ERROR                       0x80E
+
+#define CERTIFY_GET_TOKEN_ERROR                 0x2901
+#define CERTIFY_GET_SESSION_KEY_ERROR           0x2902
+#define CERTIFY_GET_USER_SID_ERROR              0x2903
+#define CERTIFY_CREATE_USERPWD_COMMAND_ERROR    0x2904
+#define CERTIFY_RELOGIN_ERROR                   0x2905
+
+#define CHANGE_PASSWORD_OLD_PASSWORD_ERROR      0x2906
+
+#define CREATE_UPDATE_STRATEGY_COMMAND_ERROR    0x1601
+#define UPDATE_STRATEGY_GET_REQUEST_TYPE_ERROR  0x1602
+#define UPDATE_STRATEGY_GET_SID_TYPE_ERROR      0x1603
+#define UPDATE_SYSTEM_STRATEGY_ERROR            0x1604
+#define UPDATE_USER_STRATEGY_ERROR              0x1605
+#define UPDATE_AUTHOR_STRATEGY_ERROR            0x1606
+
+#define UPDATE_CHECK_CREATE_INIT_COMMANDD_ERROR 0x3301
+#define UPDATE_CHECK_REQUEST_DATA_OSTYPE_IOS    0x1
+#define UPDATE_CHECK_REQUEST_UPDATE_SUCCEED     0x1
+
+#define LICENSE_CHECK_CREATE_INIT_COMMANDD_ERROR 0x3201
+#define LICENSE_CODE_ADDRLIST       @"819"
+#define LICENSE_CODE_EMAIL          @"795"
+#define LICENSE_CODE_BROWSER        @"829"//1116，change from 809 to 829
+#define LICENSE_CODE_APPROVE        @"818"
+//#define LICENSE_CODE_FILESHARE      @""//20160516 目前与安全邮件绑定一起授权
+
+#define SHARING_FILE_CHECK_CREATE_INIT_COMMANDD_ERROR 0x3101
+
+//#ifdef DEBUG_MODE
+#define TRACK(fmt, ...) NSLog((@"%s [Line %d] \n ［INFO］: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+//#else
+//#define TRACK(...)
+//#endif
+
 #import <AFNetworking.h>
 #import <ReactiveCocoa.h>
 #import <YYText/YYText.h>
@@ -37,6 +112,7 @@
 #import "UIImage+UIImageExtras.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "YZAuthID.h"
+#import "NSString+SubString.h"
 
 #endif
 

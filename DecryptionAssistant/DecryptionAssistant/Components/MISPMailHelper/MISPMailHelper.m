@@ -7,22 +7,19 @@
 //
 
 #import "MISPMailHelper.h"
-#import <MISP/Context.h>
-#import <MISP/AuthentificationManager.h>
-#import <MISP/SocketProxyManager.h>
-#import <MISP/updateProcess.h>
-#import <MISP/NSData+CryptoEmail.h>
+#import "Context.h"
+#import "AuthentificationManager.h"
+#import "SocketProxyManager.h"
+#import "updateProcess.h"
+#import "NSData+CryptoEmail.h"
 #import <UIKit/UIKit.h>
 //#import "CGAccountData.h"
-#import <MISP/MailStrategyAnalysis.h>
-#import <MISP/MailStrategyProperty.h>
+#import "MailStrategyAnalysis.h"
+#import "MailStrategyProperty.h"
 #import "CGChinasecMailPackTaskData.h"
 //#import "CGAddressData.h"
-#import <MISP/UserSrategyHelper.h>
-#import <MISP/CryptoCoreData.h>
-
-//#import <MISP/AccountManagement.h>
-//#import <MISP/BusinessProcess/AccountManagement/AccountManagement.h>
+#import "UserSrategyHelper.h"
+#import "CryptoCoreData.h"
 
 @interface MISPMailHelper ()
 

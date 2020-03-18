@@ -1,6 +1,0 @@
-framework module MISP {
-  umbrella header "MISP.h"
-
-  export *
-  module * { export * }
-}
