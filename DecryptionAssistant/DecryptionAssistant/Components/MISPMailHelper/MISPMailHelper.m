@@ -640,8 +640,9 @@ static MISPMailHelper* _sharedInstance = nil;
         */
         BOOL isEncData = [decryptData isEncryptNewApproveFileData];
         NSLog(@":::::%d",isEncData);
+        NSString *string = muData.utf8ToString;
         if (!isEncData) {
-            NSString *string = muData.utf8ToString;
+//            NSString *string = muData.utf8ToString;
             NSLog(@"string=%@.",string);
             completion(string);
 //            NSString *string2 = [FileUtil saveFileToLocal:muData.UTF8Data fileName:@"test.txt"];

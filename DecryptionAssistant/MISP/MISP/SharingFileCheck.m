@@ -312,8 +312,9 @@
 -(void) wakeup
 {
     //NSAutoreleasePool* pool = [[NSAutoreleasePool alloc]init];
-    [self performSelectorOnMainThread:@selector(setRecv) withObject:nil waitUntilDone:YES];
+//    [self performSelectorOnMainThread:@selector(setRecv) withObject:nil waitUntilDone:YES];
     //[pool release];
+    [self setRecv];
 }
 
 -(void)setRecv

@@ -240,10 +240,10 @@
             //NSString* mss = [NSString stringWithFormat:@"has keys:-%@- -- 1 --",key];
             //[self iNNNsaveLog:mss withFileName:@"decryptLog.txt"];
 
-            if ([key isEqualToString:level] == YES) {
+//            if ([key isEqualToString:level] == YES) {
                 isOK = YES;
                 break;
-            }
+//            }
         }
         
         if (isOK == YES) {

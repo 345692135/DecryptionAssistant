@@ -2715,10 +2715,11 @@ enum GCDAsyncSocketConfig
 
 - (void)disconnect
 {
+    WS(weakSelf);
 	dispatch_block_t block = ^{ @autoreleasepool {
 		if (flags & kSocketStarted)
 		{
-			[self closeWithError:nil];
+			[weakSelf closeWithError:nil];
 		}
 	}};
 	

@@ -27,7 +27,8 @@
     if (data == nil) {
         err = SYSTEM_NETWORK_TIMEOUT;
         isRecv = YES;
-        [NSThread detachNewThreadSelector:@selector(wakeup) toTarget:self withObject:nil];
+//        [NSThread detachNewThreadSelector:@selector(wakeup) toTarget:self withObject:nil];
+        self.isRecv = YES;
         isRecv = YES;
         return;
     }

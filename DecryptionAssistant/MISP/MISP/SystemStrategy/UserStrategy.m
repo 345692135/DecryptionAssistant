@@ -23,7 +23,7 @@
         TRACK(@"null point");
         return nil;
     }
-    NSString* xpath = [NSString stringWithFormat:@"/RESPONSE/TABLE/ROW[StrategyGroupId='%@' and IsActive='1']",grpId];
+    NSString* xpath = [NSString stringWithFormat:@"/RESPONSE/TABLE/ROW[StrategyGroupId='%@']",grpId];
     arr = [self.strategyXMLData nodesForXPath:xpath error:&err];
     
     
