@@ -130,7 +130,7 @@ static unsigned long CK[32] =
 //================================ �ڶ��� ===============================================
 //#include <STDIO.H>    
 //#include <STRING.H>    
-//#define LITTLE_ENDIAN     //����С���ֽ���    
+#define LITTLE_ENDIAN     //����С���ֽ���    
 //#define BIG_ENDIAN     //�������ֽ���    
 #define ENCRYPT  0     //������ܱ�־    
 #define DECRYPT  1     //������ܱ�־    

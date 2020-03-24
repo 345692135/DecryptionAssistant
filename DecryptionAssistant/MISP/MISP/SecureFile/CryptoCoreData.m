@@ -258,6 +258,7 @@
         //end
         
         NSArray* arry = [systemStrategy getSecPubKeybyGroupId:LEVEL_KEY_GROUPID_IN_SYSTEM_STRATEGY secLevel:level];
+//        NSArray *arry = [systemStrategy getSecPrvKeybyGroupId:LEVEL_KEY_GROUPID_IN_SYSTEM_STRATEGY secLevel:level];
         if ([arry count] == 0) {
             return NO;
         }
@@ -322,35 +323,35 @@
         }
         UserStrategy* userStrategy = [account getStrategy];
         NSLog(@"userStrategy:%@",userStrategy);
-        NSArray* array = [userStrategy getItemByGroupId:MAIL_IN_DECRYPT_IN_USER_STRATEGY];
-        if ([array count] == 0) {
-            TRACK(@"encrypt level key list is null, group is 268566593");
-              //[self iNNNsaveLog:@"encrypt level key list is null group is 268566593 -- 2 --" withFileName:@"decryptLog.txt"];
-            return NO;
-        }
-        NSArray* levels = [userStrategy analysisStrategyForEmailAttachedFileKey:array];
-        if ([levels count] == 0) {
-            TRACK(@"encrypt level key list for DECATT is null, group is 268566593");
-            //[self iNNNsaveLog:@"[levels count] == 0 -- 2 --" withFileName:@"decryptLog.txt"];
-            return NO;
-        }
+//        NSArray* array = [userStrategy getItemByGroupId:MAIL_IN_DECRYPT_IN_USER_STRATEGY];
+//        if ([array count] == 0) {
+//            TRACK(@"encrypt level key list is null, group is 268566593");
+//              //[self iNNNsaveLog:@"encrypt level key list is null group is 268566593 -- 2 --" withFileName:@"decryptLog.txt"];
+//            return NO;
+//        }
+//        NSArray* levels = [userStrategy analysisStrategyForEmailAttachedFileKey:array];
+//        if ([levels count] == 0) {
+//            TRACK(@"encrypt level key list for DECATT is null, group is 268566593");
+//            //[self iNNNsaveLog:@"[levels count] == 0 -- 2 --" withFileName:@"decryptLog.txt"];
+//            return NO;
+//        }
+//        
+//        BOOL isOK = NO;
+//        for (NSString *key in levels) {
+//            //NSString* mss = [NSString stringWithFormat:@"has keys:-%@- -- 2 --",key];
+//            //[self iNNNsaveLog:mss withFileName:@"decryptLog.txt"];
+//            if ([key isEqualToString:level] == YES) {
+//                isOK = YES;
+//                break;
+//            }
+//        }
         
-        BOOL isOK = NO;
-        for (NSString *key in levels) {
-            //NSString* mss = [NSString stringWithFormat:@"has keys:-%@- -- 2 --",key];
-            //[self iNNNsaveLog:mss withFileName:@"decryptLog.txt"];
-            if ([key isEqualToString:level] == YES) {
-                isOK = YES;
-                break;
-            }
-        }
-        
-        if (isOK == YES) {
-            TRACK(@"encrypt level <%@> is permission in user strategy",level);
-        }else{
-            TRACK(@"encrypt level <%@> is can not permission in user strategy",level);
-            return NO;
-        }
+//        if (isOK == YES) {
+//            TRACK(@"encrypt level <%@> is permission in user strategy",level);
+//        }else{
+//            TRACK(@"encrypt level <%@> is can not permission in user strategy",level);
+//            return NO;
+//        }
         
         
         //end
@@ -371,8 +372,8 @@
         return NO;
     }
     [levelKey release];levelKey = nil;
-    
-    ret = Init_CRYPTCONTEXT(&context, WS_NID_aes_128_ecb, CRYPT_MODE_DECRYPT, key, 64, iv, 16);
+    //Ret=Init_CRYPTCONTEXT(pContext, pHead->elecHead_AlgorithmInfo.dwEncryptAlgID, CRYPT_MODE_DECRYPT, key, 64, iv, 16, pRSAEncKey);
+    ret = Init_CRYPTCONTEXT(&context, head.elecHead_AlgorithmInfo.dwEncryptAlgID, CRYPT_MODE_DECRYPT, key, 64, iv, 16);
     if (ret != E_SUCCESS) {
         return NO;
     }

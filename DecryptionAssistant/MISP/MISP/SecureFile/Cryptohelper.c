@@ -378,6 +378,7 @@ ERRORINT Init_CRYPTCONTEXT(PCRYPTCONTEXT pContext,
 	memset(pContext->biv,0,sizeof(pContext->biv));
 	memset(&pContext->ctx,0,sizeof(pContext->ctx));
 
+//    if(NID_camellia_128_cfb128 == dwCipherId) dwCipherId = NID_aes_256_cfb128;
 	pContext->dwCipherId=dwCipherId;
 	//Check NID
 	pCipher = EVP_get_cipherbynid(pContext->dwCipherId);

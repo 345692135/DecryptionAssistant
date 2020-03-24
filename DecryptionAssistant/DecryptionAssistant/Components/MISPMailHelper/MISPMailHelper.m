@@ -632,15 +632,19 @@ static MISPMailHelper* _sharedInstance = nil;
 - (void)decryptionFileWithFilePath:(NSString*)filePath completion:(void (^)(NSString* text))completion {
     BOOL iRet = [NSMutableData isEncryptFile:filePath];
     if (iRet) {
-        NSData * decryptData = [NSData dataWithEncryptContentsOfFile: filePath];
-        NSMutableData *muData = [NSMutableData dataWithData:decryptData];
+        NSData * decryptData = [NSData dataWithEncryptContentsOfAttachedFile: filePath];
+//        NSMutableData *muData = [NSMutableData dataWithData:decryptData];
         /*
         Abstract:解密结果判断
         @return isEncData YES:解密失败 NO：解密成功
         */
         BOOL isEncData = [decryptData isEncryptNewApproveFileData];
         NSLog(@":::::%d",isEncData);
-        NSString *string = muData.utf8ToString;
+//        for (int i = 1; i < 16; i++) {
+//            NSString *string = [[NSString alloc] initWithData:decryptData encoding:NSASCIIStringEncoding];
+//        }
+//        NSString *string = [[NSString alloc] initWithData:decryptData encoding:NSASCIIStringEncoding];//
+        NSString *string = decryptData.utf8ToString;
         if (!isEncData) {
 //            NSString *string = muData.utf8ToString;
             NSLog(@"string=%@.",string);
