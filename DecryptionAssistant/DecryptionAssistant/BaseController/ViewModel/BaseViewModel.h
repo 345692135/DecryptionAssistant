@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param failure failure description
 //-(void)loginRequestByLoginModel:(LoginModel*)model success:(void (^)(BOOL isSuccess))success failure:(void (^)(NSError * error))failure;
 
--(void)decryptionFileWithFilePath:(NSString*)filePath;
+-(void)decryptionFileWithFilePath:(NSString*)filePath completion:(void (^)(NSString* text))completion;
 
 @end
 

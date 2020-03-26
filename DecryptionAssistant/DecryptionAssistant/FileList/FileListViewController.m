@@ -78,7 +78,11 @@
 
 -(void)readLocalTextFromFileName:(NSString*)fileName {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@""];
-    [self.baseViewModel decryptionFileWithFilePath:filePath];
+    [self.baseViewModel decryptionFileWithFilePath:filePath completion:^(NSString * _Nonnull text) {
+        dispatch_async_on_main_queue(^{
+            [ToastManager showMsg:text];
+        });
+    }];
 }
 
 @end
