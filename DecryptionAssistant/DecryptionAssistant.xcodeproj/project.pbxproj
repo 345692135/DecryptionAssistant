@@ -42,6 +42,15 @@
 		8E48797B241F5F2D00DA9963 /* UIImage+UIImageExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E48796C241F5F2D00DA9963 /* UIImage+UIImageExtras.m */; };
 		8E48797C241F5F2D00DA9963 /* UINavigationController+VWExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E48796D241F5F2D00DA9963 /* UINavigationController+VWExtend.m */; };
 		8E653F9C24459CE500AEEC54 /* FFAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653F9B24459CE400AEEC54 /* FFAES.m */; };
+		8E653FB42445B1D100AEEC54 /* PCCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FA12445B1D100AEEC54 /* PCCircle.m */; };
+		8E653FB52445B1D100AEEC54 /* PCCircleViewConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FA22445B1D100AEEC54 /* PCCircleViewConst.m */; };
+		8E653FB62445B1D100AEEC54 /* PCCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FA32445B1D100AEEC54 /* PCCircleView.m */; };
+		8E653FB72445B1D100AEEC54 /* CALayer+Anim.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FA62445B1D100AEEC54 /* CALayer+Anim.m */; };
+		8E653FB82445B1D100AEEC54 /* GestureVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FA92445B1D100AEEC54 /* GestureVerifyViewController.m */; };
+		8E653FB92445B1D200AEEC54 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FAA2445B1D100AEEC54 /* HomeViewController.m */; };
+		8E653FBA2445B1D200AEEC54 /* GestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FAB2445B1D100AEEC54 /* GestureViewController.m */; };
+		8E653FBB2445B1D200AEEC54 /* PCCircleInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FB02445B1D100AEEC54 /* PCCircleInfoView.m */; };
+		8E653FBC2445B1D200AEEC54 /* PCLockLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FB32445B1D100AEEC54 /* PCLockLabel.m */; };
 		8ECB58F4241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB58F3241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.m */; };
 		8ECB590A241F68F70021CE39 /* MISPMailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB5907241F68F70021CE39 /* MISPMailHelper.m */; };
 		8ECB590B241F68F70021CE39 /* CGChinasecMailPackTaskData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB5908241F68F70021CE39 /* CGChinasecMailPackTaskData.m */; };
@@ -846,6 +855,24 @@
 		8E48797D241F5F5B00DA9963 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8E653F9A24459CE400AEEC54 /* FFAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFAES.h; sourceTree = "<group>"; };
 		8E653F9B24459CE400AEEC54 /* FFAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFAES.m; sourceTree = "<group>"; };
+		8E653F9F2445B1D100AEEC54 /* PCCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCircleView.h; sourceTree = "<group>"; };
+		8E653FA02445B1D100AEEC54 /* PCCircleViewConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCircleViewConst.h; sourceTree = "<group>"; };
+		8E653FA12445B1D100AEEC54 /* PCCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCircle.m; sourceTree = "<group>"; };
+		8E653FA22445B1D100AEEC54 /* PCCircleViewConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCircleViewConst.m; sourceTree = "<group>"; };
+		8E653FA32445B1D100AEEC54 /* PCCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCircleView.m; sourceTree = "<group>"; };
+		8E653FA42445B1D100AEEC54 /* PCCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCircle.h; sourceTree = "<group>"; };
+		8E653FA62445B1D100AEEC54 /* CALayer+Anim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Anim.m"; sourceTree = "<group>"; };
+		8E653FA72445B1D100AEEC54 /* CALayer+Anim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Anim.h"; sourceTree = "<group>"; };
+		8E653FA92445B1D100AEEC54 /* GestureVerifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureVerifyViewController.m; sourceTree = "<group>"; };
+		8E653FAA2445B1D100AEEC54 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		8E653FAB2445B1D100AEEC54 /* GestureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureViewController.m; sourceTree = "<group>"; };
+		8E653FAC2445B1D100AEEC54 /* GestureVerifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureVerifyViewController.h; sourceTree = "<group>"; };
+		8E653FAD2445B1D100AEEC54 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		8E653FAE2445B1D100AEEC54 /* GestureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureViewController.h; sourceTree = "<group>"; };
+		8E653FB02445B1D100AEEC54 /* PCCircleInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCircleInfoView.m; sourceTree = "<group>"; };
+		8E653FB12445B1D100AEEC54 /* PCLockLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCLockLabel.h; sourceTree = "<group>"; };
+		8E653FB22445B1D100AEEC54 /* PCCircleInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCircleInfoView.h; sourceTree = "<group>"; };
+		8E653FB32445B1D100AEEC54 /* PCLockLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCLockLabel.m; sourceTree = "<group>"; };
 		8ECB58F2241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+DecryptionAssistant.h"; sourceTree = "<group>"; };
 		8ECB58F3241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+DecryptionAssistant.m"; sourceTree = "<group>"; };
 		8ECB5906241F68F70021CE39 /* CGChinasecMailPackTaskData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGChinasecMailPackTaskData.h; sourceTree = "<group>"; };
@@ -2022,6 +2049,7 @@
 		8E487874241F499000DA9963 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				8E653F9D2445B1D100AEEC54 /* GestureUnlock */,
 				8E653F932445980200AEEC54 /* AES */,
 				8ECB5905241F68F70021CE39 /* MISPMailHelper */,
 				8ECB5928241F6EC30021CE39 /* search */,
@@ -2172,6 +2200,63 @@
 				8E653F9B24459CE400AEEC54 /* FFAES.m */,
 			);
 			path = AES;
+			sourceTree = "<group>";
+		};
+		8E653F9D2445B1D100AEEC54 /* GestureUnlock */ = {
+			isa = PBXGroup;
+			children = (
+				8E653F9E2445B1D100AEEC54 /* FrameWork */,
+				8E653FA52445B1D100AEEC54 /* Gategory */,
+				8E653FA82445B1D100AEEC54 /* Controller */,
+				8E653FAF2445B1D100AEEC54 /* View */,
+			);
+			path = GestureUnlock;
+			sourceTree = "<group>";
+		};
+		8E653F9E2445B1D100AEEC54 /* FrameWork */ = {
+			isa = PBXGroup;
+			children = (
+				8E653F9F2445B1D100AEEC54 /* PCCircleView.h */,
+				8E653FA02445B1D100AEEC54 /* PCCircleViewConst.h */,
+				8E653FA12445B1D100AEEC54 /* PCCircle.m */,
+				8E653FA22445B1D100AEEC54 /* PCCircleViewConst.m */,
+				8E653FA32445B1D100AEEC54 /* PCCircleView.m */,
+				8E653FA42445B1D100AEEC54 /* PCCircle.h */,
+			);
+			path = FrameWork;
+			sourceTree = "<group>";
+		};
+		8E653FA52445B1D100AEEC54 /* Gategory */ = {
+			isa = PBXGroup;
+			children = (
+				8E653FA62445B1D100AEEC54 /* CALayer+Anim.m */,
+				8E653FA72445B1D100AEEC54 /* CALayer+Anim.h */,
+			);
+			path = Gategory;
+			sourceTree = "<group>";
+		};
+		8E653FA82445B1D100AEEC54 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E653FAD2445B1D100AEEC54 /* HomeViewController.h */,
+				8E653FAA2445B1D100AEEC54 /* HomeViewController.m */,
+				8E653FAE2445B1D100AEEC54 /* GestureViewController.h */,
+				8E653FAB2445B1D100AEEC54 /* GestureViewController.m */,
+				8E653FAC2445B1D100AEEC54 /* GestureVerifyViewController.h */,
+				8E653FA92445B1D100AEEC54 /* GestureVerifyViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8E653FAF2445B1D100AEEC54 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E653FB02445B1D100AEEC54 /* PCCircleInfoView.m */,
+				8E653FB12445B1D100AEEC54 /* PCLockLabel.h */,
+				8E653FB22445B1D100AEEC54 /* PCCircleInfoView.h */,
+				8E653FB32445B1D100AEEC54 /* PCLockLabel.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8ECB5905241F68F70021CE39 /* MISPMailHelper */ = {
@@ -4165,6 +4250,7 @@
 				8ECB603E2421FFF80021CE39 /* bn_blind.c in Sources */,
 				8ECB608A2421FFF80021CE39 /* ts_conf.c in Sources */,
 				8ECB5E462421FFF60021CE39 /* GDataXMLNode.m in Sources */,
+				8E653FB92445B1D200AEEC54 /* HomeViewController.m in Sources */,
 				8ECB5FFD2421FFF80021CE39 /* encode.c in Sources */,
 				8ECB60672421FFF80021CE39 /* conf_lib.c in Sources */,
 				8ECB608C2421FFF80021CE39 /* ts_rsp_print.c in Sources */,
@@ -4290,6 +4376,7 @@
 				8ECB60202421FFF80021CE39 /* bf_cfb64.c in Sources */,
 				8ECB590A241F68F70021CE39 /* MISPMailHelper.m in Sources */,
 				8ECB5F592421FFF70021CE39 /* rsa_asn1.c in Sources */,
+				8E653FB72445B1D100AEEC54 /* CALayer+Anim.m in Sources */,
 				8ECB5EC92421FFF60021CE39 /* d2i_pu.c in Sources */,
 				8ECB5F292421FFF70021CE39 /* ecs_sign.c in Sources */,
 				8ECB5FAF2421FFF70021CE39 /* v3_purp.c in Sources */,
@@ -4375,6 +4462,7 @@
 				8ECB5FE42421FFF80021CE39 /* mdc2dgst.c in Sources */,
 				8ECB5E282421FFF60021CE39 /* NSData+CryptoEmail.m in Sources */,
 				8ECB5E252421FFF60021CE39 /* SocketProxyManager.m in Sources */,
+				8E653FB82445B1D100AEEC54 /* GestureVerifyViewController.m in Sources */,
 				8ECB60342421FFF80021CE39 /* bn_exp2.c in Sources */,
 				8ECB5EC22421FFF60021CE39 /* t_bitst.c in Sources */,
 				8ECB593D241F6EC30021CE39 /* ChineseToPinyinResource.m in Sources */,
@@ -4447,6 +4535,7 @@
 				8ECB60322421FFF80021CE39 /* bn_div.c in Sources */,
 				8ECB5F272421FFF70021CE39 /* ecs_vrf.c in Sources */,
 				8ECB5EEC2421FFF70021CE39 /* pem_err.c in Sources */,
+				8E653FB52445B1D100AEEC54 /* PCCircleViewConst.m in Sources */,
 				8ECB604B2421FFF80021CE39 /* cmll_cfb.c in Sources */,
 				8ECB5ED12421FFF60021CE39 /* x_info.c in Sources */,
 				8ECB60392421FFF80021CE39 /* bn_shift.c in Sources */,
@@ -4549,6 +4638,7 @@
 				8ECB60212421FFF80021CE39 /* bf_ecb.c in Sources */,
 				8ECB60A72421FFF90021CE39 /* aes_ecb.c in Sources */,
 				8ECB5F6C2421FFF70021CE39 /* ec_check.c in Sources */,
+				8E653FB62445B1D100AEEC54 /* PCCircleView.m in Sources */,
 				8ECB5FC72421FFF80021CE39 /* x509rset.c in Sources */,
 				8ECB60492421FFF80021CE39 /* cmll_ctr.c in Sources */,
 				8ECB593F241F6EC30021CE39 /* PinYinForObjc.m in Sources */,
@@ -4608,6 +4698,7 @@
 				8ECB60A92421FFF90021CE39 /* buffer.c in Sources */,
 				8ECB5E4C2421FFF60021CE39 /* UIImage-SQLitePersistence.m in Sources */,
 				8ECB5FAB2421FFF70021CE39 /* v3_ocsp.c in Sources */,
+				8E653FBA2445B1D200AEEC54 /* GestureViewController.m in Sources */,
 				8ECB5F502421FFF70021CE39 /* c_cfb64.c in Sources */,
 				8ECB5FB42421FFF70021CE39 /* v3_ncons.c in Sources */,
 				8ECB5EAF2421FFF60021CE39 /* a_bitstr.c in Sources */,
@@ -4692,6 +4783,7 @@
 				8ECB5E3E2421FFF60021CE39 /* updateProcess.m in Sources */,
 				8ECB5FAE2421FFF70021CE39 /* v3_extku.c in Sources */,
 				8ECB5E112421FFF60021CE39 /* ForwardOperation.m in Sources */,
+				8E653FB42445B1D100AEEC54 /* PCCircle.m in Sources */,
 				8ECB601A2421FFF80021CE39 /* p_enc.c in Sources */,
 				8ECB60642421FFF80021CE39 /* rand_lib.c in Sources */,
 				8ECB60622421FFF80021CE39 /* md_rand.c in Sources */,
@@ -4814,6 +4906,7 @@
 				8ECB5923241F6E8E0021CE39 /* YzdHUDIndicator.m in Sources */,
 				8E487973241F5F2D00DA9963 /* UIColor+Hex.m in Sources */,
 				8ECB5F1E2421FFF70021CE39 /* cbc_enc.c in Sources */,
+				8E653FBC2445B1D200AEEC54 /* PCLockLabel.m in Sources */,
 				8ECB5E182421FFF60021CE39 /* NSData+Degist.m in Sources */,
 				8ECB5F212421FFF70021CE39 /* cbc3_enc.c in Sources */,
 				8ECB60452421FFF80021CE39 /* sha256.c in Sources */,
@@ -4846,6 +4939,7 @@
 				8E653F9C24459CE500AEEC54 /* FFAES.m in Sources */,
 				8ECB5FDB2421FFF80021CE39 /* cms_ess.c in Sources */,
 				8ECB5F052421FFF70021CE39 /* bss_file.c in Sources */,
+				8E653FBB2445B1D200AEEC54 /* PCCircleInfoView.m in Sources */,
 				8ECB5EAD2421FFF60021CE39 /* tasn_new.c in Sources */,
 				8ECB594C241F6F3B0021CE39 /* CGFadeView.m in Sources */,
 				8ECB60842421FFF80021CE39 /* tb_pkmeth.c in Sources */,

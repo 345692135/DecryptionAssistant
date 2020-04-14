@@ -12,6 +12,9 @@
 #import "MISPMailHelper.h"
 #import "CGMacros.h"
 #import "FileListViewController.h"
+#import "GestureViewController.h"
+#import "GestureVerifyViewController.h"
+#import "PCCircleViewConst.h"
 
 @interface AnyuanLoginViewController ()<UITextFieldDelegate>
 {
@@ -110,6 +113,32 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self initOtherView];
     self.isYuLogin = YES;
+    
+    [self previewLoginValidate];
+    
+}
+
+-(void)previewLoginValidate {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSDictionary *accountDic = [ud objectForKey:@"accountDic"];
+    if (accountDic) {
+        /*
+        NSString* ip = self.serverField.text;
+        NSString* account = self.emailField.text;
+        NSString* password = self.passField.text;
+        NSString* port = self.portField.text;
+        BOOL isYuLogic = self.isYuLogin;
+        */
+        self.serverField.text = accountDic[@"ip"];
+        self.emailField.text = accountDic[@"account"];
+        self.passField.text = accountDic[@"password"];
+        self.portField.text = accountDic[@"port"];
+        NSString *isYuLogicString = accountDic[@"isYuLogic"];
+        self.isYuLogin = isYuLogicString.boolValue;
+        
+        [self connectWayAction:self.isYuLogin?self.checkYuButton:self.checkKouLingButton];
+        [self gestureLogin];
+    }
     
 }
 
@@ -331,14 +360,6 @@
         make.height.mas_equalTo(kYSBL(15));
     }];
     
-    [self.loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.passView.mas_bottom).offset(kYSBL(50));
-        make.centerX.equalTo(weakSelf.view);
-        make.left.mas_equalTo(kYSBL(43));
-        make.right.mas_equalTo(kYSBL(-43));
-        make.height.mas_equalTo(kYSBL(45));
-    }];
-    
     [self.checkYuButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.passView.mas_bottom).offset(kYSBL(10));
         make.left.equalTo(weakSelf.view).offset(kYSBL(30));
@@ -351,6 +372,14 @@
         make.right.equalTo(weakSelf.view).offset(kYSBL(-30));
         make.width.mas_equalTo(kYSBL(100));
         make.height.mas_equalTo(kYSBL(30));
+    }];
+    
+    [self.loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.checkKouLingButton.mas_bottom).offset(kYSBL(50));
+        make.centerX.equalTo(weakSelf.view);
+        make.left.mas_equalTo(kYSBL(43));
+        make.right.mas_equalTo(kYSBL(-43));
+        make.height.mas_equalTo(kYSBL(45));
     }];
     
     [self.promptTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -504,7 +533,7 @@
         _passField.font=kFont(kYSBL(13));
         _passField.textColor=UIColorHex(0x333333);
         _passField.keyboardType = UIKeyboardTypeASCIICapable;
-//        _passField.secureTextEntry = YES;
+        _passField.secureTextEntry = YES;
         [_passField setAutocorrectionType:UITextAutocorrectionTypeNo];
 //        _passField.delegate = self;
         _passField.clearsOnBeginEditing = NO;
@@ -849,6 +878,40 @@
     }
 }
 
+-(void)gestureLogin {
+    WS(weakSelf);
+    if ([[PCCircleViewConst getGestureWithKey:gestureFinalSaveKey] length]) {
+        GestureViewController *gestureVc = [[GestureViewController alloc] init];
+        [gestureVc setType:GestureViewControllerTypeLogin];
+        gestureVc.popBlock = ^{
+            dispatch_sync_on_main_queue(^{
+                [weakSelf loginClick];
+            });
+        };
+        [self.navigationController pushViewController:gestureVc animated:NO];
+    } else {
+        UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"提示" message:@"暂未设置手势密码，是否前往设置？" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            FileListViewController *vc = [FileListViewController new];
+            vc.modalPresentationStyle = 0;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        }];
+        UIAlertAction *set = [UIAlertAction actionWithTitle:@"设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            GestureViewController *gestureVc = [[GestureViewController alloc] init];
+            gestureVc.type = GestureViewControllerTypeSetting;
+            gestureVc.popBlock = ^{
+                dispatch_sync_on_main_queue(^{
+                    [weakSelf loginClick];
+                });
+            };
+            [self.navigationController pushViewController:gestureVc animated:NO];
+        }];
+        [alertVc addAction:cancel];
+        [alertVc addAction:set];
+        [self presentViewController:alertVc animated:YES
+                         completion:nil];
+    }
+}
 
 #pragma mark -
 #pragma mark 登录安元账号
@@ -867,6 +930,7 @@
     NSString* account = self.emailField.text;
     NSString* password = self.passField.text;
     NSString* port = self.portField.text;
+    BOOL isYuLogic = self.isYuLogin;
     
     //初始化
     [[MISPMailHelper sharedInstance] handleInitOperationWithIp:ip
@@ -886,7 +950,7 @@
              {
                  //登录
                  [[MISPMailHelper sharedInstance] loginWithAccountName:account
-                                                              password:password isYuLogin:weakSelf.isYuLogin completion:^(BOOL ifSuccess)
+                                                              password:password isYuLogin:isYuLogic completion:^(BOOL ifSuccess)
                   {
                       if (weakSelf)
                       {
@@ -915,9 +979,33 @@
                               
                               NSLog(@"--------跳转-------");
                               dispatch_async_on_main_queue(^{
-                                  FileListViewController *vc = [FileListViewController new];
-                                  vc.modalPresentationStyle = 0;
-                                  [weakSelf.navigationController pushViewController:vc animated:YES];
+                                  NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+                                  NSMutableDictionary *accountDic = [NSMutableDictionary new];
+                                  [accountDic setObject:ip forKey:@"ip"];
+                                  [accountDic setObject:account forKey:@"account"];
+                                  [accountDic setObject:password forKey:@"password"];
+                                  [accountDic setObject:port forKey:@"port"];
+                                  [accountDic setObject:@(isYuLogic) forKey:@"isYuLogic"];
+                                  [ud setObject:accountDic forKey:@"accountDic"];
+                                  [ud synchronize];
+                                  
+//                                  //手势验证设置
+//                                  GestureViewController *gestureVc = [[GestureViewController alloc] init];
+//                                  gestureVc.type = GestureViewControllerTypeSetting;
+//                                  gestureVc.popBlock = ^{
+//                                      FileListViewController *vc = [FileListViewController new];
+//                                      vc.modalPresentationStyle = 0;
+//                                      [weakSelf.navigationController pushViewController:vc animated:YES];
+//                                  };
+//                                  [self.navigationController pushViewController:gestureVc animated:NO];
+                                  if ([[PCCircleViewConst getGestureWithKey:gestureFinalSaveKey] length]) {
+                                      FileListViewController *vc = [FileListViewController new];
+                                      vc.modalPresentationStyle = 0;
+                                      [weakSelf.navigationController pushViewController:vc animated:YES];
+                                  }else {
+                                      [weakSelf gestureLogin];
+                                  }
+                                  
                               });
                               
                           }
