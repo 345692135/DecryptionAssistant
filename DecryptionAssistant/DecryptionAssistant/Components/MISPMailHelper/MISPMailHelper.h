@@ -30,8 +30,7 @@ typedef enum : NSUInteger {
 
 /** 登录 */
 - (void)loginWithAccountName:(NSString*)accountName
-                   password:(NSString*)password
-                 completion:(void (^)(BOOL ifSuccess))completion;
+                   password:(NSString*)password isYuLogin:(BOOL)isYuLogin completion:(void (^)(BOOL ifSuccess))completion;
 
 /** 检测安元帐号是否激活 */
 - (BOOL)isChinasecActiveWithAccountData:(CGAccountData*)accountData;

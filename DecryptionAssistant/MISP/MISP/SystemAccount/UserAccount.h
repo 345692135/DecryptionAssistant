@@ -36,6 +36,8 @@ typedef enum
  */
 - (id)initWithUserName:(NSString*)name password:(NSString*)pwd;
 
+- (id)initWithUserName:(NSString*)name password:(NSString*)pwd isYuLogin:(BOOL)isYuLogin;
+
 /*!
     @method initWithPin:pin
     @abstract Init user account with pin
@@ -71,5 +73,7 @@ typedef enum
     @result Return user account type
  */
 - (WSAccountType)getAccountType;
+
+-(BOOL)getIsYuLogin;
 
 @end

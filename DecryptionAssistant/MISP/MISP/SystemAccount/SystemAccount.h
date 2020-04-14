@@ -91,6 +91,7 @@ typedef enum
     NSData* sessionKey;             //session key
     NSString* userSid;              //usersid in V3
     WSAccountActive activeTypeNow; //active Type (user password or certificate)
+    BOOL isYuLogin;
 }
 
 @property(atomic,retain)PwdAccount* pwdAct;
@@ -100,6 +101,7 @@ typedef enum
 @property(atomic,retain)NSData* sessionKey;
 @property(atomic,retain)NSString* userSid;
 @property(atomic)WSAccountActive activeTypeNow;
+@property(atomic)BOOL isYuLogin;
 
 - (UserStrategy*)getStrategy;
 

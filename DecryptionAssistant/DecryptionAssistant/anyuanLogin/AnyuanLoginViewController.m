@@ -51,6 +51,10 @@
     NSMutableArray* _providerDatas;
     UILabel* _promptLabel;
     kLoginStatus _loginStatus;
+    
+    UIButton *_checkYuButton;
+    UIButton *_checkKouLingButton;
+    BOOL _isYuLogin;
 }
 @property (nonatomic,strong) UIImageView *logoIV;
 @property (nonatomic,strong) UIView *emailView;
@@ -89,6 +93,10 @@
 @property (nonatomic, strong) UILabel* promptLabel;
 @property (nonatomic, assign) kLoginStatus loginStatus;
 
+@property (nonatomic,strong) UIButton *checkYuButton;
+@property (nonatomic,strong) UIButton *checkKouLingButton;
+@property (nonatomic, assign) BOOL isYuLogin;
+
 @end
 
 @implementation AnyuanLoginViewController
@@ -101,6 +109,7 @@
     [self initWithViewFrame];
     self.view.backgroundColor = [UIColor whiteColor];
     [self initOtherView];
+    self.isYuLogin = YES;
     
 }
 
@@ -133,6 +142,9 @@
     [self.view addSubview:self.line3View];
     
     [self.view addSubview:self.loginButton];
+    
+    [self.view addSubview:self.checkYuButton];
+    [self.view addSubview:self.checkKouLingButton];
     
     [self.view addSubview:self.instrLable];
     [self.view addSubview:self.loadingIndicator];
@@ -325,6 +337,20 @@
         make.left.mas_equalTo(kYSBL(43));
         make.right.mas_equalTo(kYSBL(-43));
         make.height.mas_equalTo(kYSBL(45));
+    }];
+    
+    [self.checkYuButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.passView.mas_bottom).offset(kYSBL(10));
+        make.left.equalTo(weakSelf.view).offset(kYSBL(30));
+        make.width.mas_equalTo(kYSBL(80));
+        make.height.mas_equalTo(kYSBL(30));
+    }];
+    
+    [self.checkKouLingButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.passView.mas_bottom).offset(kYSBL(10));
+        make.right.equalTo(weakSelf.view).offset(kYSBL(-30));
+        make.width.mas_equalTo(kYSBL(100));
+        make.height.mas_equalTo(kYSBL(30));
     }];
     
     [self.promptTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -577,6 +603,68 @@
     return _loadingIndicator;
 }
 
+-(UIButton*)checkYuButton
+{
+    if (!_checkYuButton) {
+        _checkYuButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_checkYuButton setTitle:@"域登录" forState:UIControlStateNormal];
+        [_checkYuButton setImage:[UIImage imageNamed:@"check_button"] forState:UIControlStateNormal];
+        [_checkYuButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _checkYuButton.titleLabel.font = [UIFont systemFontOfSize:kYSBL(15)];
+        _checkYuButton.tag = 50;
+        [_checkYuButton setImageEdgeInsets:UIEdgeInsetsMake(2, 0, 0, 0)];
+        [_checkYuButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+        [_checkYuButton addTarget:self action:@selector(connectWayAction:)
+        forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _checkYuButton;
+}
+
+-(UIButton*)checkKouLingButton
+{
+    if (!_checkKouLingButton) {
+        _checkKouLingButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_checkKouLingButton setTitle:@"口令登录" forState:UIControlStateNormal];
+        [_checkKouLingButton setImage:[UIImage imageNamed:@"uncheck_button"] forState:UIControlStateNormal];
+        [_checkKouLingButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _checkKouLingButton.titleLabel.font = [UIFont systemFontOfSize:kYSBL(15)];
+        _checkKouLingButton.tag = 51;
+        [_checkKouLingButton setImageEdgeInsets:UIEdgeInsetsMake(2, 0, 0, 0)];
+        [_checkKouLingButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+        [_checkKouLingButton addTarget:self action:@selector(connectWayAction:)
+        forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _checkKouLingButton;
+}
+
+- (void)connectWayAction:(UIButton *)sender
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+
+    if (sender.tag ==50) {
+        //移除View，添加View
+        NSLog(@"域");
+        //获取另一个button
+        button = (UIButton *)[self.view viewWithTag:51];
+        [self.checkYuButton setImage:[UIImage imageNamed:@"check_button"] forState:UIControlStateNormal];
+        [self.checkKouLingButton setImage:[UIImage imageNamed:@"uncheck_button"] forState:UIControlStateNormal];
+        self.isYuLogin = YES;
+    }else{
+        NSLog(@"口令");
+        button = (UIButton *)[self.view viewWithTag:50];
+        [self.checkYuButton setImage:[UIImage imageNamed:@"uncheck_button"] forState:UIControlStateNormal];
+        [self.checkKouLingButton setImage:[UIImage imageNamed:@"check_button"] forState:UIControlStateNormal];
+        self.isYuLogin = NO;
+    }
+
+    //设置当前选中Button为不可交互，防止其重复添加View
+    sender.selected = !sender.selected;
+    button.selected = !button.selected;
+    sender.userInteractionEnabled = NO;
+    button.userInteractionEnabled = YES;
+
+}
+
 - (void)updateUI
 {
     if (self.loginStatus == kLoginStatus_normal) {
@@ -798,8 +886,7 @@
              {
                  //登录
                  [[MISPMailHelper sharedInstance] loginWithAccountName:account
-                                                              password:password
-                                                            completion:^(BOOL ifSuccess)
+                                                              password:password isYuLogin:weakSelf.isYuLogin completion:^(BOOL ifSuccess)
                   {
                       if (weakSelf)
                       {

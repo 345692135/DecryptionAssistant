@@ -67,8 +67,7 @@ static MISPMailHelper* _sharedInstance = nil;
 #pragma mark 登录
 
 -(void)loginWithAccountName:(NSString*)accountName
-                   password:(NSString*)password
-                 completion:(void (^)(BOOL ifSuccess))completion
+                   password:(NSString*)password isYuLogin:(BOOL)isYuLogin completion:(void (^)(BOOL ifSuccess))completion
 {
     self.accountName = accountName;
     self.password = password;
@@ -85,7 +84,7 @@ static MISPMailHelper* _sharedInstance = nil;
         //登录
         AuthentificationManager* actManager = [AuthentificationManager getInstance];
         id<ICertify> certify = [actManager getUserNameCertifyPrivder];
-        UserAccount* account = [[UserAccount alloc] initWithUserName:self.accountName password:self.password];
+        UserAccount* account = [[UserAccount alloc] initWithUserName:self.accountName password:self.password isYuLogin:isYuLogin];
         @try {
             NSLog(@"--------");
             long iRet = [certify loginWithUserAccount:account];

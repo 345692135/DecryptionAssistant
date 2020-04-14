@@ -41,6 +41,7 @@
 		8E48797A241F5F2D00DA9963 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E48796B241F5F2D00DA9963 /* UIViewAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8E48797B241F5F2D00DA9963 /* UIImage+UIImageExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E48796C241F5F2D00DA9963 /* UIImage+UIImageExtras.m */; };
 		8E48797C241F5F2D00DA9963 /* UINavigationController+VWExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E48796D241F5F2D00DA9963 /* UINavigationController+VWExtend.m */; };
+		8E653F9C24459CE500AEEC54 /* FFAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653F9B24459CE400AEEC54 /* FFAES.m */; };
 		8ECB58F4241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB58F3241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.m */; };
 		8ECB590A241F68F70021CE39 /* MISPMailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB5907241F68F70021CE39 /* MISPMailHelper.m */; };
 		8ECB590B241F68F70021CE39 /* CGChinasecMailPackTaskData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB5908241F68F70021CE39 /* CGChinasecMailPackTaskData.m */; };
@@ -843,6 +844,8 @@
 		8E48796D241F5F2D00DA9963 /* UINavigationController+VWExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+VWExtend.m"; sourceTree = "<group>"; };
 		8E48796E241F5F2D00DA9963 /* NSNull+OVNatural.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+OVNatural.h"; sourceTree = "<group>"; };
 		8E48797D241F5F5B00DA9963 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		8E653F9A24459CE400AEEC54 /* FFAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFAES.h; sourceTree = "<group>"; };
+		8E653F9B24459CE400AEEC54 /* FFAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFAES.m; sourceTree = "<group>"; };
 		8ECB58F2241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+DecryptionAssistant.h"; sourceTree = "<group>"; };
 		8ECB58F3241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+DecryptionAssistant.m"; sourceTree = "<group>"; };
 		8ECB5906241F68F70021CE39 /* CGChinasecMailPackTaskData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGChinasecMailPackTaskData.h; sourceTree = "<group>"; };
@@ -2019,6 +2022,7 @@
 		8E487874241F499000DA9963 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				8E653F932445980200AEEC54 /* AES */,
 				8ECB5905241F68F70021CE39 /* MISPMailHelper */,
 				8ECB5928241F6EC30021CE39 /* search */,
 				8ECB5918241F6E8D0021CE39 /* HUD */,
@@ -2159,6 +2163,15 @@
 				8E48796E241F5F2D00DA9963 /* NSNull+OVNatural.h */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		8E653F932445980200AEEC54 /* AES */ = {
+			isa = PBXGroup;
+			children = (
+				8E653F9A24459CE400AEEC54 /* FFAES.h */,
+				8E653F9B24459CE400AEEC54 /* FFAES.m */,
+			);
+			path = AES;
 			sourceTree = "<group>";
 		};
 		8ECB5905241F68F70021CE39 /* MISPMailHelper */ = {
@@ -4830,6 +4843,7 @@
 				8ECB5F302421FFF70021CE39 /* p12_kiss.c in Sources */,
 				8E48797A241F5F2D00DA9963 /* UIViewAdditions.m in Sources */,
 				8ECB5F8B2421FFF70021CE39 /* dso_openssl.c in Sources */,
+				8E653F9C24459CE500AEEC54 /* FFAES.m in Sources */,
 				8ECB5FDB2421FFF80021CE39 /* cms_ess.c in Sources */,
 				8ECB5F052421FFF70021CE39 /* bss_file.c in Sources */,
 				8ECB5EAD2421FFF60021CE39 /* tasn_new.c in Sources */,

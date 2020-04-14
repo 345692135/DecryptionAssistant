@@ -23,6 +23,7 @@
 #import "UserSrategyHelper.h"
 #import "FlowStatistics.h"
 #import "SystemStrategy.h"
+#import "FFAES.h"
 
 
 @implementation UserNameCertifyPrivder
@@ -292,6 +293,7 @@
         }
         
         //online certify
+        accountNow.isYuLogin = account.getIsYuLogin;
         SystemCommand* cmd = [self createCertifyCommand:accountNow];
         if (cmd == nil) {
             [accountManager unregisterActiveAccount];
@@ -591,8 +593,17 @@
         return nil;
     }
     
-    NSString* encPasswordBase64 = [[NSString alloc] initWithData:[GTMBase64 encodeBytes:pwdenc length:encLen]
-                                                        encoding:NSUTF8StringEncoding];
+    
+    NSString *certIFYTYPE = @"30101";
+    NSData *data = [GTMBase64 encodeBytes:pwdenc length:encLen];
+    if (account.isYuLogin) {
+        certIFYTYPE = @"30104";
+        NSString *passString = [[NSString alloc]initWithBytes:pwdenc length:encLen encoding:NSUTF8StringEncoding];
+        data = [FFAES encryptStrAndBase64ToData:passString key:@"KEY_DLPS_AUTHENT"];
+    }
+    
+    NSString* encPasswordBase64 = [[NSString alloc] initWithData:data
+    encoding:NSUTF8StringEncoding];
     
     NSString* xmlStr = [NSString stringWithFormat:@"<HEAD>\
                         <MODULEID>300</MODULEID>\
@@ -602,12 +613,12 @@
                         <DATA>\
                         <GUID encode=\"\">%@</GUID>\
                         <USERSID encode=\"\">%@</USERSID>\
-                        <CERTIFYTYPE encode=\"\">30101</CERTIFYTYPE>\
+                        <CERTIFYTYPE encode=\"\">%@</CERTIFYTYPE>\
                         <USERACCOUNT encode=\"\">%@</USERACCOUNT>\
                         <PASSWORDENCLEN encode=\"\">%ld</PASSWORDENCLEN>\
                         <PASSWORDENC encode=\"BASE64\">%@</PASSWORDENC>\
                         </DATA>",guid,
-                        SYSTEM_DEFAULT_USER_SID,
+                        SYSTEM_DEFAULT_USER_SID,certIFYTYPE,
                         [[account pwdAct]userName],
                         (unsigned long)[encPasswordBase64 length],
                         encPasswordBase64];

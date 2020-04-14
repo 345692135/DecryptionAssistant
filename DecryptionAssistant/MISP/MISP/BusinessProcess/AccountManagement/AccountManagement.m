@@ -463,6 +463,8 @@ static AccountManagement* actInstance = nil;
     [systemAccont setPwdAct:pwdAccount];
     [pwdAccount release];pwdAccount = nil; //release pwdAccount
     
+    [systemAccont setIsYuLogin:account.getIsYuLogin];
+    
     //set dictionary value
     NSMutableDictionary* dicAccount = [[NSMutableDictionary alloc]init];
     [dicAccount setObject:[NSNumber numberWithBool:NO] forKey:@"INDB"];
@@ -510,6 +512,8 @@ static AccountManagement* actInstance = nil;
     [systemAccont setPwdAct:pwdAccount];
     [pwdAccount release];pwdAccount = nil; //release pwdAccount
     
+    [systemAccont setIsYuLogin:account.getIsYuLogin];
+    
     //set usersid
     [systemAccont setUserSid:[act userSid]];
     
@@ -549,6 +553,8 @@ static AccountManagement* actInstance = nil;
     [systemAccont setActiveTypeNow:WSAccountActivecertificate];
     [systemAccont setCerAct:cerAccount];
     [cerAccount release];cerAccount = nil;
+    
+    [systemAccont setIsYuLogin:account.getIsYuLogin];
     
     //set dictionary value
     NSMutableDictionary* dicAccount = [[NSMutableDictionary alloc]init];
@@ -592,6 +598,8 @@ static AccountManagement* actInstance = nil;
     [systemAccont setActiveTypeNow:WSAccountActivecertificate];
     [systemAccont setCerAct:cerAccount];
     [cerAccount release];cerAccount = nil;
+    
+    [systemAccont setIsYuLogin:account.getIsYuLogin];
     
     //set usersid
     [systemAccont setUserSid:[act userSid]];

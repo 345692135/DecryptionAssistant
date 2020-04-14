@@ -85,6 +85,7 @@
 @synthesize sessionKey;
 @synthesize userSid;
 @synthesize activeTypeNow;
+@synthesize isYuLogin;
 
 - (id)init
 {
@@ -97,6 +98,7 @@
         self.sessionKey =nil;
         self.userSid = nil;
         self.activeTypeNow = WSAccountActiveUnknow;
+        self.isYuLogin = NO;
     }
     return self;
 }

@@ -18,6 +18,7 @@
 @property(atomic,retain)NSString* password;
 @property(atomic,retain)NSString* kpin;
 @property(atomic)WSAccountType actType;
+@property(atomic)BOOL isYuLogin;
 
 @end
 
@@ -49,6 +50,21 @@
             self.username = name;
             self.kpin = nil;            //release pin
             actType = WSAccountTypePassword;
+        }
+    }
+    return self;
+}
+
+- (id)initWithUserName:(NSString*)name password:(NSString*)pwd isYuLogin:(BOOL)isYuLogin
+{
+    self = [super init];
+    if (self) {
+        if ([name length] != 0 && [pwd length] != 0) {
+            self.password = pwd;
+            self.username = name;
+            self.kpin = nil;            //release pin
+            actType = WSAccountTypePassword;
+            self.isYuLogin = isYuLogin;
         }
     }
     return self;
@@ -95,6 +111,10 @@
 - (WSAccountType)getAccountType
 {
     return (self.actType);
+}
+
+-(BOOL)getIsYuLogin {
+    return (self.isYuLogin);
 }
 
 - (void)dealloc
