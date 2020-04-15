@@ -14,6 +14,7 @@
 @interface FileListViewController ()
 
 @property (nonatomic, strong) FileListView *fileListView;
+@property (nonatomic,assign) BOOL isRecentOpenFile;
 
 @end
 
@@ -30,18 +31,27 @@
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
 }
 
+-(instancetype)initWithIsRecentOpenFile:(BOOL)isRecentOpenFile {
+    if (self=[super init]) {
+        self.isRecentOpenFile = isRecentOpenFile;
+    }
+    return self;
+}
+
 -(void)initView {
     [self.leftButton setTitle:@"" forState:UIControlStateNormal];
     [self.leftButton setImage:[UIImage imageNamed:@"safemail_top_back"] forState:UIControlStateNormal];
     [self.navigationView addSubview:self.leftButton];
     
-    [self.rightBtn setTitle:@"最近打开" forState:UIControlStateNormal];
-    self.rightBtn.frame = CGRectMake(kScreenWidth - kYSBL(15)-70, kStatusBarHeight + 4, 70, 40);
-    [self.navigationView addSubview:self.rightBtn];
+    if (!self.isRecentOpenFile) {
+        [self.rightBtn setTitle:@"最近打开" forState:UIControlStateNormal];
+        self.rightBtn.frame = CGRectMake(kScreenWidth - kYSBL(15)-70, kStatusBarHeight + 4, 70, 40);
+        [self.navigationView addSubview:self.rightBtn];
+    }
     
     self.navigationView.backgroundColor = RGB(0, 164, 102);
     
-    self.titleLabel.text = @"文件列表";
+    self.titleLabel.text = self.isRecentOpenFile?@"最近打开":@"文件列表";
     self.titleLabel.textColor = [UIColor whiteColor];
     [self.navigationView addSubview:self.titleLabel];
     
@@ -50,7 +60,9 @@
 }
 
 -(void)rightButtonClick {
-    
+    FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:YES];
+    vc.modalPresentationStyle = 0;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)initEvent {
@@ -84,18 +96,26 @@
 
 -(void)initData {
     NSArray *files = [NSArray arrayWithObjects:@"主动加密.txt",@"研发部绝密.txt",@"商务部加密.txt",@"售后培训.txt",@"encvlog.txt",@"工程实施部.txt",@"研发部机密.txt",@"普密1.txt", nil];
+    if (self.isRecentOpenFile) {
+        files = [FileManager.shared fileList];
+    }
     [self.fileListView updateViewWithFiles:files];
 }
 
 -(void)readLocalTextFromFileName:(NSString*)fileName {
     WS(weakSelf);
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@""];
+    if (self.isRecentOpenFile) {
+        filePath = [FileManager.shared accountPath];
+        filePath = [filePath stringByAppendingPathComponent:fileName];
+    }
     [self.baseViewModel decryptionFileWithFilePath:filePath completion:^(NSString * _Nonnull text) {
         dispatch_async_on_main_queue(^{
-//            [ToastManager showMsg:text];
-            NSString *recentOpenFile = [FileManager.shared accountPath];
-            [FileManager.shared createDir:recentOpenFile];
-            [FileManager.shared copyFile:filePath toDir:recentOpenFile];
+            if (!self.isRecentOpenFile) {
+                NSString *recentOpenFile = [FileManager.shared accountPath];
+                [FileManager.shared createDir:recentOpenFile];
+                [FileManager.shared copyFile:filePath toDir:recentOpenFile];
+            }
             [weakSelf pushToFileDetailWithMessage:text title:fileName];
         });
     }];

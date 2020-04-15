@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FileListViewController : BaseViewController
 
+-(instancetype)initWithIsRecentOpenFile:(BOOL)isRecentOpenFile;
+
 @end
 
 NS_ASSUME_NONNULL_END

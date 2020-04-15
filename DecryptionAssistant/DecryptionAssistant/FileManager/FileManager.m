@@ -77,6 +77,19 @@ static FileManager *fileManager;
     }
 }
 
+/// 获取最近打开目录所有文件
+-(NSArray*)fileList {
+    NSString *RecentOpenFile = [self accountPath];
+    NSFileManager *fileManager = [self createDir:RecentOpenFile];
+    NSError *error = nil;
+    NSArray *files = [fileManager contentsOfDirectoryAtPath:RecentOpenFile error:&error];
+    if (files == nil) {
+        files = [NSArray new];
+    }
+    return files;
+    
+}
+
 -(NSString*)accountPath {
     // 获得Documents目录路径
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];

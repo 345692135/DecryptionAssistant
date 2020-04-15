@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 //递归读取解压路径下的所有.png文件
 - (id)showAllFileWithPath:(NSString *) path;
 
+/// 获取最近打开目录所有文件
+-(NSArray*)fileList;
 -(NSString*)accountPath;
 -(NSString*)getUploadDirPathWithUidDir:(NSString*)uid;
 -(NSFileManager*)createDir:(NSString*)dirPath;

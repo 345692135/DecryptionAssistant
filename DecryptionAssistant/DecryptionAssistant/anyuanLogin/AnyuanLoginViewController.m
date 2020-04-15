@@ -892,7 +892,7 @@
     } else {
         UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"提示" message:@"暂未设置手势密码，是否前往设置？" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            FileListViewController *vc = [FileListViewController new];
+            FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:NO];
             vc.modalPresentationStyle = 0;
             [weakSelf.navigationController pushViewController:vc animated:YES];
         }];
@@ -989,17 +989,8 @@
                                   [ud setObject:accountDic forKey:@"accountDic"];
                                   [ud synchronize];
                                   
-//                                  //手势验证设置
-//                                  GestureViewController *gestureVc = [[GestureViewController alloc] init];
-//                                  gestureVc.type = GestureViewControllerTypeSetting;
-//                                  gestureVc.popBlock = ^{
-//                                      FileListViewController *vc = [FileListViewController new];
-//                                      vc.modalPresentationStyle = 0;
-//                                      [weakSelf.navigationController pushViewController:vc animated:YES];
-//                                  };
-//                                  [self.navigationController pushViewController:gestureVc animated:NO];
                                   if ([[PCCircleViewConst getGestureWithKey:gestureFinalSaveKey] length]) {
-                                      FileListViewController *vc = [FileListViewController new];
+                                      FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:NO];
                                       vc.modalPresentationStyle = 0;
                                       [weakSelf.navigationController pushViewController:vc animated:YES];
                                   }else {

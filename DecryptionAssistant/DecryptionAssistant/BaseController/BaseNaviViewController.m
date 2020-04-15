@@ -23,11 +23,11 @@
     self.topViewController.hidesBottomBarWhenPushed = YES;
     //self.tabBarController.tabBar.hidden = NO;
     self.topViewController.tabBarController.tabBar.hidden = YES;
-    if (![[super topViewController] isKindOfClass:[viewController class]]) {
+//    if (![[super topViewController] isKindOfClass:[viewController class]]) {
         // 如果和上一个控制器一样，隔绝此操作
         [super pushViewController:viewController animated:animated];
 
-    }
+//    }
 }
 
 - (void)didReceiveMemoryWarning {
