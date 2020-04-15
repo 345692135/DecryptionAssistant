@@ -51,6 +51,13 @@
 		8E653FBA2445B1D200AEEC54 /* GestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FAB2445B1D100AEEC54 /* GestureViewController.m */; };
 		8E653FBB2445B1D200AEEC54 /* PCCircleInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FB02445B1D100AEEC54 /* PCCircleInfoView.m */; };
 		8E653FBC2445B1D200AEEC54 /* PCLockLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FB32445B1D100AEEC54 /* PCLockLabel.m */; };
+		8E653FC324469F1600AEEC54 /* FileDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FC224469F1600AEEC54 /* FileDetailViewController.m */; };
+		8E653FC72446A6CA00AEEC54 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FC62446A6CA00AEEC54 /* FileManager.m */; };
+		8E653FCB2446A7F300AEEC54 /* DDYCompress.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FCA2446A7F300AEEC54 /* DDYCompress.m */; };
+		8E653FD92446A98800AEEC54 /* DirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FCE2446A98800AEEC54 /* DirectoryViewController.m */; };
+		8E653FDA2446A98800AEEC54 /* DirectoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FD22446A98800AEEC54 /* DirectoryModel.m */; };
+		8E653FDB2446A98800AEEC54 /* DirectoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FD72446A98800AEEC54 /* DirectoryTableViewCell.m */; };
+		8E653FDC2446A98800AEEC54 /* DirectoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E653FD82446A98800AEEC54 /* DirectoryView.m */; };
 		8ECB58F4241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB58F3241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.m */; };
 		8ECB590A241F68F70021CE39 /* MISPMailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB5907241F68F70021CE39 /* MISPMailHelper.m */; };
 		8ECB590B241F68F70021CE39 /* CGChinasecMailPackTaskData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB5908241F68F70021CE39 /* CGChinasecMailPackTaskData.m */; };
@@ -873,6 +880,20 @@
 		8E653FB12445B1D100AEEC54 /* PCLockLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCLockLabel.h; sourceTree = "<group>"; };
 		8E653FB22445B1D100AEEC54 /* PCCircleInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCircleInfoView.h; sourceTree = "<group>"; };
 		8E653FB32445B1D100AEEC54 /* PCLockLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCLockLabel.m; sourceTree = "<group>"; };
+		8E653FC124469F1600AEEC54 /* FileDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileDetailViewController.h; sourceTree = "<group>"; };
+		8E653FC224469F1600AEEC54 /* FileDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileDetailViewController.m; sourceTree = "<group>"; };
+		8E653FC52446A6CA00AEEC54 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
+		8E653FC62446A6CA00AEEC54 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
+		8E653FC92446A7F300AEEC54 /* DDYCompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDYCompress.h; sourceTree = "<group>"; };
+		8E653FCA2446A7F300AEEC54 /* DDYCompress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDYCompress.m; sourceTree = "<group>"; };
+		8E653FCE2446A98800AEEC54 /* DirectoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryViewController.m; sourceTree = "<group>"; };
+		8E653FCF2446A98800AEEC54 /* DirectoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryViewController.h; sourceTree = "<group>"; };
+		8E653FD12446A98800AEEC54 /* DirectoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryModel.h; sourceTree = "<group>"; };
+		8E653FD22446A98800AEEC54 /* DirectoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryModel.m; sourceTree = "<group>"; };
+		8E653FD42446A98800AEEC54 /* DirectoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryView.h; sourceTree = "<group>"; };
+		8E653FD62446A98800AEEC54 /* DirectoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryTableViewCell.h; sourceTree = "<group>"; };
+		8E653FD72446A98800AEEC54 /* DirectoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryTableViewCell.m; sourceTree = "<group>"; };
+		8E653FD82446A98800AEEC54 /* DirectoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryView.m; sourceTree = "<group>"; };
 		8ECB58F2241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+DecryptionAssistant.h"; sourceTree = "<group>"; };
 		8ECB58F3241F666A0021CE39 /* AFHTTPSessionManager+DecryptionAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+DecryptionAssistant.m"; sourceTree = "<group>"; };
 		8ECB5906241F68F70021CE39 /* CGChinasecMailPackTaskData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGChinasecMailPackTaskData.h; sourceTree = "<group>"; };
@@ -1978,6 +1999,9 @@
 		8E487844241F2B6900DA9963 /* DecryptionAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				8E653FCC2446A98800AEEC54 /* Directory */,
+				8E653FC42446A6CA00AEEC54 /* FileManager */,
+				8E653FBD24469EDB00AEEC54 /* FileDetail */,
 				8ECB597E241F82C50021CE39 /* FileList */,
 				8E4878AF241F4D6500DA9963 /* anyuanLogin */,
 				8E48785E241F48B700DA9963 /* BaseController */,
@@ -2049,6 +2073,7 @@
 		8E487874241F499000DA9963 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				8E653FC82446A7F300AEEC54 /* DDYCompress */,
 				8E653F9D2445B1D100AEEC54 /* GestureUnlock */,
 				8E653F932445980200AEEC54 /* AES */,
 				8ECB5905241F68F70021CE39 /* MISPMailHelper */,
@@ -2257,6 +2282,104 @@
 				8E653FB32445B1D100AEEC54 /* PCLockLabel.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8E653FBD24469EDB00AEEC54 /* FileDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8E653FBE24469EF900AEEC54 /* Model */,
+				8E653FC024469EFA00AEEC54 /* View */,
+				8E653FBF24469EF900AEEC54 /* ViewModel */,
+				8E653FC124469F1600AEEC54 /* FileDetailViewController.h */,
+				8E653FC224469F1600AEEC54 /* FileDetailViewController.m */,
+			);
+			path = FileDetail;
+			sourceTree = "<group>";
+		};
+		8E653FBE24469EF900AEEC54 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8E653FBF24469EF900AEEC54 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8E653FC024469EFA00AEEC54 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8E653FC42446A6CA00AEEC54 /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				8E653FC52446A6CA00AEEC54 /* FileManager.h */,
+				8E653FC62446A6CA00AEEC54 /* FileManager.m */,
+			);
+			path = FileManager;
+			sourceTree = "<group>";
+		};
+		8E653FC82446A7F300AEEC54 /* DDYCompress */ = {
+			isa = PBXGroup;
+			children = (
+				8E653FC92446A7F300AEEC54 /* DDYCompress.h */,
+				8E653FCA2446A7F300AEEC54 /* DDYCompress.m */,
+			);
+			path = DDYCompress;
+			sourceTree = "<group>";
+		};
+		8E653FCC2446A98800AEEC54 /* Directory */ = {
+			isa = PBXGroup;
+			children = (
+				8E653FCD2446A98800AEEC54 /* ViewModel */,
+				8E653FCE2446A98800AEEC54 /* DirectoryViewController.m */,
+				8E653FCF2446A98800AEEC54 /* DirectoryViewController.h */,
+				8E653FD02446A98800AEEC54 /* Model */,
+				8E653FD32446A98800AEEC54 /* View */,
+			);
+			path = Directory;
+			sourceTree = "<group>";
+		};
+		8E653FCD2446A98800AEEC54 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8E653FD02446A98800AEEC54 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8E653FD12446A98800AEEC54 /* DirectoryModel.h */,
+				8E653FD22446A98800AEEC54 /* DirectoryModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8E653FD32446A98800AEEC54 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E653FD42446A98800AEEC54 /* DirectoryView.h */,
+				8E653FD52446A98800AEEC54 /* cell */,
+				8E653FD82446A98800AEEC54 /* DirectoryView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8E653FD52446A98800AEEC54 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				8E653FD62446A98800AEEC54 /* DirectoryTableViewCell.h */,
+				8E653FD72446A98800AEEC54 /* DirectoryTableViewCell.m */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		8ECB5905241F68F70021CE39 /* MISPMailHelper */ = {
@@ -4260,6 +4383,7 @@
 				8ECB5EFB2421FFF70021CE39 /* seed_ecb.c in Sources */,
 				8ECB604A2421FFF80021CE39 /* cmll_ofb.c in Sources */,
 				8ECB5F172421FFF70021CE39 /* fcrypt_b.c in Sources */,
+				8E653FCB2446A7F300AEEC54 /* DDYCompress.m in Sources */,
 				8ECB5EC12421FFF60021CE39 /* evp_asn1.c in Sources */,
 				8ECB607F2421FFF80021CE39 /* tb_dh.c in Sources */,
 				8ECB5FCD2421FFF80021CE39 /* x509_obj.c in Sources */,
@@ -4331,6 +4455,7 @@
 				8ECB5EC52421FFF60021CE39 /* bio_ndef.c in Sources */,
 				8ECB5F522421FFF70021CE39 /* lhash.c in Sources */,
 				8ECB604E2421FFF80021CE39 /* ech_err.c in Sources */,
+				8E653FDA2446A98800AEEC54 /* DirectoryModel.m in Sources */,
 				8ECB5FD72421FFF80021CE39 /* i_cfb64.c in Sources */,
 				8ECB606E2421FFF80021CE39 /* eng_openssl.c in Sources */,
 				8ECB606D2421FFF80021CE39 /* tb_ecdsa.c in Sources */,
@@ -4443,6 +4568,7 @@
 				8ECB602E2421FFF80021CE39 /* bn_rand.c in Sources */,
 				8ECB5EDC2421FFF60021CE39 /* tasn_typ.c in Sources */,
 				8ECB5F912421FFF70021CE39 /* obj_xref.c in Sources */,
+				8E653FDC2446A98800AEEC54 /* DirectoryView.m in Sources */,
 				8E487977241F5F2D00DA9963 /* UIImage+VWAdd.m in Sources */,
 				8ECB5F5E2421FFF70021CE39 /* rsa_saos.c in Sources */,
 				8ECB5F0C2421FFF70021CE39 /* des_enc.c in Sources */,
@@ -4606,6 +4732,7 @@
 				8ECB5F8D2421FFF70021CE39 /* p5_crpt2.c in Sources */,
 				8ECB5E712421FFF60021CE39 /* MobileApproveDetail.m in Sources */,
 				8ECB5E4D2421FFF60021CE39 /* NSObject-SQLitePersistence.m in Sources */,
+				8E653FC324469F1600AEEC54 /* FileDetailViewController.m in Sources */,
 				8ECB5E212421FFF60021CE39 /* CredentialsManager.m in Sources */,
 				8ECB5E912421FFF60021CE39 /* a_gentm.c in Sources */,
 				8ECB5F232421FFF70021CE39 /* str2key.c in Sources */,
@@ -4667,6 +4794,7 @@
 				8ECB5ECB2421FFF60021CE39 /* tasn_fre.c in Sources */,
 				8ECB5E5C2421FFF60021CE39 /* EncryptSQLiteManager.m in Sources */,
 				8ECB60402421FFF80021CE39 /* bn_asm.c in Sources */,
+				8E653FD92446A98800AEEC54 /* DirectoryViewController.m in Sources */,
 				8ECB5E2E2421FFF60021CE39 /* EngineCommon.c in Sources */,
 				8ECB5FB52421FFF70021CE39 /* v3_alt.c in Sources */,
 				8ECB5F3B2421FFF70021CE39 /* p12_crt.c in Sources */,
@@ -4732,6 +4860,7 @@
 				8ECB60152421FFF80021CE39 /* e_des.c in Sources */,
 				8ECB5E8C2421FFF60021CE39 /* MobileApprove.m in Sources */,
 				8ECB607A2421FFF80021CE39 /* tb_digest.c in Sources */,
+				8E653FC72446A6CA00AEEC54 /* FileManager.m in Sources */,
 				8ECB5F802421FFF70021CE39 /* dsa_sign.c in Sources */,
 				8ECB5FE02421FFF80021CE39 /* cms_smime.c in Sources */,
 				8E487979241F5F2D00DA9963 /* NSArray+JSON.m in Sources */,
@@ -4828,6 +4957,7 @@
 				8ECB5E592421FFF60021CE39 /* NSString-SQLiteColumnName.m in Sources */,
 				8ECB5E612421FFF60021CE39 /* NSMutableData+Crypto.m in Sources */,
 				8ECB602D2421FFF80021CE39 /* bn_kron.c in Sources */,
+				8E653FDB2446A98800AEEC54 /* DirectoryTableViewCell.m in Sources */,
 				8ECB5F822421FFF70021CE39 /* dsa_gen.c in Sources */,
 				8ECB5FCA2421FFF80021CE39 /* x509_v3.c in Sources */,
 				8ECB5E562421FFF60021CE39 /* NSString-NumberStuff.m in Sources */,

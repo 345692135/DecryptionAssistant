@@ -113,6 +113,7 @@ typedef unsigned short WORD;
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "YZAuthID.h"
 #import "NSString+SubString.h"
+#import "CGMacros.h"
 
 #endif
 
