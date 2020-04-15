@@ -9,6 +9,30 @@
 #import <Foundation/Foundation.h>
 #import "DirectoryModel.h"
 
+typedef enum : NSUInteger {
+    kcgAttachmentType_other,//其他类型0
+    kcgAttachmentType_pdf,//pdf类型1
+    kcgAttachmentType_ics,//日历类型2
+    kcgAttachmentType_photoshop,//ps类型3
+    kcgAttachmentType_ae,//AE类型4
+//    kcgAttachmentType_email,//邮件类型4
+    kcgAttachmentType_pages,//苹果特有类型5
+    kcgAttachmentType_numbers,//苹果表格类型6
+    kcgAttachmentType_keynote,//苹果特有类型7
+    kcgAttachmentType_html,//html类型8
+    kcgAttachmentType_zip,//压缩包类型9
+    kcgAttachmentType_doc,//文档类型10
+    kcgAttachmentType_ppt,//ppt类型11
+    kcgAttachmentType_xsl,//表格类型12
+    kcgAttachmentType_txt,//文本类型13
+    kcgAttachmentType_flash,//flash类型14
+    kcgAttachmentType_picture,//图片类型15
+    kcgAttachmentType_music,//音乐类型16
+    kcgAttachmentType_video,//视频类型17
+    kcgAttachmentType_ai,//ai类型18
+    kcgAttachmentType_cdr//coreldraw类型19
+} kAttachmentType;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FileManager : NSObject
@@ -32,6 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)openFileWithPath:(NSString*)path password:(NSString*)password complete:(void (^)(NSArray *models))complete;
 -(NSString*)getFileSizeStringWithFileLength:(CGFloat)fLength;
 - (long long) folderSizeAtPath:(NSString*) folderPath;
+- (kAttachmentType)getAttachmentTypeWithPath:(NSString*)path;
 
 @end
 

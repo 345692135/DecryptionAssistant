@@ -11,6 +11,8 @@
 #import "FileDetailViewController.h"
 #import "FileManager.h"
 #import "AppDelegate.h"
+#import "PCCircleViewConst.h"
+#import "DirectoryViewController.h"
 
 @interface FileListViewController ()
 
@@ -68,6 +70,16 @@
     
 }
 
+-(void)back {
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    delegate.isActiving = NO;
+    [PCCircleViewConst saveGesture:nil Key:gestureFinalSaveKey];//清空手势密码
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setObject:@{} forKey:@"accountDic"];
+    [ud synchronize];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(void)rightButtonClick {
     FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:YES];
     vc.modalPresentationStyle = 0;
@@ -77,8 +89,106 @@
 -(void)initEvent {
     WS(weakSelf);
     self.fileListView.didSelectBlock = ^(NSString * _Nonnull fileName) {
-        [weakSelf readLocalTextFromFileName:fileName];
+        [weakSelf handleSourceWithFileName:fileName];
     };
+}
+
+-(void)handleSourceWithFileName:(NSString*)fileName {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@""];
+    if (self.isRecentOpenFile) {
+        filePath = [FileManager.shared accountPath];
+        filePath = [filePath stringByAppendingPathComponent:fileName];
+    }
+    kAttachmentType attachmentType = [FileManager.shared getAttachmentTypeWithPath:fileName];
+    WS(weakSelf);
+    if (attachmentType == kcgAttachmentType_zip) {
+        dispatch_async_on_main_queue(^{
+            [FileManager.shared openFileWithPath:filePath password:nil complete:^(NSArray * models) {
+                dispatch_async_on_main_queue(^{
+                    if (models && models.count) {
+                        DirectoryModel *model = models[0];
+                        NSData *data = [NSData dataWithContentsOfFile:filePath];
+                        if (model.fileSize.length == 0 && data.length > 0) {
+                            //加密压缩包
+                            NSLog(@"我是加密压缩包");
+                            [weakSelf showPasswordViewWithFilePath:filePath];
+                            
+                        }else {
+                            [weakSelf pushDirectoryWithModels:models];
+                        }
+                        
+                    }
+                    
+                    
+                });
+            }];
+        });
+    }else {
+        [self readLocalTextFromFileName:fileName];
+    }
+    
+}
+
+-(void)showPasswordViewWithFilePath:(NSString*)filePath {
+    WS(weakSelf);
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    //增加确定按钮；
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+      //获取第1个输入框；
+//      UITextField *userNameTextField = alertController.textFields.firstObject;
+      
+      //获取第2个输入框；
+      UITextField *passwordTextField = alertController.textFields.lastObject;
+      
+      NSLog(@"密码 = %@",passwordTextField.text);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakSelf openFileWithFilePath:filePath password:passwordTextField.text.stringByTrim];
+        });
+    }]];
+    
+    //增加取消按钮；
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    
+//    //定义第一个输入框；
+//    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+//      textField.placeholder = @"请输入密码";
+//    }];
+    //定义第二个输入框；
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+      textField.placeholder = @"请输入密码";
+    }];
+    
+    [self presentViewController:alertController animated:true completion:nil];
+    
+}
+
+-(void)openFileWithFilePath:(NSString*)filePath password:(NSString*)password {
+    WS(weakSelf);
+    [FileManager.shared openFileWithPath:filePath password:password complete:^(NSArray * models) {
+        dispatch_sync_on_main_queue(^{
+            if (models && models.count) {
+                DirectoryModel *model = models[0];
+                NSData *data = [NSData dataWithContentsOfFile:filePath];
+                if (model.fileSize.length == 0 && data.length > 0) {
+                    //压缩包
+                    NSLog(@"解压异常");
+                    [ToastManager showMsg:@"解压异常"];
+                }else {
+                    [weakSelf pushDirectoryWithModels:models];
+                }
+                
+            }
+            
+            
+        });
+    }];
+}
+
+-(void)pushDirectoryWithModels:(NSArray*)models {
+    DirectoryViewController *vc = [[DirectoryViewController alloc] init];
+    [vc.directoryView updateViewWithDatas:models];
+    vc.modalPresentationStyle = 0;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)initWithViewFrame {
@@ -125,13 +235,24 @@
                 [FileManager.shared createDir:recentOpenFile];
                 [FileManager.shared copyFile:filePath toDir:recentOpenFile];
             }
-            [weakSelf pushToFileDetailWithMessage:text title:fileName];
+            if (text != nil) {
+                [weakSelf pushToFileDetailWithMessage:text title:fileName];
+            }else {
+                [weakSelf pushToFileDetailWithFilePath:filePath title:fileName];
+            }
+            
         });
     }];
 }
 
 -(void)pushToFileDetailWithMessage:(NSString*)message title:(NSString*)title {
     FileDetailViewController *vc = [[FileDetailViewController alloc] initWithMessage:message title:title];
+    vc.modalPresentationStyle = 0;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)pushToFileDetailWithFilePath:(NSString*)filePath title:(NSString*)title {
+    FileDetailViewController *vc = [[FileDetailViewController alloc] initWithFilePath:filePath title:title];
     vc.modalPresentationStyle = 0;
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -152,7 +273,12 @@
     
     [self.baseViewModel decryptionFileWithFilePath:filePath completion:^(NSString * _Nonnull text) {
         dispatch_async_on_main_queue(^{
-            [weakSelf pushToFileDetailWithMessage:text title:fileName];
+            if (text != nil) {
+                [weakSelf pushToFileDetailWithMessage:text title:fileName];
+            }else {
+                [weakSelf pushToFileDetailWithFilePath:filePath title:fileName];
+            }
+            
         });
     }];
 }

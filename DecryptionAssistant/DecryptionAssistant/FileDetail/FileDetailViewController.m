@@ -13,11 +13,14 @@
 
 @property(nonatomic, strong) WKWebView *webView;
 @property (nonatomic,strong) NSString *content;
+@property (nonatomic,strong) NSString *filePath;
 @property (nonatomic,strong) NSString *titleString;
 
 @end
 
 @implementation FileDetailViewController
+
+static NSDictionary* mimeTypes = nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,6 +38,16 @@
         self.content = message;
         self.titleString = title;
         [self loadDataWithMessage:message];
+    }
+    return self;
+}
+
+-(instancetype)initWithFilePath:(NSString*)filePath title:(NSString*)title {
+    self = [super init];
+    if (self) {
+        self.filePath = filePath;
+        self.titleString = title;
+        [self loadDataWithFilePath:filePath];
     }
     return self;
 }
@@ -60,7 +73,75 @@
 }
 
 -(void)initData {
-    
+    mimeTypes = @{
+    @"3gp": @"video/3gpp",
+    @"apk": @"application/vnd.android.package-archive",
+    @"asf": @"video/x-ms-asf",
+    @"avi": @"video/x-msvideo",
+    @"bin": @"application/octet-stream",
+    @"bmp": @"image/bmp",
+    @"c": @"text/plain",
+    @"class": @"application/octet-stream",
+    @"conf": @"text/plain",
+    @"cpp": @"text/plain",
+    @"css": @"text/css",
+    @"doc": @"application/msword",
+    //                      @"doc": @"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    @"docx": @"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    @"exe": @"application/octet-stream",
+    @"gif": @"image/gif",
+    @"gtar": @"application/x-gtar",
+    @"gz": @"application/x-gzip",
+    @"h": @"text/plain",
+    @"htm": @"text/html",
+    @"html": @"text/html",
+    @"jar": @"application/java-archive",
+    @"java": @"text/plain",
+    @"jpeg": @"image/jpeg",
+    @"jpg": @"image/jpeg",
+    @"js": @"application/x-javascript",
+    @"log": @"text/plain",
+    @"m3u": @"audio/x-mpegurl",
+    @"m4a": @"audio/mp4a-latm",
+    @"m4b": @"audio/mp4a-latm",
+    @"m4p": @"audio/mp4a-latm",
+    @"m4u": @"video/vnd.mpegurl",
+    @"m4v": @"video/x-m4v",
+    @"mov": @"video/quicktime",
+    @"mp2": @"audio/x-mpeg",
+    @"mp3": @"audio/x-mpeg",
+    @"mp4": @"video/mp4",
+    @"mpc": @"application/vnd.mpohun.certificate",
+    @"mpe": @"video/mpeg",
+    @"mpeg": @"video/mpeg",
+    @"mpg": @"video/mpeg",
+    @"mpg4": @"video/mp4",
+    @"mpga": @"audio/mpeg",
+    @"msg": @"application/vnd.ms-outlook",
+    @"ogg": @"audio/ogg",
+    @"pdf": @"application/pdf",
+    @"png": @"image/png",
+    @"pps": @"application/vnd.ms-powerpoint",
+    @"ppt": @"application/vnd.ms-powerpoint",
+    @"pptx": @"application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    @"prop": @"text/plain",
+    @"rc": @"text/plain",
+    @"rmvb": @"audio/x-pn-realaudio",
+    @"rtf": @"application/rtf",
+    @"sh": @"text/plain",
+    @"tar": @"application/x-tar",
+    @"tgz": @"application/x-compressed",
+    @"txt": @"text/plain",
+    @"wav": @"audio/x-wav",
+    @"wma": @"audio/x-ms-wma",
+    @"wmv": @"audio/x-ms-wmv",
+    @"wps": @"application/vnd.ms-works",
+    @"xml": @"text/plain",
+    @"xls": @"application/vnd.ms-excel",
+    @"xlsx": @"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    @"z": @"application/x-compress",
+    @"zip": @"application/x-zip-compressed"
+    };
 }
 
 -(WKWebView*)webView {
@@ -94,6 +175,28 @@
         [self.view addSubview:_webView];
     }
     return _webView;
+}
+
+-(void)loadDataWithFilePath:(NSString*)filePath {
+    // 1.创建webview
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, kScreenWidth, kScreenHeight-kNavigationBarHeight-kTBarBottomHeight)];
+    // 2.创建url（注意替换为实际路径)
+    NSURL *url = [NSURL fileURLWithPath:filePath];
+    // 3.加载文件
+    [webView loadFileURL:url allowingReadAccessToURL:url];
+    [self.view addSubview:webView];
+    
+//    NSString* mimeType = [self mimeTypeForXlsOrDocOrPptWithPath:filePath];
+//    if (mimeType) {
+//        NSData* data = [[NSData alloc] initWithContentsOfFile:filePath];
+//        [self.webView loadData:data MIMEType:mimeType characterEncodingName:@"UTF-8" baseURL:nil];
+//    }
+//    else {
+//        NSString* urlString = [filePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        NSURL *requestUrl = [NSURL URLWithString:urlString];
+//        NSURLRequest *request = [NSURLRequest requestWithURL:requestUrl];
+//        [self.webView loadRequest:request];
+//    }
 }
 
 -(void)loadDataWithMessage:(NSString*)message {
@@ -136,6 +239,124 @@
 // 页面加载失败
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(nonnull NSError *)error {
     NSLog(@"加载失败%@", error.userInfo);
+}
+
+
+//- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
+//{
+////    NSString *_webUrlStr = navigationAction.request.URL.absoluteString;
+////    NSString *lastName =[[_webUrlStr lastPathComponent] lowercaseString];
+////
+////    NSString* mimeType = [self mimeTypeForXlsOrDocOrPptWithPath:navigationAction.request.URL.absoluteString];
+////    if (mimeType) {
+////        NSData *data = [NSData dataWithContentsOfURL:navigationAction.request.URL];
+////        [self.webView loadData:data MIMEType:mimeType characterEncodingName:@"UTF-8" baseURL:nil];
+////    }
+////
+////    decisionHandler(WKNavigationActionPolicyAllow);
+//}
+
+- (NSString*)mimeTypeForXlsOrDocOrPptWithPath:(NSString*)path
+{
+    if (!path
+        || [path isEqual:[NSNull null]]
+        || [path isEqualToString:@""]) {
+        return nil;
+    }
+    
+    /** 获取后缀 */
+    NSString* extension = path.pathExtension;
+    if (!extension
+        || [extension isEqual:[NSNull null]]
+        || [extension isEqualToString:@""]) {
+        return nil;
+    }
+    extension = extension.lowercaseString;
+    
+    
+    /** 获取文件类型 */
+    int fileType = - 1; //-1：不可用 0：表格类型 1：文档类型 2：演示文稿
+    if ([extension isEqualToString:@"xls"]
+        || [extension isEqualToString:@"xlsx"]
+        || [extension isEqualToString:@"xlt"]
+        || [extension isEqualToString:@"xltx"]
+        || [extension isEqualToString:@"xlsm"]
+        || [extension isEqualToString:@"xltm"]
+        || [extension isEqualToString:@"et"]
+        || [extension isEqualToString:@"ett"]) {
+        fileType = 0;
+    }
+    else if ([extension isEqualToString:@"doc"]
+             || [extension isEqualToString:@"docx"]
+             || [extension isEqualToString:@"dot"]
+             || [extension isEqualToString:@"dotx"]
+             || [extension isEqualToString:@"wps"]
+             || [extension isEqualToString:@"wpt"]) {
+        fileType = 1;
+    }
+    else if ([extension isEqualToString:@"ppt"]
+             || [extension isEqualToString:@"pptx"]
+             || [extension isEqualToString:@"pot"]
+             || [extension isEqualToString:@"potx"]
+             || [extension isEqualToString:@"dps"]
+             || [extension isEqualToString:@"dpt"]) {
+        fileType = 2;
+    }
+    if (fileType == -1) {
+        return nil;
+    }
+    
+    /** 获取扩展类型 */
+    NSData* data = [[NSData alloc] initWithContentsOfFile:path];
+    if (!data
+        || data.length < 4) {
+        return nil;
+    }
+    
+    int extensionType = -1; //-1：不可用 0:非扩展格式 1:扩展格式
+    Byte *bytesArray = (Byte*)[data bytes];
+    if (bytesArray[0] == 0xD0
+        && bytesArray[1] == 0xCF
+        && bytesArray[2] == 0x11
+        && bytesArray[3] == 0xE0) {
+        extensionType = 0;
+    }
+    else if (bytesArray[0] == 0x50
+             && bytesArray[1] == 0x4B
+             && bytesArray[2] == 0x03
+             && bytesArray[3] == 0x04) {
+        extensionType = 1;
+    }
+    if (extensionType == -1) {
+        return nil;
+    }
+    
+    
+    /** 拼接后缀字符串 */
+    NSString* prefix;
+    if (fileType == 0) {
+        prefix = @"xls";
+    }
+    else if (fileType == 1) {
+        prefix = @"doc";
+    }
+    else if (fileType == 2) {
+        prefix = @"ppt";
+    }
+    if (!prefix) {
+        return nil;
+    }
+    NSString* suffix = extensionType == 0 ? @"" : @"x";
+    NSString* extension_real = [[NSString alloc] initWithFormat:@"%@%@", prefix, suffix];
+    
+    
+    /** 获取文件格式字符串 */
+    NSString* mimeType = mimeTypes[extension_real];
+    if (!mimeType) {
+        return nil;
+    }
+    
+    return mimeType;
 }
 
 @end

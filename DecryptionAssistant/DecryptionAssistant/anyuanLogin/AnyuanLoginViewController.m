@@ -122,7 +122,7 @@
 -(void)previewLoginValidate {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSDictionary *accountDic = [ud objectForKey:@"accountDic"];
-    if (accountDic) {
+    if (accountDic && accountDic.allKeys.count) {
         /*
         NSString* ip = self.serverField.text;
         NSString* account = self.emailField.text;
@@ -138,7 +138,21 @@
         self.isYuLogin = isYuLogicString.boolValue;
         
         [self connectWayAction:self.isYuLogin?self.checkYuButton:self.checkKouLingButton];
-        [self gestureLogin];
+        
+        WS(weakSelf);
+        if ([[PCCircleViewConst getGestureWithKey:gestureFinalSaveKey] length]) {
+            GestureViewController *gestureVc = [[GestureViewController alloc] init];
+            [gestureVc setType:GestureViewControllerTypeLogin];
+            gestureVc.popBlock = ^{
+                dispatch_sync_on_main_queue(^{
+                    [weakSelf loginClick];
+                });
+            };
+            [self.navigationController pushViewController:gestureVc animated:NO];
+        }else {
+            [self loginClick];
+        }
+        
     }
     
 }
@@ -893,6 +907,8 @@
     } else {
         UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"提示" message:@"暂未设置手势密码，是否前往设置？" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+            delegate.isActiving = YES;
             FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:NO];
             vc.modalPresentationStyle = 0;
             [weakSelf.navigationController pushViewController:vc animated:YES];
@@ -902,7 +918,11 @@
             gestureVc.type = GestureViewControllerTypeSetting;
             gestureVc.popBlock = ^{
                 dispatch_sync_on_main_queue(^{
-                    [weakSelf loginClick];
+                    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+                    delegate.isActiving = YES;
+                    FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:NO];
+                    vc.modalPresentationStyle = 0;
+                    [weakSelf.navigationController pushViewController:vc animated:YES];
                 });
             };
             [self.navigationController pushViewController:gestureVc animated:NO];

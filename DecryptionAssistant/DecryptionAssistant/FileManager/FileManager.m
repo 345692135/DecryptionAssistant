@@ -13,10 +13,34 @@ static FileManager *fileManager;
 
 @implementation FileManager
 
+static NSArray* attachmentTypeArray = nil;
+
 + (FileManager *)shared {
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         fileManager = [[FileManager alloc]init];
+        attachmentTypeArray = @[
+            @"pdf",//pdf类型
+            @"ics",//日历类型
+            @"psd",//ps类型
+            @"aep",//AE类型
+//                                @"eml",//邮件类型
+            @"pages",//苹果特有类型
+            @"numbers",//苹果表格类型
+            @"key",//苹果特有类型
+            @[@"htm", @"html", @"shtml", @"stm", @"shtm", @"asp"],//html类型
+            @[@"zip", @"rar", @"7z"],//压缩包类型
+            @[@"doc", @"docx"],//文档类型
+            @[@"ppt", @"pptx"],//ppt类型
+            @[[@"XLS" lowercaseString], [@"XLSX" lowercaseString]],//表格类型
+            @[@"txt", @"log", @"ini", @"lrc", @"rtf"],//文本类型
+            @[@"swf", @"gif", @"avi", @"mov"],//flash类型
+            @[@"jpg", @"jpeg", @"png", @"bmp", @"heic"],//图片类型
+            @[@"mp3", @"wma", @"wav", @"ogg", @"ape", @"acc", @"amr"],//音乐类型
+            @[@"mp4", @"wmv", @"mpeg", @"m4v", @"3gp", @"3gpp", @"3g2", @"3gpp2", @"asf"],//视频类型
+            @"ai",//ai类型
+            @"cdr"//coreldraw类型
+            ];
     });
     return fileManager;
 }
@@ -219,6 +243,36 @@ static FileManager *fileManager;
     }
 //    NSLog(@"folderSize ==== %lld",folderSize);
     return folderSize;
+}
+
+- (kAttachmentType)getAttachmentTypeWithPath:(NSString*)path
+{
+    NSString* extension = [path pathExtension];
+    if (!extension || [extension isEqualToString:@""]) {
+        return kcgAttachmentType_other;
+    }
+    extension = [extension lowercaseString];
+    NSInteger count = attachmentTypeArray.count;
+    
+    kAttachmentType attachmentType = kcgAttachmentType_other;
+    for (int i = 0; i < count; i++) {
+        id object = attachmentTypeArray[i];
+        if ([object isKindOfClass:[NSString class]]) {
+            if ([extension isEqualToString:object]) {
+                attachmentType = i + 1;
+                break;
+            }
+        }
+        else {
+            for (NSString* str in object) {
+                if ([extension isEqualToString:str]) {
+                    attachmentType = i + 1;
+                    break;
+                }
+            }
+        }
+    }
+    return attachmentType;
 }
 
 @end

@@ -11,9 +11,11 @@
 				<string>96@2x.png</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>com.zssy.AM.text</string>
+			<string>public.image</string>
 			<key>LSHandlerRank</key>
 			<string>Owner</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.image</string>

@@ -32,6 +32,7 @@
  @param launchOptions launchOptions
  */
 - (void)initApp:(NSDictionary *)launchOptions{
+    [UIApplication sharedApplication].idleTimerDisabled=NO;
     
     // 捕获程序崩溃
     NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
