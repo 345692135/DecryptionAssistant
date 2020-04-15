@@ -15,6 +15,7 @@
 #import "GestureViewController.h"
 #import "GestureVerifyViewController.h"
 #import "PCCircleViewConst.h"
+#import "AppDelegate.h"
 
 @interface AnyuanLoginViewController ()<UITextFieldDelegate>
 {
@@ -990,6 +991,8 @@
                                   [ud synchronize];
                                   
                                   if ([[PCCircleViewConst getGestureWithKey:gestureFinalSaveKey] length]) {
+                                      AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+                                      delegate.isActiving = YES;
                                       FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:NO];
                                       vc.modalPresentationStyle = 0;
                                       [weakSelf.navigationController pushViewController:vc animated:YES];

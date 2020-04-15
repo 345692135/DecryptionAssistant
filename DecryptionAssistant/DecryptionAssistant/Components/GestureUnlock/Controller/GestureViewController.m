@@ -115,10 +115,12 @@
     // 管理手势密码
     UIButton *leftBtn = [UIButton new];
     [self creatButton:leftBtn frame:CGRectMake(CircleViewEdgeMargin + 20, kScreenH - 60, kScreenW/2, 20) title:@"管理手势密码" alignment:UIControlContentHorizontalAlignmentLeft tag:buttonTagManager];
+    [leftBtn setHidden:YES];
     
     // 登录其他账户
     UIButton *rightBtn = [UIButton new];
     [self creatButton:rightBtn frame:CGRectMake(kScreenW/2 - CircleViewEdgeMargin - 20, kScreenH - 60, kScreenW/2, 20) title:@"登陆其他账户" alignment:UIControlContentHorizontalAlignmentRight tag:buttonTagForget];
+    [rightBtn setHidden:YES];
 }
 
 #pragma mark - 创建UIButton

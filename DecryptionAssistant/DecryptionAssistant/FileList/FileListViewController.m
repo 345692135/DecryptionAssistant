@@ -10,6 +10,7 @@
 #import "FileListView.h"
 #import "FileDetailViewController.h"
 #import "FileManager.h"
+#import "AppDelegate.h"
 
 @interface FileListViewController ()
 
@@ -28,7 +29,15 @@
     
     [self initData];
     
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fileNotification:) name:@"FileNotification" object:nil];
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    if (delegate.dictionary) {
+        NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:delegate.dictionary];
+        delegate.dictionary = nil;
+        [self fileDictionary:dictionary];
+    }
+    
+    //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
 }
 
 -(instancetype)initWithIsRecentOpenFile:(BOOL)isRecentOpenFile {
@@ -125,6 +134,37 @@
     FileDetailViewController *vc = [[FileDetailViewController alloc] initWithMessage:message title:title];
     vc.modalPresentationStyle = 0;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)fileDictionary:(NSDictionary*)dictionary {
+    NSDictionary *info = dictionary;
+    // fileName是文件名称、filePath是文件存储在本地的路径
+    // jfkdfj123a.pdf
+    NSString *fileName = [info objectForKey:@"fileName"];
+    // /private/var/mobile/Containers/Data/Application/83643509-E90E-40A6-92EA-47A44B40CBBF/Documents/Inbox/jfkdfj123a.pdf
+    NSString *filePath = [info objectForKey:@"filePath"];
+    NSLog(@"fileName=%@---filePath=%@", fileName, filePath);
+    
+    WS(weakSelf);
+    NSString *recentOpenFile = [FileManager.shared accountPath];
+    [FileManager.shared createDir:recentOpenFile];
+    [FileManager.shared copyFile:filePath toDir:recentOpenFile];
+    
+    [self.baseViewModel decryptionFileWithFilePath:filePath completion:^(NSString * _Nonnull text) {
+        dispatch_async_on_main_queue(^{
+            [weakSelf pushToFileDetailWithMessage:text title:fileName];
+        });
+    }];
+}
+
+- (void)fileNotification:(NSNotification *)notifcation {
+    NSDictionary *info = notifcation.userInfo;
+    [self fileDictionary:info];
+    
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

@@ -12,6 +12,8 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (assign, nonatomic) BOOL isActiving;
+@property (strong, nonatomic) NSDictionary *dictionary;
 
 /// root切换
 /// @param toPageType toPageType description
