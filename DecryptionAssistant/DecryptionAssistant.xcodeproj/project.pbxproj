@@ -12,9 +12,12 @@
 		8E0CF24E24471B4800B2F676 /* safemail_Details_fujian0696@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24C24471B4800B2F676 /* safemail_Details_fujian0696@3x.png */; };
 		8E0CF25124471B9700B2F676 /* safemail_Details_fujian0596@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24F24471B9600B2F676 /* safemail_Details_fujian0596@3x.png */; };
 		8E0CF25224471B9700B2F676 /* safemail_Details_fujian0596@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF25024471B9600B2F676 /* safemail_Details_fujian0596@2x.png */; };
+		8E0CF2682447FBDB00B2F676 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF2642447FBDB00B2F676 /* Default@2x.png */; };
+		8E0CF2692447FBDB00B2F676 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF2652447FBDB00B2F676 /* Default-736h@3x.png */; };
+		8E0CF26A2447FBDB00B2F676 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF2662447FBDB00B2F676 /* Default-568h@2x.png */; };
+		8E0CF26B2447FBDB00B2F676 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF2672447FBDB00B2F676 /* Default-667h@2x.png */; };
 		8E487847241F2B6900DA9963 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E487846241F2B6900DA9963 /* AppDelegate.m */; };
 		8E48784D241F2B6900DA9963 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E48784C241F2B6900DA9963 /* ViewController.m */; };
-		8E487850241F2B6900DA9963 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E48784E241F2B6900DA9963 /* Main.storyboard */; };
 		8E487852241F2B6B00DA9963 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E487851241F2B6B00DA9963 /* Assets.xcassets */; };
 		8E487855241F2B6B00DA9963 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E487853241F2B6B00DA9963 /* LaunchScreen.storyboard */; };
 		8E487858241F2B6B00DA9963 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E487857241F2B6B00DA9963 /* main.m */; };
@@ -799,12 +802,15 @@
 		8E0CF24C24471B4800B2F676 /* safemail_Details_fujian0696@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safemail_Details_fujian0696@3x.png"; sourceTree = "<group>"; };
 		8E0CF24F24471B9600B2F676 /* safemail_Details_fujian0596@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safemail_Details_fujian0596@3x.png"; sourceTree = "<group>"; };
 		8E0CF25024471B9600B2F676 /* safemail_Details_fujian0596@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safemail_Details_fujian0596@2x.png"; sourceTree = "<group>"; };
+		8E0CF2642447FBDB00B2F676 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8E0CF2652447FBDB00B2F676 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
+		8E0CF2662447FBDB00B2F676 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8E0CF2672447FBDB00B2F676 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		8E487842241F2B6900DA9963 /* 解密助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "解密助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E487845241F2B6900DA9963 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8E487846241F2B6900DA9963 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8E48784B241F2B6900DA9963 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8E48784C241F2B6900DA9963 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		8E48784F241F2B6900DA9963 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E487851241F2B6B00DA9963 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E487854241F2B6B00DA9963 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E487856241F2B6B00DA9963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1985,6 +1991,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E0CF2632447FBDB00B2F676 /* launch */ = {
+			isa = PBXGroup;
+			children = (
+				8E0CF2642447FBDB00B2F676 /* Default@2x.png */,
+				8E0CF2652447FBDB00B2F676 /* Default-736h@3x.png */,
+				8E0CF2662447FBDB00B2F676 /* Default-568h@2x.png */,
+				8E0CF2672447FBDB00B2F676 /* Default-667h@2x.png */,
+			);
+			path = launch;
+			sourceTree = "<group>";
+		};
 		8E487839241F2B6900DA9963 = {
 			isa = PBXGroup;
 			children = (
@@ -2021,7 +2038,6 @@
 				8E487926241F5AA200DA9963 /* GlobalStatus.h */,
 				8E487924241F5AA200DA9963 /* KDMRAppHeaderMacro.h */,
 				8E487925241F5AA200DA9963 /* UtilsMacro.h */,
-				8E48784E241F2B6900DA9963 /* Main.storyboard */,
 				8E487851241F2B6B00DA9963 /* Assets.xcassets */,
 				8E487853241F2B6B00DA9963 /* LaunchScreen.storyboard */,
 				8E487856241F2B6B00DA9963 /* Info.plist */,
@@ -2460,6 +2476,7 @@
 		8ECB594F241F74B70021CE39 /* Resouse */ = {
 			isa = PBXGroup;
 			children = (
+				8E0CF2632447FBDB00B2F676 /* launch */,
 				8E0CF25024471B9600B2F676 /* safemail_Details_fujian0596@2x.png */,
 				8E0CF24F24471B9600B2F676 /* safemail_Details_fujian0596@3x.png */,
 				8E0CF24B24471B4700B2F676 /* safemail_Details_fujian0696@2x.png */,
@@ -4286,6 +4303,7 @@
 				8ECB5F482421FFF70021CE39 /* dh2048.pem in Resources */,
 				8E487855241F2B6B00DA9963 /* LaunchScreen.storyboard in Resources */,
 				8ECB593A241F6EC30021CE39 /* unicode_to_hanyu_pinyin.txt in Resources */,
+				8E0CF2682447FBDB00B2F676 /* Default@2x.png in Resources */,
 				8ECB5E1A2421FFF60021CE39 /* InfoPlist.strings in Resources */,
 				8E0CF25124471B9700B2F676 /* safemail_Details_fujian0596@3x.png in Resources */,
 				8ECB5F452421FFF70021CE39 /* dh192.pem in Resources */,
@@ -4297,7 +4315,6 @@
 				8E0CF24D24471B4800B2F676 /* safemail_Details_fujian0696@2x.png in Resources */,
 				8ECB5976241F74B70021CE39 /* port@2x.png in Resources */,
 				8ECB599C24205EF60021CE39 /* 工程实施部.txt in Resources */,
-				8E487850241F2B6900DA9963 /* Main.storyboard in Resources */,
 				8ECB597B241F74B70021CE39 /* unknown@2x.png in Resources */,
 				8ECB596D241F74B70021CE39 /* launch@2x.png in Resources */,
 				8ECB597A241F74B70021CE39 /* pdf@2x.png in Resources */,
@@ -4306,8 +4323,10 @@
 				8ECB599E24205EF60021CE39 /* 普密1.txt in Resources */,
 				8ECB5F472421FFF70021CE39 /* dh1024.pem in Resources */,
 				8ECB5F3D2421FFF70021CE39 /* dh512.pem in Resources */,
+				8E0CF2692447FBDB00B2F676 /* Default-736h@3x.png in Resources */,
 				8ECB5975241F74B70021CE39 /* login@2x.png in Resources */,
 				8ECB5972241F74B70021CE39 /* file@2x.png in Resources */,
+				8E0CF26A2447FBDB00B2F676 /* Default-568h@2x.png in Resources */,
 				8ECB5968241F74B70021CE39 /* ps@2x.png in Resources */,
 				8ECB598D241F8A300021CE39 /* safemail_top_back@2x.png in Resources */,
 				8ECB5973241F74B70021CE39 /* photo@2x.png in Resources */,
@@ -4315,6 +4334,7 @@
 				8ECB5970241F74B70021CE39 /* flash@2x.png in Resources */,
 				8E0CF24E24471B4800B2F676 /* safemail_Details_fujian0696@3x.png in Resources */,
 				8ECB599824205EF60021CE39 /* 研发部绝密.txt in Resources */,
+				8E0CF26B2447FBDB00B2F676 /* Default-667h@2x.png in Resources */,
 				8ECB596E241F74B70021CE39 /* bt@2x.png in Resources */,
 				8E0CF25224471B9700B2F676 /* safemail_Details_fujian0596@2x.png in Resources */,
 				8ECB599A24205EF60021CE39 /* 售后培训.txt in Resources */,
@@ -5118,14 +5138,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8E48784E241F2B6900DA9963 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8E48784F241F2B6900DA9963 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8E487853241F2B6B00DA9963 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
