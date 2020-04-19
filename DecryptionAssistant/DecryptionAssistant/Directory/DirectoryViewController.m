@@ -36,13 +36,18 @@
 }
 
 -(void)initView {
+    [self.view addSubview:self.directoryView];
+    [self.view bringSubviewToFront:self.navigationView];
     [self.leftButton setTitle:@"" forState:UIControlStateNormal];
     [self.leftButton setImage:[UIImage imageNamed:@"safemail_top_back"] forState:UIControlStateNormal];
     [self.navigationView addSubview:self.leftButton];
     
+    self.titleLabel.textColor = [UIColor whiteColor];
+    self.titleLabel.text = self.fileName;
+    [self.navigationView addSubview:self.titleLabel];
+    
     self.navigationView.backgroundColor = RGB(0, 164, 102);
     
-    [self.view addSubview:self.directoryView];
 //    [self.view bringSubviewToFront:self.navigationView];
 //    [self.leftButton setTitle:@"" forState:UIControlStateNormal];
 //    [self.leftButton setImage:[UIImage imageNamed:@"back_btn_safemail_lookView"] forState:UIControlStateNormal];
@@ -108,6 +113,8 @@
     DirectoryViewController *vc = [[DirectoryViewController alloc] init];
     [vc.directoryView updateViewWithDatas:models];
     vc.modalPresentationStyle = 0;
+    DirectoryModel *model = models[0];
+    vc.fileName = model.fileName;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

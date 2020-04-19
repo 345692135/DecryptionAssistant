@@ -45,7 +45,7 @@ static MISPMailHelper* _sharedInstance = nil;
 }
 
 #pragma mark -
-#pragma mark 初始化安元
+#pragma mark 初始化
 
 - (void)handleInitOperationWithIp:(NSString*)ip
                              port:(NSString*)port
@@ -548,7 +548,7 @@ static MISPMailHelper* _sharedInstance = nil;
 //}
 
 #pragma mark -
-#pragma mark 检测安元帐号是否激活
+#pragma mark 检测帐号是否激活
 
 //- (BOOL)isChinasecActiveWithAccountData:(CGAccountData*)accountData
 //{
@@ -560,7 +560,7 @@ static MISPMailHelper* _sharedInstance = nil;
 //}
 
 //#pragma mark -
-//#pragma mark 初始化安元
+//#pragma mark 初始化
 //
 //- (void)initializeChinasecWithAccountData:(CGAccountData*)accountData
 //{
@@ -570,7 +570,7 @@ static MISPMailHelper* _sharedInstance = nil;
 //        if (ctx) {
 //            [[MISPMailHelper sharedInstance] loginWithAccountName:accountData.chinasecAccount password:accountData.password completion:^(BOOL ifSuccess) {
 //                if (ifSuccess) {
-//                    NSLog(@"登录安元成功！");
+//                    NSLog(@"登录成功！");
 //                }
 //            }];
 //        }

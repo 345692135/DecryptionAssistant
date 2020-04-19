@@ -95,7 +95,7 @@
 
 -(void)handleSourceWithFileName:(NSString*)fileName {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@""];
-    if (self.isRecentOpenFile) {
+    if (self.isRecentOpenFile || !filePath) {
         filePath = [FileManager.shared accountPath];
         filePath = [filePath stringByAppendingPathComponent:fileName];
     }
@@ -188,6 +188,8 @@
     DirectoryViewController *vc = [[DirectoryViewController alloc] init];
     [vc.directoryView updateViewWithDatas:models];
     vc.modalPresentationStyle = 0;
+    DirectoryModel *model = models[0];
+    vc.fileName = model.fileName;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -252,9 +254,14 @@
 }
 
 -(void)pushToFileDetailWithFilePath:(NSString*)filePath title:(NSString*)title {
-    FileDetailViewController *vc = [[FileDetailViewController alloc] initWithFilePath:filePath title:title];
-    vc.modalPresentationStyle = 0;
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([filePath.pathExtension.lowercaseString isEqualToString:@"zip"] || [filePath .pathExtension.lowercaseString isEqualToString:@"rar"] || [filePath.pathExtension.lowercaseString isEqualToString:@"7z"]) {
+        [self handleSourceWithFileName:title];
+    }else {
+        FileDetailViewController *vc = [[FileDetailViewController alloc] initWithFilePath:filePath title:title];
+        vc.modalPresentationStyle = 0;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 
 -(void)fileDictionary:(NSDictionary*)dictionary {

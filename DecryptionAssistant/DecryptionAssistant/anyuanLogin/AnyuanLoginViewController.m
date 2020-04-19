@@ -535,7 +535,7 @@
         _emailField.clearsOnBeginEditing = NO;
         _emailField.clearButtonMode = UITextFieldViewModeWhileEditing;
 //        [_emailField addTarget:self action:@selector(onTextFieldContentChanged:) forControlEvents:UIControlEventEditingChanged];
-//        _emailField.text = @"sunyongfu@wonder-soft.cn";
+        _emailField.text = @"sunyongfu@wonder-soft.cn";
     }
     return _emailField;
 }
@@ -553,7 +553,7 @@
 //        _passField.delegate = self;
         _passField.clearsOnBeginEditing = NO;
         _passField.clearButtonMode = UITextFieldViewModeWhileEditing;
-//        _passField.text = @"123456789";
+        _passField.text = @"123456789";
     }
     return _passField;
 }
@@ -570,7 +570,7 @@
 //        __serverField.delegate = self;
         _serverField.clearsOnBeginEditing = NO;
         _serverField.clearButtonMode = UITextFieldViewModeWhileEditing;
-//        _serverField.text = @"210.12.140.220";
+        _serverField.text = @"210.12.140.220";
     }
     return _serverField;
 }
@@ -587,7 +587,7 @@
 //        __serverField.delegate = self;
         _portField.clearsOnBeginEditing = NO;
         _portField.clearButtonMode = UITextFieldViewModeWhileEditing;
-//        _portField.text = @"50068";
+        _portField.text = @"50068";
     }
     return _portField;
 }
@@ -879,7 +879,7 @@
 }
 
 -(void)loginClick {
-    SHOW_WAIT_MESSAGE(@"正在登录安元", self);
+    SHOW_WAIT_MESSAGE(@"正在登录", self);
     [self performSelector:@selector(run) withObject:nil afterDelay:1];
 }
 
@@ -935,7 +935,7 @@
 }
 
 #pragma mark -
-#pragma mark 登录安元账号
+#pragma mark 登录账号
 
 - (void)run
 {
@@ -965,7 +965,7 @@
              {
 //                 weakSelf.loginBtn.enabled = YES;
                  STOP_SHOW_WAIT_MESSAGE();
-                 HUD_SHOW_MESSAGE(@"安元登录失败");
+                 HUD_SHOW_MESSAGE(@"登录失败");
              }
              else
              {
@@ -978,7 +978,7 @@
                           if (!ifSuccess) {
 //                              strongSelf.loginBtn.enabled = YES;
                               STOP_SHOW_WAIT_MESSAGE();
-                              HUD_SHOW_MESSAGE(@"安元登录失败");
+                              HUD_SHOW_MESSAGE(@"登录失败");
 
                           }
                           else {

@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DirectoryViewController : BaseViewController
 
 @property (nonatomic, strong) DirectoryView *directoryView;
+@property (nonatomic, strong) NSString *fileName;
 
 @end
 
