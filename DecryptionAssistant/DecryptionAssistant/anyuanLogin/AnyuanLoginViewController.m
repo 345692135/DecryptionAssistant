@@ -16,6 +16,7 @@
 #import "GestureVerifyViewController.h"
 #import "PCCircleViewConst.h"
 #import "AppDelegate.h"
+#import "GSWatermarkView.h"
 
 @interface AnyuanLoginViewController ()<UITextFieldDelegate>
 {
@@ -113,10 +114,38 @@
     [self initWithViewFrame];
     self.view.backgroundColor = [UIColor whiteColor];
     [self initOtherView];
-    self.isYuLogin = YES;
+    self.isYuLogin = NO;
     
     [self previewLoginValidate];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    delegate.waterView.hidden = YES;
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    if (self.emailField.text.jk_trimmingWhitespace.length > 0) {
+        [self showWater];
+    }
+    
+}
+
+-(void)showWater {
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    delegate.waterView.hidden = NO;
+    [delegate.waterView removeAllSubviews];
+    GSWatermarkView *markview = [[GSWatermarkView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    markview.richtext = [[NSAttributedString alloc] initWithString:self.emailField.text.jk_trimmingWhitespace attributes:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[UIFont systemFontOfSize:11],RGBA(100, 100, 100, 0.5),@(-2),RGBA(140, 140, 140, 0.5), nil] forKeys:[NSArray arrayWithObjects:NSFontAttributeName,NSForegroundColorAttributeName,NSStrokeWidthAttributeName,NSStrokeColorAttributeName, nil]]];
+    markview.angle = 330;
+    markview.verticalSpacing = 15;
+    markview.horizonSpacing = 80;
+    markview.interval = 0;
+    markview.duration = 1;
+    [delegate.waterView addSubview:markview];
 }
 
 -(void)previewLoginValidate {
@@ -153,6 +182,8 @@
             [self loginClick];
         }
         
+    }else {
+        [self connectWayAction:self.isYuLogin?self.checkYuButton:self.checkKouLingButton];
     }
     
 }
@@ -535,7 +566,7 @@
         _emailField.clearsOnBeginEditing = NO;
         _emailField.clearButtonMode = UITextFieldViewModeWhileEditing;
 //        [_emailField addTarget:self action:@selector(onTextFieldContentChanged:) forControlEvents:UIControlEventEditingChanged];
-        _emailField.text = @"sunyongfu@wonder-soft.cn";
+        _emailField.text = @"lingsian@wondersoft.cn";
     }
     return _emailField;
 }

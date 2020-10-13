@@ -16,6 +16,7 @@
 		8E0CF2692447FBDB00B2F676 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF2652447FBDB00B2F676 /* Default-736h@3x.png */; };
 		8E0CF26A2447FBDB00B2F676 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF2662447FBDB00B2F676 /* Default-568h@2x.png */; };
 		8E0CF26B2447FBDB00B2F676 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF2672447FBDB00B2F676 /* Default-667h@2x.png */; };
+		8E404C56253541D80033932C /* GSWatermarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E404C55253541D80033932C /* GSWatermarkView.m */; };
 		8E487847241F2B6900DA9963 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E487846241F2B6900DA9963 /* AppDelegate.m */; };
 		8E48784D241F2B6900DA9963 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E48784C241F2B6900DA9963 /* ViewController.m */; };
 		8E487852241F2B6B00DA9963 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E487851241F2B6B00DA9963 /* Assets.xcassets */; };
@@ -806,6 +807,8 @@
 		8E0CF2652447FBDB00B2F676 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		8E0CF2662447FBDB00B2F676 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8E0CF2672447FBDB00B2F676 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
+		8E404C54253541D80033932C /* GSWatermarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSWatermarkView.h; sourceTree = "<group>"; };
+		8E404C55253541D80033932C /* GSWatermarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSWatermarkView.m; sourceTree = "<group>"; };
 		8E487842241F2B6900DA9963 /* 解密助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "解密助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E487845241F2B6900DA9963 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8E487846241F2B6900DA9963 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -2002,6 +2005,15 @@
 			path = launch;
 			sourceTree = "<group>";
 		};
+		8E404C53253541D80033932C /* water */ = {
+			isa = PBXGroup;
+			children = (
+				8E404C54253541D80033932C /* GSWatermarkView.h */,
+				8E404C55253541D80033932C /* GSWatermarkView.m */,
+			);
+			path = water;
+			sourceTree = "<group>";
+		};
 		8E487839241F2B6900DA9963 = {
 			isa = PBXGroup;
 			children = (
@@ -2097,6 +2109,7 @@
 		8E487874241F499000DA9963 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				8E404C53253541D80033932C /* water */,
 				8E653FC82446A7F300AEEC54 /* DDYCompress */,
 				8E653F9D2445B1D100AEEC54 /* GestureUnlock */,
 				8E653F932445980200AEEC54 /* AES */,
@@ -4622,6 +4635,7 @@
 				8E487847241F2B6900DA9963 /* AppDelegate.m in Sources */,
 				8ECB5EC02421FFF60021CE39 /* t_req.c in Sources */,
 				8ECB5FE42421FFF80021CE39 /* mdc2dgst.c in Sources */,
+				8E404C56253541D80033932C /* GSWatermarkView.m in Sources */,
 				8ECB5E282421FFF60021CE39 /* NSData+CryptoEmail.m in Sources */,
 				8ECB5E252421FFF60021CE39 /* SocketProxyManager.m in Sources */,
 				8E653FB82445B1D100AEEC54 /* GestureVerifyViewController.m in Sources */,
@@ -5272,6 +5286,7 @@
 			baseConfigurationReference = 3A3ADC02A63F9C149FC12E18 /* Pods-DecryptionAssistant.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 982G6CULEY;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5336,6 +5351,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sain.DecryptionAssistant;
 				PRODUCT_NAME = "解密助手";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -5346,6 +5362,7 @@
 			baseConfigurationReference = D4790B08D5940638C9E89E32 /* Pods-DecryptionAssistant.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 982G6CULEY;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5410,6 +5427,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sain.DecryptionAssistant;
 				PRODUCT_NAME = "解密助手";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};

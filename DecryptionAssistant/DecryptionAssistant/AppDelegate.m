@@ -69,6 +69,17 @@ void UncaughtExceptionHandler(NSException *exception) {
     
 }
 
+-(UIView*)waterView {
+    if (!_waterView) {
+        _waterView = [UIView new];
+        _waterView.backgroundColor = [UIColor clearColor];
+        _waterView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+        _waterView.userInteractionEnabled = NO;
+        _waterView.hidden = YES;
+    }
+    return _waterView;
+}
+
 /**
  加载登录页
  */
@@ -77,6 +88,7 @@ void UncaughtExceptionHandler(NSException *exception) {
     
     [self changeRootWithToPageType:ToPageTypeLogin];
     [self.window makeKeyAndVisible];
+    [self.window addSubview:self.waterView];
 }
 
 /// root切换
@@ -129,7 +141,7 @@ void UncaughtExceptionHandler(NSException *exception) {
 }
 
 - (void)dealwithCrashMessage:(NSNotification *)notification {
-    NSLog(@"\n🚫\n🚫监测到崩溃信息🚫\n🚫\n");
+//    NSLog(@"\n🚫\n🚫监测到崩溃信息🚫\n🚫\n");
     /*
      * 在这边对避免的异常进行一些处理，比如上传到日志服务器等。
      */

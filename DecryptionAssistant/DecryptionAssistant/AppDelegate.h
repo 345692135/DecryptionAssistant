@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (assign, nonatomic) BOOL isActiving;
 @property (strong, nonatomic) NSDictionary *dictionary;
+@property (strong, nonatomic) UIView *waterView;
 
 /// root切换
 /// @param toPageType toPageType description
