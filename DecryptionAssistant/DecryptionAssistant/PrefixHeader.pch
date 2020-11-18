@@ -114,6 +114,7 @@ typedef unsigned short WORD;
 #import "YZAuthID.h"
 #import "NSString+SubString.h"
 #import "CGMacros.h"
+#import "FFAES.h"
 
 #endif
 

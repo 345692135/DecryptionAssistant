@@ -45,6 +45,14 @@ static NSArray* attachmentTypeArray = nil;
     return fileManager;
 }
 
+/// 删除文件
+/// @param filePath filePath description
+-(BOOL)deleteFileWithFilePath:(NSString*)filePath {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDelete = [fileManager removeItemAtPath:filePath error:nil];
+    return isDelete;
+}
+
 /// 拷贝文件到目录
 /// @param filePath filePath description
 /// @param Dir Dir description

@@ -277,13 +277,14 @@
     NSString *recentOpenFile = [FileManager.shared accountPath];
     [FileManager.shared createDir:recentOpenFile];
     [FileManager.shared copyFile:filePath toDir:recentOpenFile];
+    [FileManager.shared deleteFileWithFilePath:filePath];
     
-    [self.baseViewModel decryptionFileWithFilePath:filePath completion:^(NSString * _Nonnull text) {
+    [self.baseViewModel decryptionFileWithFilePath:recentOpenFile completion:^(NSString * _Nonnull text) {
         dispatch_async_on_main_queue(^{
             if (text != nil) {
                 [weakSelf pushToFileDetailWithMessage:text title:fileName];
             }else {
-                [weakSelf pushToFileDetailWithFilePath:filePath title:fileName];
+                [weakSelf pushToFileDetailWithFilePath:recentOpenFile title:fileName];
             }
             
         });

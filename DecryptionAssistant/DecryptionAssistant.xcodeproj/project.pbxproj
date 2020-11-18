@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -2070,7 +2070,6 @@
 				8E487860241F48B700DA9963 /* BaseNaviViewController.m */,
 				8E48785F241F48B700DA9963 /* ViewModel */,
 				8E487862241F48B700DA9963 /* Model */,
-				8E487865241F48B700DA9963 /* View */,
 			);
 			path = BaseController;
 			sourceTree = "<group>";
@@ -2097,13 +2096,6 @@
 				8E487863241F48B700DA9963 /* BaseModel.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		8E487865241F48B700DA9963 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		8E487874241F499000DA9963 /* Components */ = {
@@ -2154,34 +2146,10 @@
 		8E4878AF241F4D6500DA9963 /* anyuanLogin */ = {
 			isa = PBXGroup;
 			children = (
-				8E4878B0241F4D6500DA9963 /* viewModel */,
-				8E4878B2241F4D6500DA9963 /* Model */,
-				8E4878B3241F4D6500DA9963 /* view */,
 				8E4878B4241F4D6500DA9963 /* AnyuanLoginViewController.h */,
 				8E4878B1241F4D6500DA9963 /* AnyuanLoginViewController.m */,
 			);
 			path = anyuanLogin;
-			sourceTree = "<group>";
-		};
-		8E4878B0241F4D6500DA9963 /* viewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = viewModel;
-			sourceTree = "<group>";
-		};
-		8E4878B2241F4D6500DA9963 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		8E4878B3241F4D6500DA9963 /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		8E4878B6241F4DB900DA9963 /* LoadingView */ = {
@@ -2324,34 +2292,10 @@
 		8E653FBD24469EDB00AEEC54 /* FileDetail */ = {
 			isa = PBXGroup;
 			children = (
-				8E653FBE24469EF900AEEC54 /* Model */,
-				8E653FC024469EFA00AEEC54 /* View */,
-				8E653FBF24469EF900AEEC54 /* ViewModel */,
 				8E653FC124469F1600AEEC54 /* FileDetailViewController.h */,
 				8E653FC224469F1600AEEC54 /* FileDetailViewController.m */,
 			);
 			path = FileDetail;
-			sourceTree = "<group>";
-		};
-		8E653FBE24469EF900AEEC54 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		8E653FBF24469EF900AEEC54 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		8E653FC024469EFA00AEEC54 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		8E653FC42446A6CA00AEEC54 /* FileManager */ = {
@@ -2375,20 +2319,12 @@
 		8E653FCC2446A98800AEEC54 /* Directory */ = {
 			isa = PBXGroup;
 			children = (
-				8E653FCD2446A98800AEEC54 /* ViewModel */,
 				8E653FCF2446A98800AEEC54 /* DirectoryViewController.h */,
 				8E653FCE2446A98800AEEC54 /* DirectoryViewController.m */,
 				8E653FD02446A98800AEEC54 /* Model */,
 				8E653FD32446A98800AEEC54 /* View */,
 			);
 			path = Directory;
-			sourceTree = "<group>";
-		};
-		8E653FCD2446A98800AEEC54 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		8E653FD02446A98800AEEC54 /* Model */ = {
@@ -2525,27 +2461,11 @@
 		8ECB597E241F82C50021CE39 /* FileList */ = {
 			isa = PBXGroup;
 			children = (
-				8ECB597F241F82EC0021CE39 /* Model */,
 				8ECB5981241F82EC0021CE39 /* View */,
-				8ECB5980241F82EC0021CE39 /* ViewModel */,
 				8ECB5982241F830B0021CE39 /* FileListViewController.h */,
 				8ECB5983241F830B0021CE39 /* FileListViewController.m */,
 			);
 			path = FileList;
-			sourceTree = "<group>";
-		};
-		8ECB597F241F82EC0021CE39 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		8ECB5980241F82EC0021CE39 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		8ECB5981241F82EC0021CE39 /* View */ = {

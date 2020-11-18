@@ -39,6 +39,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (FileManager *)shared;
 
+/// 删除文件
+/// @param filePath filePath description
+-(BOOL)deleteFileWithFilePath:(NSString*)filePath;
+
 /// 拷贝文件到目录
 /// @param filePath filePath description
 /// @param Dir Dir description
@@ -50,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取最近打开目录所有文件
 -(NSArray*)fileList;
 -(NSString*)accountPath;
--(NSString*)getUploadDirPathWithUidDir:(NSString*)uid;
+//-(NSString*)getUploadDirPathWithUidDir:(NSString*)uid;
 -(NSFileManager*)createDir:(NSString*)dirPath;
 -(NSString*)getLoadPathWithPath:(NSString*)path;
 -(void)openFileWithPath:(NSString*)path password:(NSString*)password complete:(void (^)(NSArray *models))complete;
