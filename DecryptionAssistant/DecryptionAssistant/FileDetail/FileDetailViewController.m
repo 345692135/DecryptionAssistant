@@ -87,7 +87,7 @@ static NSDictionary* mimeTypes = nil;
     @"css": @"text/css",
     @"doc": @"application/msword",
     //                      @"doc": @"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    @"docx": @"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    @"docx": @"application/msword",//@"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     @"exe": @"application/octet-stream",
     @"gif": @"image/gif",
     @"gtar": @"application/x-gtar",
@@ -178,25 +178,22 @@ static NSDictionary* mimeTypes = nil;
 }
 
 -(void)loadDataWithFilePath:(NSString*)filePath {
-    // 1.创建webview
-    WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, kScreenWidth, kScreenHeight-kNavigationBarHeight-kTBarBottomHeight)];
-    // 2.创建url（注意替换为实际路径)
-    NSURL *url = [NSURL fileURLWithPath:filePath];
-    // 3.加载文件
-    [webView loadFileURL:url allowingReadAccessToURL:url];
-    [self.view addSubview:webView];
     
-//    NSString* mimeType = [self mimeTypeForXlsOrDocOrPptWithPath:filePath];
-//    if (mimeType) {
-//        NSData* data = [[NSData alloc] initWithContentsOfFile:filePath];
-//        [self.webView loadData:data MIMEType:mimeType characterEncodingName:@"UTF-8" baseURL:nil];
-//    }
-//    else {
-//        NSString* urlString = [filePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//        NSURL *requestUrl = [NSURL URLWithString:urlString];
-//        NSURLRequest *request = [NSURLRequest requestWithURL:requestUrl];
-//        [self.webView loadRequest:request];
-//    }
+    NSString* mimeType = [self mimeTypeForXlsOrDocOrPptWithPath:filePath];
+    if (mimeType) {
+        // 1.创建webview
+        WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, kScreenWidth, kScreenHeight-kNavigationBarHeight-kTBarBottomHeight)];
+        // 2.创建url（注意替换为实际路径)
+        NSURL *url = [NSURL fileURLWithPath:filePath];
+        // 3.加载文件
+        [webView loadFileURL:url allowingReadAccessToURL:url];
+        [self.view addSubview:webView];
+    }else {
+        NSData* data = [[NSData alloc] initWithContentsOfFile:filePath];
+        NSString * str  =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        [self loadDataWithMessage:str];
+    }
+    
 }
 
 -(void)loadDataWithMessage:(NSString*)message {
