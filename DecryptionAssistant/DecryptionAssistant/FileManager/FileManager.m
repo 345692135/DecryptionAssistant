@@ -48,8 +48,12 @@ static NSArray* attachmentTypeArray = nil;
 /// 删除文件
 /// @param filePath filePath description
 -(BOOL)deleteFileWithFilePath:(NSString*)filePath {
+    BOOL isDelete = NO;
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL isDelete = [fileManager removeItemAtPath:filePath error:nil];
+    if ([fileManager fileExistsAtPath:filePath])
+    {
+        isDelete = [fileManager removeItemAtPath:filePath error:nil];
+    }
     return isDelete;
 }
 

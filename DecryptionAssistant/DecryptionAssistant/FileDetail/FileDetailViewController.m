@@ -8,6 +8,7 @@
 
 #import "FileDetailViewController.h"
 #import <WebKit/WebKit.h>
+#import "FileManager.h"
 
 @interface FileDetailViewController ()<WKNavigationDelegate, WKUIDelegate>
 
@@ -225,6 +226,9 @@ static NSDictionary* mimeTypes = nil;
 }
 
 -(void)back {
+    if (self.filePath && [self.filePath containsString:@"Inbox/"]) {
+        [FileManager.shared deleteFileWithFilePath:self.filePath];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
