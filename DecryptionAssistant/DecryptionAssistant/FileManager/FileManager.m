@@ -83,7 +83,7 @@ static NSArray* attachmentTypeArray = nil;
     return retVal;
 }
 
-//递归读取解压路径下的所有.png文件
+//递归读取解压路径下的所有.png文件 0329，0306，0404，0305
 - (id)showAllFileWithPath:(NSString *) path {
     NSFileManager * fileManger = [NSFileManager defaultManager];
     BOOL isDir = NO;
@@ -115,7 +115,7 @@ static NSArray* attachmentTypeArray = nil;
 
 /// 获取最近打开目录所有文件
 -(NSArray*)fileList {
-    NSString *RecentOpenFile = [self accountPath];
+    NSString *RecentOpenFile = [self recentOpenFilePath];
     NSFileManager *fileManager = [self createDir:RecentOpenFile];
     NSError *error = nil;
     NSArray *files = [fileManager contentsOfDirectoryAtPath:RecentOpenFile error:&error];
@@ -126,7 +126,7 @@ static NSArray* attachmentTypeArray = nil;
     
 }
 
--(NSString*)accountPath {
+-(NSString*)recentOpenFilePath {
     // 获得Documents目录路径
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     //账号路径

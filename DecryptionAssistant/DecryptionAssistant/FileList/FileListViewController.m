@@ -96,7 +96,7 @@
 -(void)handleSourceWithFileName:(NSString*)fileName {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@""];
     if (self.isRecentOpenFile || !filePath) {
-        filePath = [FileManager.shared accountPath];
+        filePath = [FileManager.shared recentOpenFilePath];
         filePath = [filePath stringByAppendingPathComponent:fileName];
     }
     kAttachmentType attachmentType = [FileManager.shared getAttachmentTypeWithPath:fileName];
@@ -227,13 +227,13 @@
     WS(weakSelf);
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@""];
     if (self.isRecentOpenFile) {
-        filePath = [FileManager.shared accountPath];
+        filePath = [FileManager.shared recentOpenFilePath];
         filePath = [filePath stringByAppendingPathComponent:fileName];
     }
     [self.baseViewModel decryptionFileWithFilePath:filePath completion:^(NSString * _Nonnull text) {
         dispatch_async_on_main_queue(^{
             if (!self.isRecentOpenFile) {
-                NSString *recentOpenFile = [FileManager.shared accountPath];
+                NSString *recentOpenFile = [FileManager.shared recentOpenFilePath];
                 [FileManager.shared createDir:recentOpenFile];
                 [FileManager.shared copyFile:filePath toDir:recentOpenFile];
             }
@@ -274,7 +274,7 @@
     NSLog(@"fileName=%@---filePath=%@", fileName, filePath);
     
     WS(weakSelf);
-    NSString *recentOpenFile = [FileManager.shared accountPath];
+    NSString *recentOpenFile = [FileManager.shared recentOpenFilePath];
     [FileManager.shared createDir:recentOpenFile];
     [FileManager.shared copyFile:filePath toDir:recentOpenFile];
     

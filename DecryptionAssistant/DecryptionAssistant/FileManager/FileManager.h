@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 获取最近打开目录所有文件
 -(NSArray*)fileList;
--(NSString*)accountPath;
+-(NSString*)recentOpenFilePath;
 //-(NSString*)getUploadDirPathWithUidDir:(NSString*)uid;
 -(NSFileManager*)createDir:(NSString*)dirPath;
 -(NSString*)getLoadPathWithPath:(NSString*)path;
