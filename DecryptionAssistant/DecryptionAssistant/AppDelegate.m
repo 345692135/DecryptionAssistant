@@ -44,9 +44,26 @@
         UITableView.appearance.estimatedSectionFooterHeight = 0;
     }
     
+    [self clearCacheFile];
     [self config];
     [self enterPage];
     [self avoidCrash];
+}
+
+-(void)clearCacheFile {
+    NSString *documentDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *fileDir = [documentDir stringByAppendingPathComponent:@"download"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:fileDir])
+    {
+        NSArray *tempFileList = [[NSArray alloc] initWithArray:[fileManager contentsOfDirectoryAtPath:fileDir error:nil]];
+        if (tempFileList.count) {
+            NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtPath:fileDir];
+            for (NSString *fileName in enumerator) {
+                [[NSFileManager defaultManager] removeItemAtPath:[fileDir stringByAppendingPathComponent:fileName] error:nil];
+            }
+        }
+    }
 }
 
 /**

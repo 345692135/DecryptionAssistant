@@ -31,7 +31,7 @@
 //}
 
 
--(void)decryptionFileWithFilePath:(NSString*)filePath completion:(void (^)(NSString* text))completion {
+-(void)decryptionFileWithFilePath:(NSString*)filePath completion:(void (^)(NSString* decPath))completion {
     [MISPMailHelper.sharedInstance decryptionFileWithFilePath:filePath completion:completion];
 
 }

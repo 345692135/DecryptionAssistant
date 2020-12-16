@@ -230,18 +230,14 @@
         filePath = [FileManager.shared recentOpenFilePath];
         filePath = [filePath stringByAppendingPathComponent:fileName];
     }
-    [self.baseViewModel decryptionFileWithFilePath:filePath completion:^(NSString * _Nonnull text) {
+    [self.baseViewModel decryptionFileWithFilePath:filePath completion:^(NSString * _Nonnull decPath) {
         dispatch_async_on_main_queue(^{
             if (!self.isRecentOpenFile) {
                 NSString *recentOpenFile = [FileManager.shared recentOpenFilePath];
                 [FileManager.shared createDir:recentOpenFile];
                 [FileManager.shared copyFile:filePath toDir:recentOpenFile];
             }
-            if (text != nil) {
-                [weakSelf pushToFileDetailWithMessage:text title:fileName];
-            }else {
-                [weakSelf pushToFileDetailWithFilePath:filePath title:fileName];
-            }
+            [weakSelf pushToFileDetailWithFilePath:decPath title:fileName];
             
         });
     }];
@@ -278,13 +274,9 @@
     [FileManager.shared createDir:recentOpenFile];
     [FileManager.shared copyFile:filePath toDir:recentOpenFile];
     
-    [self.baseViewModel decryptionFileWithFilePath:filePath completion:^(NSString * _Nonnull text) {
+    [self.baseViewModel decryptionFileWithFilePath:filePath completion:^(NSString * _Nonnull decPath) {
         dispatch_async_on_main_queue(^{
-            if (text != nil) {
-                [weakSelf pushToFileDetailWithMessage:text title:fileName];
-            }else {
-                [weakSelf pushToFileDetailWithFilePath:filePath title:fileName];
-            }
+            [weakSelf pushToFileDetailWithFilePath:decPath title:fileName];
             
         });
     }];

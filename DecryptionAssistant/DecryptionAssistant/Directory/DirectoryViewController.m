@@ -126,13 +126,9 @@
 -(void)readLocalTextFromFileName:(NSString*)fileName andFilePath:(NSString*)theFilePath {
     WS(weakSelf);
     NSString *filePath = theFilePath;
-    [self.baseViewModel decryptionFileWithFilePath:filePath completion:^(NSString * _Nonnull text) {
+    [self.baseViewModel decryptionFileWithFilePath:filePath completion:^(NSString * _Nonnull decPath) {
         dispatch_async_on_main_queue(^{
-            if (text != nil) {
-                [weakSelf pushToFileDetailWithMessage:text title:fileName];
-            }else {
-                [weakSelf pushToFileDetailWithFilePath:filePath title:fileName];
-            }
+            [weakSelf pushToFileDetailWithFilePath:decPath title:fileName];
             
         });
     }];

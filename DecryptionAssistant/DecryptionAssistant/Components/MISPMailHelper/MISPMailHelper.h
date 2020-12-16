@@ -54,6 +54,6 @@ typedef enum : NSUInteger {
 /** 发邮件 */
 - (void)sendMail;
 
-- (void)decryptionFileWithFilePath:(NSString*)filePath completion:(void (^)(NSString* text))completion;
+- (void)decryptionFileWithFilePath:(NSString*)filePath completion:(void (^)(NSString* decFilePath))completion;
 
 @end

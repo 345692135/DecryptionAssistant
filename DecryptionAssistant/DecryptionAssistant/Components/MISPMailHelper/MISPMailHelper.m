@@ -23,6 +23,7 @@
 #import "NSData+UTF8.h"
 #import "NSMutableData+Crypto.h"
 #import "NSData+DecryptApproveFile.h"
+#import "FileUtil.h"
 
 @interface MISPMailHelper ()
 
@@ -628,33 +629,25 @@ static MISPMailHelper* _sharedInstance = nil;
     };
 }
 
-- (void)decryptionFileWithFilePath:(NSString*)filePath completion:(void (^)(NSString* text))completion {
+- (void)decryptionFileWithFilePath:(NSString*)filePath completion:(void (^)(NSString* decFilePath))completion {
     BOOL iRet = [NSMutableData isEncryptFile:filePath];
     if (iRet) {
-        NSData * decryptData = [NSData dataWithEncryptContentsOfAttachedFile: filePath];
-//        NSMutableData *muData = [NSMutableData dataWithData:decryptData];
+        NSData * decryptData = [NSData dataWithEncryptContentsOfAttachedFile:filePath];
+        
         /*
         Abstract:解密结果判断
         @return isEncData YES:解密失败 NO：解密成功
         */
         BOOL isEncData = [decryptData isEncryptNewApproveFileData];
         NSLog(@":::::%d",isEncData);
-//        for (int i = 1; i < 16; i++) {
-//            NSString *string = [[NSString alloc] initWithData:decryptData encoding:NSASCIIStringEncoding];
-//        }
-//        NSString *string = [[NSString alloc] initWithData:decryptData encoding:NSASCIIStringEncoding];//
-        NSString *string = decryptData.utf8ToString;
         if (!isEncData) {
-//            NSString *string = muData.utf8ToString;
-            NSLog(@"string=%@.",string);
-            completion(string);
-//            NSString *string2 = [FileUtil saveFileToLocal:muData.UTF8Data fileName:@"test.txt"];
-//            NSLog(@"string=%@.",string2);
+            NSString *decPath = [FileUtil saveFileToLocal:decryptData fileName:filePath.lastPathComponent];
+            completion(decPath);
         }else {
-            completion(nil);
+            completion(filePath);
         }
     }else {
-        completion(nil);
+        completion(filePath);
     }
 }
 

@@ -566,7 +566,7 @@
         _emailField.clearsOnBeginEditing = NO;
         _emailField.clearButtonMode = UITextFieldViewModeWhileEditing;
 //        [_emailField addTarget:self action:@selector(onTextFieldContentChanged:) forControlEvents:UIControlEventEditingChanged];
-        _emailField.text = @"phone01";//@"lingsian@wondersoft.cn";
+        _emailField.text = @"phone01";//@"lingsian@wondersoft.cn";//
     }
     return _emailField;
 }
@@ -584,7 +584,7 @@
 //        _passField.delegate = self;
         _passField.clearsOnBeginEditing = NO;
         _passField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _passField.text = @"abcd@1234";//@"123456789";
+        _passField.text = @"abcd@1234";//@"123456789";//
     }
     return _passField;
 }
@@ -601,7 +601,7 @@
 //        __serverField.delegate = self;
         _serverField.clearsOnBeginEditing = NO;
         _serverField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _serverField.text = @"39.105.206.232";//@"210.12.140.220";
+        _serverField.text = @"39.105.206.232";//@"210.12.140.220";//
     }
     return _serverField;
 }

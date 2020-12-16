@@ -180,20 +180,27 @@ static NSDictionary* mimeTypes = nil;
 
 -(void)loadDataWithFilePath:(NSString*)filePath {
     
-    NSString* mimeType = [self mimeTypeForXlsOrDocOrPptWithPath:filePath];
-    if (mimeType) {
+//    NSString* mimeType = [self mimeTypeForXlsOrDocOrPptWithPath:filePath];
+//    if (mimeType) {
         // 1.创建webview
         WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, kScreenWidth, kScreenHeight-kNavigationBarHeight-kTBarBottomHeight)];
         // 2.创建url（注意替换为实际路径)
+    @try {
         NSURL *url = [NSURL fileURLWithPath:filePath];
         // 3.加载文件
         [webView loadFileURL:url allowingReadAccessToURL:url];
-        [self.view addSubview:webView];
-    }else {
-        NSData* data = [[NSData alloc] initWithContentsOfFile:filePath];
-        NSString * str  =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        [self loadDataWithMessage:str];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
+        
+        [self.view addSubview:webView];
+//    }else {
+//        NSData* data = [[NSData alloc] initWithContentsOfFile:filePath];
+//        NSString * str  =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        [self loadDataWithMessage:str];
+//    }
     
 }
 
@@ -228,6 +235,19 @@ static NSDictionary* mimeTypes = nil;
 -(void)back {
     if (self.filePath && [self.filePath containsString:@"Inbox/"]) {
         [FileManager.shared deleteFileWithFilePath:self.filePath];
+    }
+    NSString *documentDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *fileDir = [documentDir stringByAppendingPathComponent:@"download"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:fileDir])
+    {
+        NSArray *tempFileList = [[NSArray alloc] initWithArray:[fileManager contentsOfDirectoryAtPath:fileDir error:nil]];
+        if (tempFileList.count) {
+            NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtPath:fileDir];
+            for (NSString *fileName in enumerator) {
+                [[NSFileManager defaultManager] removeItemAtPath:[fileDir stringByAppendingPathComponent:fileName] error:nil];
+            }
+        }
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
