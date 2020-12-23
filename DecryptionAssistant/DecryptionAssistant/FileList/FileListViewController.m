@@ -50,14 +50,15 @@
 }
 
 -(void)initView {
-    [self.leftButton setTitle:@"" forState:UIControlStateNormal];
-    [self.leftButton setImage:[UIImage imageNamed:@"safemail_top_back"] forState:UIControlStateNormal];
-    [self.navigationView addSubview:self.leftButton];
     
     if (!self.isRecentOpenFile) {
         [self.rightBtn setTitle:@"最近打开" forState:UIControlStateNormal];
         self.rightBtn.frame = CGRectMake(kScreenWidth - kYSBL(15)-70, kStatusBarHeight + 4, 70, 40);
         [self.navigationView addSubview:self.rightBtn];
+    }else {
+        [self.leftButton setTitle:@"" forState:UIControlStateNormal];
+        [self.leftButton setImage:[UIImage imageNamed:@"safemail_top_back"] forState:UIControlStateNormal];
+        [self.navigationView addSubview:self.leftButton];
     }
     
     self.navigationView.backgroundColor = RGB(0, 164, 102);
@@ -71,8 +72,8 @@
 }
 
 -(void)back {
-    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    delegate.isActiving = NO;
+//    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+//    delegate.isActiving = NO;
     [PCCircleViewConst saveGesture:nil Key:gestureFinalSaveKey];//清空手势密码
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setObject:@{} forKey:@"accountDic"];

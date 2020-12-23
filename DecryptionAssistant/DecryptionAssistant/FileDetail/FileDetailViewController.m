@@ -63,6 +63,7 @@ static NSDictionary* mimeTypes = nil;
     self.titleLabel.text = kIsNULLString(self.titleString)?@"文件详情":self.titleString;
     self.titleLabel.textColor = [UIColor whiteColor];
     [self.navigationView addSubview:self.titleLabel];
+    
 }
 
 -(void)initWithViewFrame {
@@ -148,7 +149,11 @@ static NSDictionary* mimeTypes = nil;
 -(WKWebView*)webView {
     if (!_webView) {
         //js脚本 （脚本注入设置网页样式）
-        NSString *jScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+//        NSString *jScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+        
+        
+        NSString *jScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta); var imgs = document.getElementsByTagName('img');for (var i in imgs){imgs[i].style.maxWidth='100%';imgs[i].style.height='auto';}";
+        
         //注入
         WKUserScript *wkUScript = [[WKUserScript alloc] initWithSource:jScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
         WKUserContentController *wkUController = [[WKUserContentController alloc] init];
@@ -159,9 +164,10 @@ static NSDictionary* mimeTypes = nil;
         //改变初始化方法 （这里一定要给个初始宽度，要不算的高度不对）
         WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, kScreenWidth, kScreenHeight-kNavigationBarHeight-kTBarBottomHeight) configuration:wkWebConfig];
         webView.scrollView.bounces = NO;
+        webView.UIDelegate = self;
+        webView.navigationDelegate = self;
         _webView = webView;
-        _webView.navigationDelegate = self;
-        
+        [self.view addSubview:_webView];
 //    // js配置
 //        WKUserContentController *userContentController = [[WKUserContentController alloc] init];
 //    //    [userContentController addScriptMessageHandler:weakself name:@"jsCallOC"];
@@ -173,34 +179,21 @@ static NSDictionary* mimeTypes = nil;
 //        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, kScreenWidth, kScreenHeight-kNavigationBarHeight-kTBarBottomHeight-kYSBL(45)) configuration:configuration];
 //        _webView.UIDelegate = self;
 //        _webView.navigationDelegate = self;
-        [self.view addSubview:_webView];
     }
     return _webView;
 }
 
 -(void)loadDataWithFilePath:(NSString*)filePath {
-    
-//    NSString* mimeType = [self mimeTypeForXlsOrDocOrPptWithPath:filePath];
-//    if (mimeType) {
-        // 1.创建webview
-        WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, kScreenWidth, kScreenHeight-kNavigationBarHeight-kTBarBottomHeight)];
         // 2.创建url（注意替换为实际路径)
     @try {
         NSURL *url = [NSURL fileURLWithPath:filePath];
         // 3.加载文件
-        [webView loadFileURL:url allowingReadAccessToURL:url];
+        [self.webView loadFileURL:url allowingReadAccessToURL:url];
     } @catch (NSException *exception) {
         
     } @finally {
         
     }
-        
-        [self.view addSubview:webView];
-//    }else {
-//        NSData* data = [[NSData alloc] initWithContentsOfFile:filePath];
-//        NSString * str  =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//        [self loadDataWithMessage:str];
-//    }
     
 }
 
@@ -253,8 +246,9 @@ static NSDictionary* mimeTypes = nil;
 }
 
 // 页面加载完成
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
-    
+- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
+    NSString *jScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+    [webView evaluateJavaScript:jScript completionHandler:nil];
 }
 
 // 页面加载失败
@@ -279,9 +273,7 @@ static NSDictionary* mimeTypes = nil;
 
 - (NSString*)mimeTypeForXlsOrDocOrPptWithPath:(NSString*)path
 {
-    if (!path
-        || [path isEqual:[NSNull null]]
-        || [path isEqualToString:@""]) {
+    if (!path || [path isEqual:[NSNull null]] || [path isEqualToString:@""]) {
         return nil;
     }
     

@@ -75,8 +75,7 @@
     range.location = 4096;
     range.length = (len-4096);
     NSData* filedata = [encData subdataWithRange:range];
-    
-    ret = [crypto cryptUpdateData:(unsigned char*)[filedata bytes] inLength:[filedata length] outData:buffer outLen:&outLen];
+    ret = [crypto cryptUpdateData:(unsigned char*)[filedata bytes] inLength:(int)[filedata length] outData:buffer outLen:&outLen];
     if (ret != 0) {
         free(buffer);
         buffer = nil;

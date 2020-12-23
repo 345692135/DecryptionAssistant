@@ -7,6 +7,7 @@
 //
 
 #import "FileListTableViewCell.h"
+#import "FileManager.h"
 
 @interface FileListTableViewCell ()
 
@@ -120,11 +121,58 @@
 }
 
 -(NSString*)getImageNameWithFileName:(NSString*)fileName {
-    NSString* typeString = [fileName componentsSeparatedByString:@"."][1];
     NSString *imageName = @"unknown";
-    if ([typeString isEqualToString:@"txt"] || [typeString isEqualToString:@"text"]) {
-        imageName = @"txt";
+    kAttachmentType type = [FileManager.shared getAttachmentTypeWithPath:fileName];
+    
+    switch (type) {
+        case kcgAttachmentType_ae:
+            imageName = @"ae";
+            break;
+        case kcgAttachmentType_ai:
+            imageName = @"ai";
+            break;
+        case kcgAttachmentType_music:
+            imageName = @"audio";
+            break;
+        case kcgAttachmentType_cdr:
+            imageName = @"cdr";
+            break;
+        case kcgAttachmentType_xsl:
+            imageName = @"excel";
+            break;
+        case kcgAttachmentType_flash:
+            imageName = @"flash";
+            break;
+        case kcgAttachmentType_ppt:
+            imageName = @"ppt";
+            break;
+        case kcgAttachmentType_video:
+            imageName = @"mv";
+            break;
+        case kcgAttachmentType_pdf:
+            imageName = @"pdf";
+            break;
+        case kcgAttachmentType_picture:
+            imageName = @"photo";
+            break;
+        case kcgAttachmentType_photoshop:
+            imageName = @"ps";
+            break;
+        case kcgAttachmentType_txt:
+            imageName = @"txt";
+            break;
+        case kcgAttachmentType_doc:
+            imageName = @"word";
+            break;
+        case kcgAttachmentType_zip:
+            imageName = @"zip";
+            break;
+        
+            
+        default:
+            break;
     }
+    
     return imageName;
 }
 

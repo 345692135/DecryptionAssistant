@@ -139,10 +139,10 @@
     delegate.waterView.hidden = NO;
     [delegate.waterView removeAllSubviews];
     GSWatermarkView *markview = [[GSWatermarkView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-    markview.richtext = [[NSAttributedString alloc] initWithString:self.emailField.text.jk_trimmingWhitespace attributes:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[UIFont systemFontOfSize:11],RGBA(100, 100, 100, 0.5),@(-2),RGBA(140, 140, 140, 0.5), nil] forKeys:[NSArray arrayWithObjects:NSFontAttributeName,NSForegroundColorAttributeName,NSStrokeWidthAttributeName,NSStrokeColorAttributeName, nil]]];
+    markview.richtext = [[NSAttributedString alloc] initWithString:self.emailField.text.jk_trimmingWhitespace attributes:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[UIFont systemFontOfSize:11],RGBA(100, 100, 100, 0.1),@(-2),RGBA(140, 140, 140, 0.1), nil] forKeys:[NSArray arrayWithObjects:NSFontAttributeName,NSForegroundColorAttributeName,NSStrokeWidthAttributeName,NSStrokeColorAttributeName, nil]]];
     markview.angle = 330;
-    markview.verticalSpacing = 15;
-    markview.horizonSpacing = 80;
+    markview.verticalSpacing = 80;
+    markview.horizonSpacing = 100;
     markview.interval = 0;
     markview.duration = 1;
     [delegate.waterView addSubview:markview];
@@ -936,32 +936,44 @@
         };
         [self.navigationController pushViewController:gestureVc animated:NO];
     } else {
-        UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"提示" message:@"暂未设置手势密码，是否前往设置？" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSUserDefaults *ud = NSUserDefaults.standardUserDefaults;
+        if ([ud objectForKey:@"isHaveOperateSet"]) {
             AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
             delegate.isActiving = YES;
             FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:NO];
             vc.modalPresentationStyle = 0;
             [weakSelf.navigationController pushViewController:vc animated:YES];
-        }];
-        UIAlertAction *set = [UIAlertAction actionWithTitle:@"设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            GestureViewController *gestureVc = [[GestureViewController alloc] init];
-            gestureVc.type = GestureViewControllerTypeSetting;
-            gestureVc.popBlock = ^{
-                dispatch_sync_on_main_queue(^{
-                    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-                    delegate.isActiving = YES;
-                    FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:NO];
-                    vc.modalPresentationStyle = 0;
-                    [weakSelf.navigationController pushViewController:vc animated:YES];
-                });
-            };
-            [self.navigationController pushViewController:gestureVc animated:NO];
-        }];
-        [alertVc addAction:cancel];
-        [alertVc addAction:set];
-        [self presentViewController:alertVc animated:YES
-                         completion:nil];
+        }else {
+            UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"提示" message:@"暂未设置手势密码，是否前往设置？" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                [ud setObject:@"1" forKey:@"isHaveOperateSet"];
+                AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+                delegate.isActiving = YES;
+                FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:NO];
+                vc.modalPresentationStyle = 0;
+                [weakSelf.navigationController pushViewController:vc animated:YES];
+            }];
+            UIAlertAction *set = [UIAlertAction actionWithTitle:@"设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [ud setObject:@"1" forKey:@"isHaveOperateSet"];
+                GestureViewController *gestureVc = [[GestureViewController alloc] init];
+                gestureVc.type = GestureViewControllerTypeSetting;
+                gestureVc.popBlock = ^{
+                    dispatch_sync_on_main_queue(^{
+                        AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+                        delegate.isActiving = YES;
+                        FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:NO];
+                        vc.modalPresentationStyle = 0;
+                        [weakSelf.navigationController pushViewController:vc animated:YES];
+                    });
+                };
+                [self.navigationController pushViewController:gestureVc animated:NO];
+            }];
+            [alertVc addAction:cancel];
+            [alertVc addAction:set];
+            [self presentViewController:alertVc animated:YES
+                             completion:nil];
+        }
+        
     }
 }
 
