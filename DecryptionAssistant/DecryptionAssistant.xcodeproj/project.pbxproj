@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		075148F8F1BB5AFC9707C444 /* libPods-DecryptionAssistant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE48145F010DD333D6ADA78 /* libPods-DecryptionAssistant.a */; };
+		184D319825A2BC93004B1E82 /* 测试文档5.docx in Resources */ = {isa = PBXBuildFile; fileRef = 184D319725A2BC93004B1E82 /* 测试文档5.docx */; };
 		8E0CF24D24471B4800B2F676 /* safemail_Details_fujian0696@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24B24471B4700B2F676 /* safemail_Details_fujian0696@2x.png */; };
 		8E0CF24E24471B4800B2F676 /* safemail_Details_fujian0696@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24C24471B4800B2F676 /* safemail_Details_fujian0696@3x.png */; };
 		8E0CF25124471B9700B2F676 /* safemail_Details_fujian0596@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24F24471B9600B2F676 /* safemail_Details_fujian0596@3x.png */; };
@@ -798,6 +799,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		184D319725A2BC93004B1E82 /* 测试文档5.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "测试文档5.docx"; sourceTree = "<group>"; };
 		3A3ADC02A63F9C149FC12E18 /* Pods-DecryptionAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecryptionAssistant.debug.xcconfig"; path = "Target Support Files/Pods-DecryptionAssistant/Pods-DecryptionAssistant.debug.xcconfig"; sourceTree = "<group>"; };
 		8E0CF24B24471B4700B2F676 /* safemail_Details_fujian0696@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safemail_Details_fujian0696@2x.png"; sourceTree = "<group>"; };
 		8E0CF24C24471B4800B2F676 /* safemail_Details_fujian0696@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safemail_Details_fujian0696@3x.png"; sourceTree = "<group>"; };
@@ -2490,6 +2492,7 @@
 		8ECB598E24205EF60021CE39 /* File */ = {
 			isa = PBXGroup;
 			children = (
+				184D319725A2BC93004B1E82 /* 测试文档5.docx */,
 				8ECB598F24205EF60021CE39 /* 主动加密.txt */,
 				8ECB599024205EF60021CE39 /* 研发部绝密.txt */,
 				8ECB599124205EF60021CE39 /* 商务部加密.txt */,
@@ -4267,6 +4270,7 @@
 				8ECB5970241F74B70021CE39 /* flash@2x.png in Resources */,
 				8E0CF24E24471B4800B2F676 /* safemail_Details_fujian0696@3x.png in Resources */,
 				8ECB599824205EF60021CE39 /* 研发部绝密.txt in Resources */,
+				184D319825A2BC93004B1E82 /* 测试文档5.docx in Resources */,
 				8E0CF26B2447FBDB00B2F676 /* Default-667h@2x.png in Resources */,
 				8ECB596E241F74B70021CE39 /* bt@2x.png in Resources */,
 				8E0CF25224471B9700B2F676 /* safemail_Details_fujian0596@2x.png in Resources */,

@@ -16,6 +16,8 @@
 @property (nonatomic,strong) NSString *content;
 @property (nonatomic,strong) NSString *filePath;
 @property (nonatomic,strong) NSString *titleString;
+@property (nonatomic,assign) BOOL isEdit;
+@property (nonatomic,strong) UIDocumentInteractionController *documentInteractionController;
 
 @end
 
@@ -57,6 +59,9 @@ static NSDictionary* mimeTypes = nil;
     [self.leftButton setTitle:@"" forState:UIControlStateNormal];
     [self.leftButton setImage:[UIImage imageNamed:@"safemail_top_back"] forState:UIControlStateNormal];
     [self.navigationView addSubview:self.leftButton];
+    
+    [self.rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    [self.navigationView addSubview:self.rightBtn];
     
     self.navigationView.backgroundColor = RGB(0, 164, 102);
     
@@ -243,6 +248,37 @@ static NSDictionary* mimeTypes = nil;
         }
     }
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)rightButtonClick {
+    NSLog(@"path=%@",self.filePath);
+    self.isEdit = !self.isEdit;
+//    NSString *rightTitleString = @"编辑";
+//    if (self.isEdit) {
+//        rightTitleString = @"保存";
+//    }else {
+//        //编辑
+//    }
+//
+//    [self.rightBtn setTitle:rightTitleString forState:UIControlStateNormal];
+    
+    [self exportFileToOtherApp:self.filePath];
+    
+}
+
+- (void)exportFileToOtherApp:(NSString*)filePath
+
+{
+    NSURL *url = [NSURL fileURLWithPath:filePath];
+
+    self.documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:url];
+
+    [self.documentInteractionController setDelegate:self];
+
+    CGRect rect = CGRectMake(self.view.bounds.size.width, 40.0, 0.0, 0.0);
+
+    [self.documentInteractionController presentOpenInMenuFromRect:rect inView:self.view animated:YES];
+
 }
 
 // 页面加载完成
