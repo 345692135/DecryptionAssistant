@@ -191,9 +191,15 @@ static NSDictionary* mimeTypes = nil;
 -(void)loadDataWithFilePath:(NSString*)filePath {
         // 2.创建url（注意替换为实际路径)
     @try {
-        NSURL *url = [NSURL fileURLWithPath:filePath];
-        // 3.加载文件
-        [self.webView loadFileURL:url allowingReadAccessToURL:url];
+        if ([[filePath pathExtension].lowercaseString isEqualToString:@"txt"] || [[filePath pathExtension].lowercaseString isEqualToString:@"text"]) {
+            NSString *message = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];;
+            [self loadDataWithMessage:message];
+        }else {
+            NSURL *url = [NSURL fileURLWithPath:filePath];
+            // 3.加载文件
+            [self.webView loadFileURL:url allowingReadAccessToURL:url];
+        }
+        
     } @catch (NSException *exception) {
         
     } @finally {
@@ -273,7 +279,7 @@ static NSDictionary* mimeTypes = nil;
 
     self.documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:url];
 
-    [self.documentInteractionController setDelegate:self];
+//    [self.documentInteractionController setDelegate:self];
 
     CGRect rect = CGRectMake(self.view.bounds.size.width, 40.0, 0.0, 0.0);
 
