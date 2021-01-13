@@ -257,6 +257,7 @@ static NSDictionary* mimeTypes = nil;
 }
 
 -(void)rightButtonClick {
+    /*
     NSLog(@"path=%@",self.filePath);
     self.isEdit = !self.isEdit;
 //    NSString *rightTitleString = @"编辑";
@@ -269,6 +270,10 @@ static NSDictionary* mimeTypes = nil;
 //    [self.rightBtn setTitle:rightTitleString forState:UIControlStateNormal];
     
     [self exportFileToOtherApp:self.filePath];
+     */
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"testDemo" ofType:@"html" inDirectory:@"exportExcel-master"];
+    [self loadDataWithFilePath:filePath];
     
 }
 

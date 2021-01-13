@@ -236,6 +236,7 @@
 -(void)initEvent {
     WS(weakSelf);
     [self.loginButton jk_addTapActionWithBlock:^(UIGestureRecognizer *gestureRecoginzer) {
+        /*
         if ([weakSelf.emailField.text isEqualToString:@""] || [weakSelf.passField.text isEqualToString:@""] || [weakSelf.serverField.text isEqualToString:@""]) {
             [ToastManager showMsg:@"数据不能为空"];
             return;
@@ -245,6 +246,12 @@
 //            return;
 //        }
         [weakSelf loginClick];
+         */
+        AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        delegate.isActiving = YES;
+        FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:NO];
+        vc.modalPresentationStyle = 0;
+        [weakSelf.navigationController pushViewController:vc animated:YES];
     }];
     
     [self.button_eye jk_addTapActionWithBlock:^(UIGestureRecognizer *gestureRecoginzer) {
@@ -566,7 +573,7 @@
         _emailField.clearsOnBeginEditing = NO;
         _emailField.clearButtonMode = UITextFieldViewModeWhileEditing;
 //        [_emailField addTarget:self action:@selector(onTextFieldContentChanged:) forControlEvents:UIControlEventEditingChanged];
-        _emailField.text = @"phone01";//@"lingsian@wondersoft.cn";//
+        _emailField.text = @"saien";//@"lingsian@wondersoft.cn";//@"phone01";//
     }
     return _emailField;
 }
@@ -584,7 +591,7 @@
 //        _passField.delegate = self;
         _passField.clearsOnBeginEditing = NO;
         _passField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _passField.text = @"abcd@1234";//@"123456789";//
+        _passField.text = @"123456789";//@"abcd@1234";//
     }
     return _passField;
 }
@@ -601,7 +608,7 @@
 //        __serverField.delegate = self;
         _serverField.clearsOnBeginEditing = NO;
         _serverField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _serverField.text = @"39.105.206.232";//@"210.12.140.220";//
+        _serverField.text = @"210.12.140.220";//@"39.105.206.232";//
     }
     return _serverField;
 }
