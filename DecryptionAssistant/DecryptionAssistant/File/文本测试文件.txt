@@ -1,0 +1,20 @@
+区块密邮
+CGEncryption类里面添加了
+- (NSData*)encryptWithString:(NSString*)string
+   RSAPublicKey:(NSString*)RSAPublicKey
+  RSAPrivateKey:(NSString*)RSAPrivateKey
+userName:(NSString*)username//
+           from:(NSString*)from
+             to:(NSArray*)to
+             cc:(NSArray*)cc
+           time:(NSString*)time
+          msgID:(NSString *)headerrandom32
+       random32:(NSString *)timerandom32
+         ifFire:(BOOL)ifFire
+ifForbidForward:(BOOL)ifForbidForward
+   isBlockchain:(BOOL)isBlockchain;方法  具体的加密方法  代码里面有备注
+   
+   
+ CGMessage类的里面 发送邮件方法里面判断了是否为区块密邮,如果是走对应的判断方法  具体的判断处有备注
+
+钱包功能 : 登录的时候选择是否为区密邮  如果没选择区块密邮 走原来的逻辑  如果选择了  判断是否绑定了区块密邮 如果绑定了 直接进入主页面  没有绑定  去H5绑定钱包 绑定的钱包会把KEY存入本地 没有绑定钱包的  进行绑定生成 因为后面再发邮件的时候会计算区块链交易金额什么的 

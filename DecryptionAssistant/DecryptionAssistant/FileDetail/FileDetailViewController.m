@@ -13,6 +13,7 @@
 @interface FileDetailViewController ()<WKNavigationDelegate, WKUIDelegate>
 
 @property(nonatomic, strong) WKWebView *webView;
+@property(nonatomic, strong) UITextView *myTextView;
 @property (nonatomic,strong) NSString *content;
 @property (nonatomic,strong) NSString *filePath;
 @property (nonatomic,strong) NSString *titleString;
@@ -188,12 +189,23 @@ static NSDictionary* mimeTypes = nil;
     return _webView;
 }
 
+-(UITextView*)myTextView {
+    if (!_myTextView) {
+        _myTextView = [UITextView new];
+        _myTextView.frame = CGRectMake(0, kNavigationBarHeight, kScreenWidth, kScreenHeight-kNavigationBarHeight-kTBarBottomHeight);
+        _myTextView.scrollEnabled = YES;
+    }
+    return _myTextView;
+}
+
 -(void)loadDataWithFilePath:(NSString*)filePath {
         // 2.创建url（注意替换为实际路径)
     @try {
         if ([[filePath pathExtension].lowercaseString isEqualToString:@"txt"] || [[filePath pathExtension].lowercaseString isEqualToString:@"text"]) {
             NSString *message = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];;
-            [self loadDataWithMessage:message];
+            [self.view addSubview:self.myTextView];
+            self.myTextView.text = message;
+            self.myTextView.editable = NO;
         }else {
             NSURL *url = [NSURL fileURLWithPath:filePath];
             // 3.加载文件
@@ -257,9 +269,9 @@ static NSDictionary* mimeTypes = nil;
 }
 
 -(void)rightButtonClick {
-    /*
+    
     NSLog(@"path=%@",self.filePath);
-    self.isEdit = !self.isEdit;
+//    self.isEdit = !self.isEdit;
 //    NSString *rightTitleString = @"编辑";
 //    if (self.isEdit) {
 //        rightTitleString = @"保存";
@@ -269,11 +281,27 @@ static NSDictionary* mimeTypes = nil;
 //
 //    [self.rightBtn setTitle:rightTitleString forState:UIControlStateNormal];
     
-    [self exportFileToOtherApp:self.filePath];
-     */
-    
+//    [self exportFileToOtherApp:self.filePath];
+     
+    /*
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"testDemo" ofType:@"html" inDirectory:@"exportExcel-master"];
     [self loadDataWithFilePath:filePath];
+     */
+    
+    //txt文本编辑 其他文本类型也可以加进来
+    if ([self.filePath.pathExtension.lowercaseString isEqualToString:@"txt"] || [self.filePath.pathExtension.lowercaseString isEqualToString:@"text"]) {
+        self.isEdit = !self.isEdit;
+        NSString *rightTitleString = @"编辑";
+        if (self.isEdit) {
+            rightTitleString = @"保存";
+        }else {
+            //编辑
+        }
+
+        self.myTextView.editable = self.isEdit;
+        [self.rightBtn setTitle:rightTitleString forState:UIControlStateNormal];
+        
+    }
     
 }
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		075148F8F1BB5AFC9707C444 /* libPods-DecryptionAssistant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE48145F010DD333D6ADA78 /* libPods-DecryptionAssistant.a */; };
 		184D319825A2BC93004B1E82 /* 测试文档5.docx in Resources */ = {isa = PBXBuildFile; fileRef = 184D319725A2BC93004B1E82 /* 测试文档5.docx */; };
+		18E8526B25B128A400059B14 /* 文本测试文件.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18E8526A25B128A400059B14 /* 文本测试文件.txt */; };
 		18F81E3025AE99F600C84422 /* exportExcel-master in Resources */ = {isa = PBXBuildFile; fileRef = 18F81E2F25AE99F600C84422 /* exportExcel-master */; };
 		18FC11E325A6DD1000BD3CBC /* 本周工作安排20210104.docx in Resources */ = {isa = PBXBuildFile; fileRef = 18FC11E225A6DD1000BD3CBC /* 本周工作安排20210104.docx */; };
 		8E0CF24D24471B4800B2F676 /* safemail_Details_fujian0696@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24B24471B4700B2F676 /* safemail_Details_fujian0696@2x.png */; };
@@ -802,6 +803,7 @@
 
 /* Begin PBXFileReference section */
 		184D319725A2BC93004B1E82 /* 测试文档5.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "测试文档5.docx"; sourceTree = "<group>"; };
+		18E8526A25B128A400059B14 /* 文本测试文件.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "文本测试文件.txt"; sourceTree = "<group>"; };
 		18F81E2F25AE99F600C84422 /* exportExcel-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "exportExcel-master"; sourceTree = "<group>"; };
 		18FC11E225A6DD1000BD3CBC /* 本周工作安排20210104.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "本周工作安排20210104.docx"; sourceTree = "<group>"; };
 		3A3ADC02A63F9C149FC12E18 /* Pods-DecryptionAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecryptionAssistant.debug.xcconfig"; path = "Target Support Files/Pods-DecryptionAssistant/Pods-DecryptionAssistant.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2496,6 +2498,7 @@
 		8ECB598E24205EF60021CE39 /* File */ = {
 			isa = PBXGroup;
 			children = (
+				18E8526A25B128A400059B14 /* 文本测试文件.txt */,
 				18F81E2F25AE99F600C84422 /* exportExcel-master */,
 				18FC11E225A6DD1000BD3CBC /* 本周工作安排20210104.docx */,
 				184D319725A2BC93004B1E82 /* 测试文档5.docx */,
@@ -4275,6 +4278,7 @@
 				8ECB5973241F74B70021CE39 /* photo@2x.png in Resources */,
 				8ECB5F402421FFF70021CE39 /* dh4096.pem in Resources */,
 				8ECB5970241F74B70021CE39 /* flash@2x.png in Resources */,
+				18E8526B25B128A400059B14 /* 文本测试文件.txt in Resources */,
 				8E0CF24E24471B4800B2F676 /* safemail_Details_fujian0696@3x.png in Resources */,
 				8ECB599824205EF60021CE39 /* 研发部绝密.txt in Resources */,
 				184D319825A2BC93004B1E82 /* 测试文档5.docx in Resources */,
