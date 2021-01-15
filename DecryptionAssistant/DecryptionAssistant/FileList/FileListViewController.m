@@ -239,7 +239,7 @@
                 [FileManager.shared createDir:recentOpenFile];
                 [FileManager.shared copyFile:filePath toDir:recentOpenFile];
             }
-            [weakSelf pushToFileDetailWithFilePath:decPath title:fileName];
+            [weakSelf pushToFileDetailWithFilePath:decPath originalFilePath:filePath title:fileName];
             
         });
     }];
@@ -251,11 +251,11 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)pushToFileDetailWithFilePath:(NSString*)filePath title:(NSString*)title {
+-(void)pushToFileDetailWithFilePath:(NSString*)filePath originalFilePath:(NSString*)originalFilePath title:(NSString*)title {
     if ([filePath.pathExtension.lowercaseString isEqualToString:@"zip"] || [filePath .pathExtension.lowercaseString isEqualToString:@"rar"] || [filePath.pathExtension.lowercaseString isEqualToString:@"7z"]) {
         [self handleSourceWithFileName:title];
     }else {
-        FileDetailViewController *vc = [[FileDetailViewController alloc] initWithFilePath:filePath title:title];
+        FileDetailViewController *vc = [[FileDetailViewController alloc] initWithFilePath:filePath originalFilePath:originalFilePath title:title];
         vc.modalPresentationStyle = 0;
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -278,7 +278,7 @@
     
     [self.baseViewModel decryptionFileWithFilePath:filePath completion:^(NSString * _Nonnull decPath) {
         dispatch_async_on_main_queue(^{
-            [weakSelf pushToFileDetailWithFilePath:decPath title:fileName];
+            [weakSelf pushToFileDetailWithFilePath:decPath originalFilePath:filePath title:fileName];
             
         });
     }];

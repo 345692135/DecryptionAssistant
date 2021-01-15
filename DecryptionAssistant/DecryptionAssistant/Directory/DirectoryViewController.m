@@ -128,7 +128,7 @@
     NSString *filePath = theFilePath;
     [self.baseViewModel decryptionFileWithFilePath:filePath completion:^(NSString * _Nonnull decPath) {
         dispatch_async_on_main_queue(^{
-            [weakSelf pushToFileDetailWithFilePath:decPath title:fileName];
+            [weakSelf pushToFileDetailWithFilePath:decPath originalFilePath:filePath title:fileName];
             
         });
     }];
@@ -140,8 +140,8 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)pushToFileDetailWithFilePath:(NSString*)filePath title:(NSString*)title {
-    FileDetailViewController *vc = [[FileDetailViewController alloc] initWithFilePath:filePath title:title];
+-(void)pushToFileDetailWithFilePath:(NSString*)filePath originalFilePath:(NSString*)originalFilePath title:(NSString*)title {
+    FileDetailViewController *vc = [[FileDetailViewController alloc] initWithFilePath:filePath originalFilePath:originalFilePath title:title];
     vc.modalPresentationStyle = 0;
     [self.navigationController pushViewController:vc animated:YES];
 }

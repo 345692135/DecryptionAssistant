@@ -16,6 +16,7 @@
 @property(nonatomic, strong) UITextView *myTextView;
 @property (nonatomic,strong) NSString *content;
 @property (nonatomic,strong) NSString *filePath;
+@property (nonatomic,strong) NSString *originalFilePath;
 @property (nonatomic,strong) NSString *titleString;
 @property (nonatomic,assign) BOOL isEdit;
 @property (nonatomic,strong) UIDocumentInteractionController *documentInteractionController;
@@ -46,10 +47,11 @@ static NSDictionary* mimeTypes = nil;
     return self;
 }
 
--(instancetype)initWithFilePath:(NSString*)filePath title:(NSString*)title {
+-(instancetype)initWithFilePath:(NSString*)filePath originalFilePath:(NSString*)originalFilePath title:(NSString*)title {
     self = [super init];
     if (self) {
         self.filePath = filePath;
+        self.originalFilePath = originalFilePath;
         self.titleString = title;
         [self loadDataWithFilePath:filePath];
     }
@@ -295,7 +297,13 @@ static NSDictionary* mimeTypes = nil;
         if (self.isEdit) {
             rightTitleString = @"保存";
         }else {
-            //编辑
+            //保存内容
+            [self.myTextView.text writeToFile:self.filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//            if (self.originalFilePath) {
+//                //未加密的文件保存
+//                [self.myTextView.text writeToFile:self.originalFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//            }
+            
         }
 
         self.myTextView.editable = self.isEdit;
