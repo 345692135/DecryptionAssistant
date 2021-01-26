@@ -9,9 +9,11 @@
 #import "FileDetailViewController.h"
 #import <WebKit/WebKit.h>
 #import "FileManager.h"
-#import <QuickExcelKit.h>
+#import "LAWExcelTool.h"
+#include <xlsxwriter/xlsxwriter.h>
+#import "ZContent.h"
 
-@interface FileDetailViewController ()<WKNavigationDelegate, WKUIDelegate>
+@interface FileDetailViewController ()<WKNavigationDelegate, WKUIDelegate,LAWExcelParserDelegate>
 
 @property(nonatomic, strong) WKWebView *webView;
 @property(nonatomic, strong) UITextView *myTextView;
@@ -21,8 +23,13 @@
 @property (nonatomic,strong) NSString *titleString;
 @property (nonatomic,assign) BOOL isEdit;
 @property (nonatomic,strong) UIDocumentInteractionController *documentInteractionController;
+@property (nonatomic,strong) NSMutableArray *datas;
 
 @end
+
+static lxw_workbook  *workbook;
+static lxw_worksheet *worksheet;
+static lxw_format *contentformat;// 内容的样式
 
 @implementation FileDetailViewController
 
@@ -271,14 +278,48 @@ static NSDictionary* mimeTypes = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+#pragma mark -编辑按钮
+
 -(void)rightButtonClick {
-    [QuickExcelReaderUtil readExcelWithPath:self.filePath complete:^(NSDictionary<NSString *,NSArray<ZContent *> *> *results, NSError *error) {
-        if (error == nil) {
-            NSLog(@"%@", results);
+    //txt文本编辑 其他文本类型也可以加进来
+    if ([self.filePath.pathExtension.lowercaseString isEqualToString:@"txt"] || [self.filePath.pathExtension.lowercaseString isEqualToString:@"text"]) {
+        self.isEdit = !self.isEdit;
+        NSString *rightTitleString = @"编辑";
+        if (self.isEdit) {
+            rightTitleString = @"保存";
         }else {
-            NSLog(@"%@", error);
+            //保存内容
+            [self.myTextView.text writeToFile:self.filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//            if (self.originalFilePath) {
+//                //未加密的文件保存
+//                [self.myTextView.text writeToFile:self.originalFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//            }
+            
         }
-    }];
+
+        self.myTextView.editable = self.isEdit;
+        [self.rightBtn setTitle:rightTitleString forState:UIControlStateNormal];
+        
+    }else if ([self.filePath.pathExtension.lowercaseString isEqualToString:@"xlsx"] || [self.filePath.pathExtension.lowercaseString isEqualToString:@"xls"]) {
+        self.isEdit = !self.isEdit;
+        NSString *rightTitleString = @"编辑";
+        if (self.isEdit) {
+            rightTitleString = @"保存";
+            //进入编辑状态
+            [LAWExcelTool shareInstance].delegate = self;
+            [[LAWExcelTool shareInstance] parserExcelWithPath:self.filePath];
+            
+        }else {
+            //结束编辑状态，保存内容
+            [self createXlsxFileWithDatas:self.datas];
+            //刷新界面
+            [self.webView reload];
+        }
+        
+        [self.rightBtn setTitle:rightTitleString forState:UIControlStateNormal];
+        
+    }
     
 //    NSLog(@"path=%@",self.filePath);
 //    self.isEdit = !self.isEdit;
@@ -299,28 +340,59 @@ static NSDictionary* mimeTypes = nil;
 //    [self loadDataWithFilePath:filePath];
      
     
-    /*文本类型编辑
-    //txt文本编辑 其他文本类型也可以加进来
-    if ([self.filePath.pathExtension.lowercaseString isEqualToString:@"txt"] || [self.filePath.pathExtension.lowercaseString isEqualToString:@"text"]) {
-        self.isEdit = !self.isEdit;
-        NSString *rightTitleString = @"编辑";
-        if (self.isEdit) {
-            rightTitleString = @"保存";
-        }else {
-            //保存内容
-            [self.myTextView.text writeToFile:self.filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-//            if (self.originalFilePath) {
-//                //未加密的文件保存
-//                [self.myTextView.text writeToFile:self.originalFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-//            }
-            
-        }
+    
+}
 
-        self.myTextView.editable = self.isEdit;
-        [self.rightBtn setTitle:rightTitleString forState:UIControlStateNormal];
+-(void)createXlsxFileWithDatas:(NSArray*)datas {
+//    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) objectAtIndex:0];
+//    NSString *filename = [documentPath stringByAppendingPathComponent:@"c_demo.xlsx"];
+    workbook  = workbook_new([self.filePath UTF8String]);// 创建新xlsx文件，路径需要转成c字符串
+    worksheet = workbook_add_worksheet(workbook, [@"Sheet1" UTF8String]);// 创建sheet
+    [self setupFormat];
+    
+    for (int i = 0; i < datas.count; i++) {
+        ZContent *content = datas[i];
+        NSString *keyName = content.keyName;
+        NSString *cols = [keyName substringToIndex:1];
+        NSString *rows = [keyName substringFromIndex:1];
+        int col = 0;
+        int row = 0;
+        if ([cols isEqualToString:@"A"]) {
+            col = 0;
+        }else if ([cols isEqualToString:@"B"]) {
+            col = 1;
+        }else if ([cols isEqualToString:@"C"]) {
+            col = 2;
+        }else if ([cols isEqualToString:@"D"]) {
+            col = 3;
+        }
+        
+        if ([rows isEqualToString:@"1"]) {
+            row = 0;
+        }else if ([rows isEqualToString:@"2"]) {
+            row = 1;
+        }else if ([rows isEqualToString:@"3"]) {
+            row = 2;
+        }else if ([rows isEqualToString:@"4"]) {
+            row = 3;
+        }
+        NSString *contentString = [NSString stringWithFormat:@"%@a",content.value];
+        worksheet_write_string(worksheet, row, col, [contentString UTF8String], contentformat);
         
     }
-     */
+    
+    workbook_close(workbook);
+    
+}
+
+#pragma mark -单元格样式
+-(void)setupFormat{
+    
+    contentformat = workbook_add_format(workbook);
+    format_set_font_size(contentformat, 10);
+    format_set_left(contentformat, LXW_BORDER_THIN);// 左边框：双线边框
+    format_set_bottom(contentformat, LXW_BORDER_THIN);// 下边框：双线边框
+    format_set_right(contentformat, LXW_BORDER_THIN);// 右边框：双线边框
     
 }
 
@@ -464,6 +536,27 @@ static NSDictionary* mimeTypes = nil;
     }
     
     return mimeType;
+}
+
+
+#pragma mark -懒加载
+
+-(NSMutableArray*)datas {
+    if (!_datas) {
+        _datas = [NSMutableArray new];
+    }
+    return _datas;
+}
+
+#pragma mark -LAWExcelParserDelegate
+
+- (void)parser:(LAWExcelTool *)parser success:(id)responseObj
+{
+    NSLog(@"%@",responseObj);
+    if ([responseObj isKindOfClass:[NSArray class]]) {
+        [self.datas removeAllObjects];
+        [self.datas addObjectsFromArray:responseObj];
+    }
 }
 
 @end

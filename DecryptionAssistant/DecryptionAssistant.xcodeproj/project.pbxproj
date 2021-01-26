@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		075148F8F1BB5AFC9707C444 /* libPods-DecryptionAssistant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE48145F010DD333D6ADA78 /* libPods-DecryptionAssistant.a */; };
 		181728E325BE60C3006531B6 /* 商务密邮安元版ios.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 181728E225BE60C3006531B6 /* 商务密邮安元版ios.xlsx */; };
-		1817299725BFB259006531B6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1817299425BFB258006531B6 /* LICENSE */; };
-		181729A425BFB32A006531B6 /* ExcelParser.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 181729A325BFB32A006531B6 /* ExcelParser.podspec */; };
+		18172AB225BFC037006531B6 /* libiconv.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18172AB125BFC037006531B6 /* libiconv.2.tbd */; };
+		18172AB525BFC044006531B6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18172AB425BFC044006531B6 /* CoreGraphics.framework */; };
+		18172AB725BFC04F006531B6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18172AB625BFC04F006531B6 /* UIKit.framework */; };
 		184D319825A2BC93004B1E82 /* 测试文档5.docx in Resources */ = {isa = PBXBuildFile; fileRef = 184D319725A2BC93004B1E82 /* 测试文档5.docx */; };
 		187782EB25B533DF007F60FB /* testDemo.html in Resources */ = {isa = PBXBuildFile; fileRef = 187782E625B533DE007F60FB /* testDemo.html */; };
 		187782EC25B533DF007F60FB /* xlsx.core.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 187782E725B533DE007F60FB /* xlsx.core.min.js */; };
@@ -809,8 +810,9 @@
 
 /* Begin PBXFileReference section */
 		181728E225BE60C3006531B6 /* 商务密邮安元版ios.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "商务密邮安元版ios.xlsx"; sourceTree = "<group>"; };
-		1817299425BFB258006531B6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
-		181729A325BFB32A006531B6 /* ExcelParser.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExcelParser.podspec; sourceTree = SOURCE_ROOT; };
+		18172AB125BFC037006531B6 /* libiconv.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.tbd; path = usr/lib/libiconv.2.tbd; sourceTree = SDKROOT; };
+		18172AB425BFC044006531B6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		18172AB625BFC04F006531B6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		184D319725A2BC93004B1E82 /* 测试文档5.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "测试文档5.docx"; sourceTree = "<group>"; };
 		187782E625B533DE007F60FB /* testDemo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = testDemo.html; sourceTree = "<group>"; };
 		187782E725B533DE007F60FB /* xlsx.core.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = xlsx.core.min.js; sourceTree = "<group>"; };
@@ -2004,6 +2006,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18172AB725BFC04F006531B6 /* UIKit.framework in Frameworks */,
+				18172AB525BFC044006531B6 /* CoreGraphics.framework in Frameworks */,
+				18172AB225BFC037006531B6 /* libiconv.2.tbd in Frameworks */,
 				8ECB594E241F70F80021CE39 /* libxml2.tbd in Frameworks */,
 				8ECB5917241F6B280021CE39 /* libz.1.2.5.tbd in Frameworks */,
 				8ECB5915241F6B210021CE39 /* libz.tbd in Frameworks */,
@@ -2014,15 +2019,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1817299225BFB22F006531B6 /* Podspec Metadata */ = {
-			isa = PBXGroup;
-			children = (
-				181729A325BFB32A006531B6 /* ExcelParser.podspec */,
-				1817299425BFB258006531B6 /* LICENSE */,
-			);
-			path = "Podspec Metadata";
-			sourceTree = "<group>";
-		};
 		187782E525B533DE007F60FB /* exportExcel-master */ = {
 			isa = PBXGroup;
 			children = (
@@ -2057,7 +2053,6 @@
 		8E487839241F2B6900DA9963 = {
 			isa = PBXGroup;
 			children = (
-				1817299225BFB22F006531B6 /* Podspec Metadata */,
 				8ECB59BB2421FFF20021CE39 /* MISP */,
 				8E487844241F2B6900DA9963 /* DecryptionAssistant */,
 				8E487843241F2B6900DA9963 /* Products */,
@@ -4209,6 +4204,9 @@
 		F9C8D20B9B7C6C7BD14CC027 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18172AB625BFC04F006531B6 /* UIKit.framework */,
+				18172AB425BFC044006531B6 /* CoreGraphics.framework */,
+				18172AB125BFC037006531B6 /* libiconv.2.tbd */,
 				8ECB594D241F70F80021CE39 /* libxml2.tbd */,
 				8ECB5916241F6B280021CE39 /* libz.1.2.5.tbd */,
 				8ECB5914241F6B210021CE39 /* libz.tbd */,
@@ -4288,7 +4286,6 @@
 				8ECB5F452421FFF70021CE39 /* dh192.pem in Resources */,
 				8E487852241F2B6B00DA9963 /* Assets.xcassets in Resources */,
 				8ECB599D24205EF60021CE39 /* 研发部机密.txt in Resources */,
-				181729A425BFB32A006531B6 /* ExcelParser.podspec in Resources */,
 				8ECB5974241F74B70021CE39 /* excel@2x.png in Resources */,
 				8ECB5979241F74B70021CE39 /* mv@2x.png in Resources */,
 				8ECB597C241F74B70021CE39 /* ai@2x.png in Resources */,
@@ -4329,7 +4326,6 @@
 				8ECB5977241F74B70021CE39 /* ppt@2x.png in Resources */,
 				18FC11E325A6DD1000BD3CBC /* 本周工作安排20210104.docx in Resources */,
 				8ECB596C241F74B70021CE39 /* txt@2x.png in Resources */,
-				1817299725BFB259006531B6 /* LICENSE in Resources */,
 				8ECB599B24205EF60021CE39 /* encvlog.txt in Resources */,
 				8ECB5978241F74B70021CE39 /* word@2x.png in Resources */,
 				8ECB5969241F74B70021CE39 /* zip@2x.png in Resources */,

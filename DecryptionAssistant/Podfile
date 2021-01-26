@@ -42,9 +42,9 @@ pod 'GTMOAuth2'
 pod 'YZAuthID'
 pod 'AvoidCrash'
 pod 'WebViewJavascriptBridge', '~> 6.0'
-pod 'QuickExcelKit'
+#pod 'QuickExcelKit'
 pod 'libxlsxwriter'
-pod 'ExcelParser', :path => '/Users/apple/project/DecryptionAssistant/DecryptionAssistant/'
+pod 'ExcelParser' #pod 'ExcelParser', '0.0.1'
 
 end
 
