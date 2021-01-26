@@ -9,6 +9,7 @@
 #import "FileDetailViewController.h"
 #import <WebKit/WebKit.h>
 #import "FileManager.h"
+#import <QuickExcelKit.h>
 
 @interface FileDetailViewController ()<WKNavigationDelegate, WKUIDelegate>
 
@@ -271,8 +272,15 @@ static NSDictionary* mimeTypes = nil;
 }
 
 -(void)rightButtonClick {
+    [QuickExcelReaderUtil readExcelWithPath:self.filePath complete:^(NSDictionary<NSString *,NSArray<ZContent *> *> *results, NSError *error) {
+        if (error == nil) {
+            NSLog(@"%@", results);
+        }else {
+            NSLog(@"%@", error);
+        }
+    }];
     
-    NSLog(@"path=%@",self.filePath);
+//    NSLog(@"path=%@",self.filePath);
 //    self.isEdit = !self.isEdit;
 //    NSString *rightTitleString = @"编辑";
 //    if (self.isEdit) {
@@ -285,11 +293,13 @@ static NSDictionary* mimeTypes = nil;
     
 //    [self exportFileToOtherApp:self.filePath];
      
-    /*
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"testDemo" ofType:@"html" inDirectory:@"exportExcel-master"];
-    [self loadDataWithFilePath:filePath];
-     */
     
+    //excel编辑
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"testDemo" ofType:@"html"];
+//    [self loadDataWithFilePath:filePath];
+     
+    
+    /*文本类型编辑
     //txt文本编辑 其他文本类型也可以加进来
     if ([self.filePath.pathExtension.lowercaseString isEqualToString:@"txt"] || [self.filePath.pathExtension.lowercaseString isEqualToString:@"text"]) {
         self.isEdit = !self.isEdit;
@@ -310,6 +320,7 @@ static NSDictionary* mimeTypes = nil;
         [self.rightBtn setTitle:rightTitleString forState:UIControlStateNormal];
         
     }
+     */
     
 }
 

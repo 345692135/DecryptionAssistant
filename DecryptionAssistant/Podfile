@@ -41,6 +41,10 @@ pod 'GoogleAPIClient/Gmail'
 pod 'GTMOAuth2'
 pod 'YZAuthID'
 pod 'AvoidCrash'
+pod 'WebViewJavascriptBridge', '~> 6.0'
+pod 'QuickExcelKit'
+pod 'libxlsxwriter'
+pod 'ExcelParser', :path => '/Users/apple/project/DecryptionAssistant/DecryptionAssistant/'
 
 end
 

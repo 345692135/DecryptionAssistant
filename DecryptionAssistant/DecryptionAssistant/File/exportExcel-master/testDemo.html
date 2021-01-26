@@ -62,7 +62,7 @@
 		<h2>读取excel（仅读取第一个sheet）</h2>
 		<div class="mt-sm">
 			<input type="file" id="file" style="display:none;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
-			<a href="javascript:selectFile()">加载本地excel文件</a> 
+			<button onclick="selectFile()">加载本地excel文件</button>
 		</div>
 
 		<div class="addDiv">
@@ -91,25 +91,18 @@
 	<script type="text/javascript">
 
 	function selectFile() {
-		document.getElementById('file').click();
+		// File f = new new File("./exportExcel-master/test.xlsx");
+		var fso, f1, ts;
+		var   ForReading = 1 ;
+		fso = document.implementation.createDocument("", "", null); 
+		f1 = fso.GetFile("./exportExcel-master/test.xlsx");
+		f = fso . OpenTextFile(path ,  ForReading);
+		// //	读取本地excel文件
+		// readWorkbookFromLocalFile(f1, function(workbook) {
+		// 	readWorkbook(workbook);
+		// }
+
 	}
-
-	$(function() {
-		document.getElementById('file').addEventListener('change', function(e) {
-			var files = e.target.files;
-			if(files.length == 0) return;
-			var f = files[0];
-			if(!/\.xlsx$/g.test(f.name)) {
-				alert('仅支持读取xlsx格式！');
-				return;
-			}
-			//	读取本地excel文件
-			readWorkbookFromLocalFile(f, function(workbook) {
-				readWorkbook(workbook);
-			});
-
-		});
-	});
 
 	// 读取本地excel文件
 	function readWorkbookFromLocalFile(file, callback) {
@@ -178,7 +171,7 @@
 		rows.forEach(function(row, idx) {
 			var columns = row.split(',');
 			columns.unshift(idx+1); // 添加行索引
-			if(idx == 0) { // 添加列索引
+			if(idx == 0) { // 添加列索引     50200
 				html += '<tr>';
 				for(var i=0; i<columns.length; i++) {
 					html += '<th>' + columns[i] + '</th>';
@@ -354,7 +347,7 @@
 		})
 		//	删除数组中的第一个
 		contentArr.shift();
-		addRow('edit', contentArr, id);
+        addRow('edit', contentArr, id);
 
 	}
 
@@ -404,7 +397,7 @@
 	function table2csv(table) {
 		var csv = [];
 		$(table).find('tr').each(function() {
-			var temp = [];	
+			var temp = [];
 			$(this).find('td').each(function() {
 				temp.push($(this).html());
 			})

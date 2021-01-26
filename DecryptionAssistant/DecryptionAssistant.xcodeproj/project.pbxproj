@@ -8,9 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		075148F8F1BB5AFC9707C444 /* libPods-DecryptionAssistant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE48145F010DD333D6ADA78 /* libPods-DecryptionAssistant.a */; };
+		181728E325BE60C3006531B6 /* 商务密邮安元版ios.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 181728E225BE60C3006531B6 /* 商务密邮安元版ios.xlsx */; };
+		1817299725BFB259006531B6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1817299425BFB258006531B6 /* LICENSE */; };
+		181729A425BFB32A006531B6 /* ExcelParser.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 181729A325BFB32A006531B6 /* ExcelParser.podspec */; };
 		184D319825A2BC93004B1E82 /* 测试文档5.docx in Resources */ = {isa = PBXBuildFile; fileRef = 184D319725A2BC93004B1E82 /* 测试文档5.docx */; };
+		187782EB25B533DF007F60FB /* testDemo.html in Resources */ = {isa = PBXBuildFile; fileRef = 187782E625B533DE007F60FB /* testDemo.html */; };
+		187782EC25B533DF007F60FB /* xlsx.core.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 187782E725B533DE007F60FB /* xlsx.core.min.js */; };
+		187782EE25B533DF007F60FB /* test.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 187782E925B533DE007F60FB /* test.xlsx */; };
+		187782EF25B533DF007F60FB /* jquery-1.4.4.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 187782EA25B533DE007F60FB /* jquery-1.4.4.min.js */; };
 		18E8526B25B128A400059B14 /* 文本测试文件.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18E8526A25B128A400059B14 /* 文本测试文件.txt */; };
-		18F81E3025AE99F600C84422 /* exportExcel-master in Resources */ = {isa = PBXBuildFile; fileRef = 18F81E2F25AE99F600C84422 /* exportExcel-master */; };
 		18FC11E325A6DD1000BD3CBC /* 本周工作安排20210104.docx in Resources */ = {isa = PBXBuildFile; fileRef = 18FC11E225A6DD1000BD3CBC /* 本周工作安排20210104.docx */; };
 		8E0CF24D24471B4800B2F676 /* safemail_Details_fujian0696@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24B24471B4700B2F676 /* safemail_Details_fujian0696@2x.png */; };
 		8E0CF24E24471B4800B2F676 /* safemail_Details_fujian0696@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24C24471B4800B2F676 /* safemail_Details_fujian0696@3x.png */; };
@@ -802,9 +808,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181728E225BE60C3006531B6 /* 商务密邮安元版ios.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "商务密邮安元版ios.xlsx"; sourceTree = "<group>"; };
+		1817299425BFB258006531B6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
+		181729A325BFB32A006531B6 /* ExcelParser.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExcelParser.podspec; sourceTree = SOURCE_ROOT; };
 		184D319725A2BC93004B1E82 /* 测试文档5.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "测试文档5.docx"; sourceTree = "<group>"; };
+		187782E625B533DE007F60FB /* testDemo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = testDemo.html; sourceTree = "<group>"; };
+		187782E725B533DE007F60FB /* xlsx.core.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = xlsx.core.min.js; sourceTree = "<group>"; };
+		187782E925B533DE007F60FB /* test.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.xlsx; sourceTree = "<group>"; };
+		187782EA25B533DE007F60FB /* jquery-1.4.4.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.4.4.min.js"; sourceTree = "<group>"; };
 		18E8526A25B128A400059B14 /* 文本测试文件.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "文本测试文件.txt"; sourceTree = "<group>"; };
-		18F81E2F25AE99F600C84422 /* exportExcel-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "exportExcel-master"; sourceTree = "<group>"; };
 		18FC11E225A6DD1000BD3CBC /* 本周工作安排20210104.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "本周工作安排20210104.docx"; sourceTree = "<group>"; };
 		3A3ADC02A63F9C149FC12E18 /* Pods-DecryptionAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecryptionAssistant.debug.xcconfig"; path = "Target Support Files/Pods-DecryptionAssistant/Pods-DecryptionAssistant.debug.xcconfig"; sourceTree = "<group>"; };
 		8E0CF24B24471B4700B2F676 /* safemail_Details_fujian0696@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safemail_Details_fujian0696@2x.png"; sourceTree = "<group>"; };
@@ -2002,6 +2014,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1817299225BFB22F006531B6 /* Podspec Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				181729A325BFB32A006531B6 /* ExcelParser.podspec */,
+				1817299425BFB258006531B6 /* LICENSE */,
+			);
+			path = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		187782E525B533DE007F60FB /* exportExcel-master */ = {
+			isa = PBXGroup;
+			children = (
+				187782E625B533DE007F60FB /* testDemo.html */,
+				187782E725B533DE007F60FB /* xlsx.core.min.js */,
+				187782E925B533DE007F60FB /* test.xlsx */,
+				187782EA25B533DE007F60FB /* jquery-1.4.4.min.js */,
+			);
+			path = "exportExcel-master";
+			sourceTree = "<group>";
+		};
 		8E0CF2632447FBDB00B2F676 /* launch */ = {
 			isa = PBXGroup;
 			children = (
@@ -2025,6 +2057,7 @@
 		8E487839241F2B6900DA9963 = {
 			isa = PBXGroup;
 			children = (
+				1817299225BFB22F006531B6 /* Podspec Metadata */,
 				8ECB59BB2421FFF20021CE39 /* MISP */,
 				8E487844241F2B6900DA9963 /* DecryptionAssistant */,
 				8E487843241F2B6900DA9963 /* Products */,
@@ -2498,8 +2531,9 @@
 		8ECB598E24205EF60021CE39 /* File */ = {
 			isa = PBXGroup;
 			children = (
+				181728E225BE60C3006531B6 /* 商务密邮安元版ios.xlsx */,
+				187782E525B533DE007F60FB /* exportExcel-master */,
 				18E8526A25B128A400059B14 /* 文本测试文件.txt */,
-				18F81E2F25AE99F600C84422 /* exportExcel-master */,
 				18FC11E225A6DD1000BD3CBC /* 本周工作安排20210104.docx */,
 				184D319725A2BC93004B1E82 /* 测试文档5.docx */,
 				8ECB598F24205EF60021CE39 /* 主动加密.txt */,
@@ -4254,17 +4288,19 @@
 				8ECB5F452421FFF70021CE39 /* dh192.pem in Resources */,
 				8E487852241F2B6B00DA9963 /* Assets.xcassets in Resources */,
 				8ECB599D24205EF60021CE39 /* 研发部机密.txt in Resources */,
+				181729A425BFB32A006531B6 /* ExcelParser.podspec in Resources */,
 				8ECB5974241F74B70021CE39 /* excel@2x.png in Resources */,
 				8ECB5979241F74B70021CE39 /* mv@2x.png in Resources */,
 				8ECB597C241F74B70021CE39 /* ai@2x.png in Resources */,
 				8E0CF24D24471B4800B2F676 /* safemail_Details_fujian0696@2x.png in Resources */,
 				8ECB5976241F74B70021CE39 /* port@2x.png in Resources */,
 				8ECB599C24205EF60021CE39 /* 工程实施部.txt in Resources */,
+				181728E325BE60C3006531B6 /* 商务密邮安元版ios.xlsx in Resources */,
 				8ECB597B241F74B70021CE39 /* unknown@2x.png in Resources */,
 				8ECB596D241F74B70021CE39 /* launch@2x.png in Resources */,
+				187782EF25B533DF007F60FB /* jquery-1.4.4.min.js in Resources */,
 				8ECB597A241F74B70021CE39 /* pdf@2x.png in Resources */,
 				8ECB596B241F74B70021CE39 /* IP@2x.png in Resources */,
-				18F81E3025AE99F600C84422 /* exportExcel-master in Resources */,
 				8ECB5967241F74B70021CE39 /* audio@2x.png in Resources */,
 				8ECB599E24205EF60021CE39 /* 普密1.txt in Resources */,
 				8ECB5F472421FFF70021CE39 /* dh1024.pem in Resources */,
@@ -4273,9 +4309,12 @@
 				8ECB5975241F74B70021CE39 /* login@2x.png in Resources */,
 				8ECB5972241F74B70021CE39 /* file@2x.png in Resources */,
 				8E0CF26A2447FBDB00B2F676 /* Default-568h@2x.png in Resources */,
+				187782EE25B533DF007F60FB /* test.xlsx in Resources */,
 				8ECB5968241F74B70021CE39 /* ps@2x.png in Resources */,
 				8ECB598D241F8A300021CE39 /* safemail_top_back@2x.png in Resources */,
 				8ECB5973241F74B70021CE39 /* photo@2x.png in Resources */,
+				187782EC25B533DF007F60FB /* xlsx.core.min.js in Resources */,
+				187782EB25B533DF007F60FB /* testDemo.html in Resources */,
 				8ECB5F402421FFF70021CE39 /* dh4096.pem in Resources */,
 				8ECB5970241F74B70021CE39 /* flash@2x.png in Resources */,
 				18E8526B25B128A400059B14 /* 文本测试文件.txt in Resources */,
@@ -4290,6 +4329,7 @@
 				8ECB5977241F74B70021CE39 /* ppt@2x.png in Resources */,
 				18FC11E325A6DD1000BD3CBC /* 本周工作安排20210104.docx in Resources */,
 				8ECB596C241F74B70021CE39 /* txt@2x.png in Resources */,
+				1817299725BFB259006531B6 /* LICENSE in Resources */,
 				8ECB599B24205EF60021CE39 /* encvlog.txt in Resources */,
 				8ECB5978241F74B70021CE39 /* word@2x.png in Resources */,
 				8ECB5969241F74B70021CE39 /* zip@2x.png in Resources */,
