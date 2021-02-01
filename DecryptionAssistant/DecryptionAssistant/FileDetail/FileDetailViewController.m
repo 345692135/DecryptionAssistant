@@ -12,6 +12,7 @@
 #import "LAWExcelTool.h"
 #include <xlsxwriter/xlsxwriter.h>
 #import "ZContent.h"
+#import "WebViewJavascriptBridge.h"
 
 @interface FileDetailViewController ()<WKNavigationDelegate, WKUIDelegate,LAWExcelParserDelegate>
 
@@ -24,6 +25,7 @@
 @property (nonatomic,assign) BOOL isEdit;
 @property (nonatomic,strong) UIDocumentInteractionController *documentInteractionController;
 @property (nonatomic,strong) NSMutableArray *datas;
+@property WebViewJavascriptBridge* bridge;
 
 @end
 
@@ -160,6 +162,17 @@ static NSDictionary* mimeTypes = nil;
     @"z": @"application/x-compress",
     @"zip": @"application/x-zip-compressed"
     };
+    
+    _bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView];
+    [_bridge setWebViewDelegate:self];
+    
+//    [_bridge registerHandler:@"getExcel" handler:^(id data, WVJBResponseCallback responseCallback) {
+//        NSLog(@"getExcel called: %@", data);
+//        responseCallback(@"Response from getExcel");
+//    }];
+    
+//    [_bridge callHandler:@"saveExcel" data:self.datas];
+    
 }
 
 -(WKWebView*)webView {
@@ -282,12 +295,14 @@ static NSDictionary* mimeTypes = nil;
 #pragma mark -编辑按钮
 
 -(void)rightButtonClick {
+    
     //txt文本编辑 其他文本类型也可以加进来
     if ([self.filePath.pathExtension.lowercaseString isEqualToString:@"txt"] || [self.filePath.pathExtension.lowercaseString isEqualToString:@"text"]) {
         self.isEdit = !self.isEdit;
         NSString *rightTitleString = @"编辑";
         if (self.isEdit) {
             rightTitleString = @"保存";
+            
         }else {
             //保存内容
             [self.myTextView.text writeToFile:self.filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
@@ -311,13 +326,25 @@ static NSDictionary* mimeTypes = nil;
             [[LAWExcelTool shareInstance] parserExcelWithPath:self.filePath];
             
         }else {
-            //结束编辑状态，保存内容
-            [self createXlsxFileWithDatas:self.datas];
-            //刷新界面
-            [self.webView reload];
+            WS(weakSelf);
+            [_bridge callHandler:@"saveExcel" data:nil responseCallback:^(id response) {
+                NSLog(@"saveExcel responded: %@", response);
+                if ([response isKindOfClass:[NSArray class]]) {
+                    NSArray *array = [NSArray arrayWithArray:response];
+                    dispatch_async_on_main_queue(^{
+                        //结束编辑状态，保存内容
+                        [weakSelf createXlsxFileWithDatas:array];
+                        //刷新界面
+                        [weakSelf.webView reload];
+                    });
+                }
+            }];
+            
         }
         
         [self.rightBtn setTitle:rightTitleString forState:UIControlStateNormal];
+        
+    }else if ([self.filePath.pathExtension.lowercaseString isEqualToString:@"doc"] || [self.filePath.pathExtension.lowercaseString isEqualToString:@"docx"]) {
         
     }
     
@@ -343,6 +370,9 @@ static NSDictionary* mimeTypes = nil;
     
 }
 
+
+/// 保存xls数据
+/// @param datas datas description
 -(void)createXlsxFileWithDatas:(NSArray*)datas {
 //    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) objectAtIndex:0];
 //    NSString *filename = [documentPath stringByAppendingPathComponent:@"c_demo.xlsx"];
@@ -351,32 +381,33 @@ static NSDictionary* mimeTypes = nil;
     [self setupFormat];
     
     for (int i = 0; i < datas.count; i++) {
-        ZContent *content = datas[i];
-        NSString *keyName = content.keyName;
-        NSString *cols = [keyName substringToIndex:1];
-        NSString *rows = [keyName substringFromIndex:1];
-        int col = 0;
-        int row = 0;
-        if ([cols isEqualToString:@"A"]) {
-            col = 0;
-        }else if ([cols isEqualToString:@"B"]) {
-            col = 1;
-        }else if ([cols isEqualToString:@"C"]) {
-            col = 2;
-        }else if ([cols isEqualToString:@"D"]) {
-            col = 3;
+        NSDictionary *content = datas[i];
+        NSString *keyName = content[@"keyName"];
+        if (kIsNULLString(keyName)) {
+            continue;
+        }
+        NSArray *names = [keyName componentsSeparatedByString:@""];
+        
+//        NSString *colString = @"";
+        NSString *rowString = @"";
+        NSMutableArray *cols = [NSMutableArray new];
+        NSMutableArray *rows = [NSMutableArray new];
+        
+        for (NSString *string in names) {
+            if ([self isLetter:string]) {
+                [cols addObject:string];
+            }else {
+                [rows addObject:string];
+            }
         }
         
-        if ([rows isEqualToString:@"1"]) {
-            row = 0;
-        }else if ([rows isEqualToString:@"2"]) {
-            row = 1;
-        }else if ([rows isEqualToString:@"3"]) {
-            row = 2;
-        }else if ([rows isEqualToString:@"4"]) {
-            row = 3;
-        }
-        NSString *contentString = [NSString stringWithFormat:@"%@a",content.value];
+//        colString = [cols componentsJoinedByString:@""];
+        rowString = [rows componentsJoinedByString:@""];
+        
+        int col = [self getColumnNumberWithCols:cols];
+        int row = rowString.intValue-1;
+        
+        NSString *contentString = [NSString stringWithFormat:@"%@",content[@"value"]];
         worksheet_write_string(worksheet, row, col, [contentString UTF8String], contentformat);
         
     }
@@ -385,9 +416,83 @@ static NSDictionary* mimeTypes = nil;
     
 }
 
+-(int)getColumnNumberWithCols:(NSArray*)cols {
+    int col = 0;
+    //AB
+    for (NSInteger i = 0; i < cols.count; i++) {
+        if (i == 0) {
+            col += [self getIndexWithChar:cols[cols.count-1]];
+        }else {
+            int value = powl(26, i);
+            col += value*([self getIndexWithChar:cols[cols.count-1-i]]);
+        }
+    }
+    
+    
+    return col;
+}
+
+-(int)getIndexWithChar:(NSString*)charString {
+    int index = 0;
+    if ([charString.uppercaseString isEqualToString:@"A"]) {
+        index = 0;
+    }else if ([charString.uppercaseString isEqualToString:@"B"]) {
+        index = 1;
+    }else if ([charString.uppercaseString isEqualToString:@"C"]) {
+        index = 2;
+    }else if ([charString.uppercaseString isEqualToString:@"D"]) {
+        index = 3;
+    }else if ([charString.uppercaseString isEqualToString:@"E"]) {
+        index = 4;
+    }else if ([charString.uppercaseString isEqualToString:@"F"]) {
+        index = 5;
+    }else if ([charString.uppercaseString isEqualToString:@"G"]) {
+        index = 6;
+    }else if ([charString.uppercaseString isEqualToString:@"H"]) {
+        index = 7;
+    }else if ([charString.uppercaseString isEqualToString:@"I"]) {
+        index = 8;
+    }else if ([charString.uppercaseString isEqualToString:@"J"]) {
+        index = 9;
+    }else if ([charString.uppercaseString isEqualToString:@"K"]) {
+        index = 10;
+    }else if ([charString.uppercaseString isEqualToString:@"L"]) {
+        index = 11;
+    }else if ([charString.uppercaseString isEqualToString:@"M"]) {
+        index = 12;
+    }else if ([charString.uppercaseString isEqualToString:@"N"]) {
+        index = 13;
+    }else if ([charString.uppercaseString isEqualToString:@"O"]) {
+        index = 14;
+    }else if ([charString.uppercaseString isEqualToString:@"P"]) {
+        index = 15;
+    }else if ([charString.uppercaseString isEqualToString:@"Q"]) {
+        index = 16;
+    }else if ([charString.uppercaseString isEqualToString:@"R"]) {
+        index = 17;
+    }else if ([charString.uppercaseString isEqualToString:@"S"]) {
+        index = 18;
+    }else if ([charString.uppercaseString isEqualToString:@"T"]) {
+        index = 19;
+    }else if ([charString.uppercaseString isEqualToString:@"U"]) {
+        index = 20;
+    }else if ([charString.uppercaseString isEqualToString:@"V"]) {
+        index = 21;
+    }else if ([charString.uppercaseString isEqualToString:@"W"]) {
+        index = 22;
+    }else if ([charString.uppercaseString isEqualToString:@"X"]) {
+        index = 23;
+    }else if ([charString.uppercaseString isEqualToString:@"Y"]) {
+        index = 24;
+    }else if ([charString.uppercaseString isEqualToString:@"Z"]) {
+        index = 25;
+    }
+    return index;
+}
+
 #pragma mark -单元格样式
 -(void)setupFormat{
-    
+    worksheet_set_column(worksheet, 0, 3, 20, NULL);
     contentformat = workbook_add_format(workbook);
     format_set_font_size(contentformat, 10);
     format_set_left(contentformat, LXW_BORDER_THIN);// 左边框：双线边框
@@ -455,6 +560,7 @@ static NSDictionary* mimeTypes = nil;
     
     /** 获取文件类型 */
     int fileType = - 1; //-1：不可用 0：表格类型 1：文档类型 2：演示文稿
+    
     if ([extension isEqualToString:@"xls"]
         || [extension isEqualToString:@"xlsx"]
         || [extension isEqualToString:@"xlt"]
@@ -552,11 +658,73 @@ static NSDictionary* mimeTypes = nil;
 
 - (void)parser:(LAWExcelTool *)parser success:(id)responseObj
 {
-    NSLog(@"%@",responseObj);
+//    NSLog(@"%@",responseObj);
     if ([responseObj isKindOfClass:[NSArray class]]) {
         [self.datas removeAllObjects];
         [self.datas addObjectsFromArray:responseObj];
+        [self dataFormat];
+        
+        
+//        NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"keyName" ascending:YES];
+//        NSArray* sortPackageResListArr = [self.datas sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+//        NSLog(@"%@",sortPackageResListArr);
     }
 }
+
+-(void)dataFormat {
+    WS(weakSelf);
+    NSMutableArray *myData = [NSMutableArray new];
+    for (ZContent *content in self.datas) {
+        NSMutableDictionary *dic = [NSMutableDictionary new];
+        [dic setObject:content.sheetName forKey:@"sheetName"];
+        [dic setObject:content.keyName forKey:@"keyName"];
+        [dic setObject:content.value forKey:@"value"];
+        [myData addObject:dic];
+    }
+    [self clearCache];
+    dispatch_async_on_main_queue(^{
+        NSURL *url = [NSURL URLWithString:@"http://192.168.0.27:8088/test/js_excel/vue_excel.html"];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        [weakSelf.webView loadRequest:request];
+        
+        [weakSelf.bridge callHandler:@"getExcel" data:myData responseCallback:^(id response) {
+            NSLog(@"getExcel responded: %@", response);
+        }];
+    });
+    
+    
+}
+
+-(void)clearCache {
+    NSSet*websiteDataTypes = [WKWebsiteDataStore allWebsiteDataTypes];
+
+    NSDate*dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
+    
+    [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{
+        
+    }];
+
+}
+
+//判断是不是字母
+
+- (BOOL)isLetter:(NSString *)str
+
+{
+    if ([str characterAtIndex:0] >= 'a' && [str characterAtIndex:0] <= 'z') {
+        return YES;
+
+    }else if ([str characterAtIndex:0] >= 'A' && [str characterAtIndex:0] <= 'Z') {
+        return YES;
+
+    }
+
+    return NO;
+
+}
+
+//-(NSArray*)getChars {
+//    return [NSArray arrayWithObjects:(nonnull id), ..., nil];
+//}
 
 @end
