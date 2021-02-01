@@ -30,7 +30,6 @@
 @end
 
 static lxw_workbook  *workbook;
-static lxw_worksheet *worksheet;
 static lxw_format *contentformat;// 内容的样式
 
 @implementation FileDetailViewController
@@ -335,7 +334,8 @@ static NSDictionary* mimeTypes = nil;
                         //结束编辑状态，保存内容
                         [weakSelf createXlsxFileWithDatas:array];
                         //刷新界面
-                        [weakSelf.webView reload];
+                        [weakSelf loadDataWithFilePath:weakSelf.filePath];
+                        
                     });
                 }
             }];
@@ -377,39 +377,70 @@ static NSDictionary* mimeTypes = nil;
 //    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) objectAtIndex:0];
 //    NSString *filename = [documentPath stringByAppendingPathComponent:@"c_demo.xlsx"];
     workbook  = workbook_new([self.filePath UTF8String]);// 创建新xlsx文件，路径需要转成c字符串
-    worksheet = workbook_add_worksheet(workbook, [@"Sheet1" UTF8String]);// 创建sheet
     [self setupFormat];
     
-    for (int i = 0; i < datas.count; i++) {
-        NSDictionary *content = datas[i];
-        NSString *keyName = content[@"keyName"];
-        if (kIsNULLString(keyName)) {
-            continue;
+    NSMutableArray *sheetNames = [NSMutableArray new];
+    for (NSDictionary *dic in datas) {
+        if (![sheetNames containsObject:dic[@"sheetName"]]) {
+            [sheetNames addObject:dic[@"sheetName"]];
         }
-        NSArray *names = [keyName componentsSeparatedByString:@""];
-        
-//        NSString *colString = @"";
-        NSString *rowString = @"";
-        NSMutableArray *cols = [NSMutableArray new];
-        NSMutableArray *rows = [NSMutableArray new];
-        
-        for (NSString *string in names) {
-            if ([self isLetter:string]) {
-                [cols addObject:string];
-            }else {
-                [rows addObject:string];
+    }
+    NSMutableArray *sheetDataArray = [NSMutableArray new];
+    for (NSString *string in sheetNames) {
+        NSMutableArray *sheetArray = [NSMutableArray new];
+        for (NSDictionary *dic in datas) {
+            if ([string isEqualToString:dic[@"sheetName"]]) {
+                [sheetArray addObject:dic];
             }
         }
+        if (sheetArray.count) {
+            [sheetDataArray addObject:sheetArray];
+        }
+    }
+    
+    for (NSArray *array in sheetDataArray) {
+        NSDictionary *content = array[0];
+        NSString *sheetName = content[@"sheetName"];
+        lxw_worksheet *worksheet = workbook_add_worksheet(workbook, [sheetName UTF8String]);// 创建sheet
+        worksheet_set_column(worksheet, 0, 3, 20, NULL);
         
-//        colString = [cols componentsJoinedByString:@""];
-        rowString = [rows componentsJoinedByString:@""];
-        
-        int col = [self getColumnNumberWithCols:cols];
-        int row = rowString.intValue-1;
-        
-        NSString *contentString = [NSString stringWithFormat:@"%@",content[@"value"]];
-        worksheet_write_string(worksheet, row, col, [contentString UTF8String], contentformat);
-        
+        for (int i = 0; i < array.count; i++) {
+            NSDictionary *content = array[i];
+            NSString *keyName = content[@"keyName"];
+            if (kIsNULLString(keyName)) {
+                continue;
+            }
+            
+            NSMutableArray *names = [NSMutableArray new];
+            for (int i = 0; i < keyName.length; i++) {
+                NSRange range = NSMakeRange(i,1);
+                NSString *word = [keyName substringWithRange:range];
+                [names addObject:word];
+            }
+            
+    //        NSString *colString = @"";
+            NSString *rowString = @"";
+            NSMutableArray *cols = [NSMutableArray new];
+            NSMutableArray *rows = [NSMutableArray new];
+            
+            for (NSString *string in names) {
+                if ([self isLetter:string]) {
+                    [cols addObject:string];
+                }else {
+                    [rows addObject:string];
+                }
+            }
+            
+    //        colString = [cols componentsJoinedByString:@""];
+            rowString = [rows componentsJoinedByString:@""];
+            
+            int col = [self getColumnNumberWithCols:cols];
+            int row = rowString.intValue-1;
+            
+            NSString *contentString = [NSString stringWithFormat:@"%@",content[@"value"]];
+            worksheet_write_string(worksheet, row, col, [contentString UTF8String], contentformat);
+            
+        }
     }
     
     workbook_close(workbook);
@@ -492,7 +523,6 @@ static NSDictionary* mimeTypes = nil;
 
 #pragma mark -单元格样式
 -(void)setupFormat{
-    worksheet_set_column(worksheet, 0, 3, 20, NULL);
     contentformat = workbook_add_format(workbook);
     format_set_font_size(contentformat, 10);
     format_set_left(contentformat, LXW_BORDER_THIN);// 左边框：双线边框
@@ -696,13 +726,15 @@ static NSDictionary* mimeTypes = nil;
 }
 
 -(void)clearCache {
-    NSSet*websiteDataTypes = [WKWebsiteDataStore allWebsiteDataTypes];
+    dispatch_sync_on_main_queue(^{
+        NSSet*websiteDataTypes = [WKWebsiteDataStore allWebsiteDataTypes];
 
-    NSDate*dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
-    
-    [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{
+        NSDate*dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
         
-    }];
+        [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{
+            
+        }];
+    });
 
 }
 
