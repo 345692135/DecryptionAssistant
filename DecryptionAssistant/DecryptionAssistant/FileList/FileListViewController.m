@@ -244,7 +244,7 @@
         });
     }];
 }
-
+//福
 -(void)pushToFileDetailWithMessage:(NSString*)message title:(NSString*)title {
     FileDetailViewController *vc = [[FileDetailViewController alloc] initWithMessage:message title:title];
     vc.modalPresentationStyle = 0;

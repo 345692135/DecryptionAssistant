@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0">
+  <title>Document</title>
+  <!-- <script src="./js/vconsole.min.js"></script> -->
+  <script src="./js/vue.min.js"></script>
+  <script type="text/javascript" src="./js/jquery-1.12.0.min.js"></script>
+  <script type="text/javascript" src="./js/xlsx.core.min.js"></script>
+  <script type="text/javascript" src="./js/bridge.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      outline: none;
+    }
+
+    th,
+    td {
+      position: relative;
+      border: 1px solid #666;
+      padding: 0px 2px;
+      min-width: 80px;
+      min-height: 24px;
+      line-height: 24px;
+      font-size: 14px;
+      outline: none;
+      white-space: nowrap;
+      font-weight: normal;
+    }
+
+    td:hover {
+      /* border: 1px solid #007fff; */
+    }
+
+    td:hover:after {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 100%;
+      height: 100%;
+      border: 2px solid #04be02;
+      z-index: 0;
+      top: -2px;
+      left: -2px;
+    }
+
+    /* td:hover:after {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: #007fff;
+      top: -2px;
+      left: 0;
+    }
+
+    td:hover:before {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 2px;
+      height: 100%;
+      background: #007fff;
+      top: 0;
+      left: -2px;
+    } */
+
+    .tabs {
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      overflow: hidden;
+      overflow-x: auto;
+      background: #fff;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+    }
+
+    .tab {
+      width: 60px;
+      flex-shrink: 0;
+      text-align: center;
+      line-height: 36px;
+      font-size: 14px;
+      color: #666;
+      padding: 0 15px;
+    }
+
+    .tab.active {
+      background: #eee;
+      color: #04be02;
+      font-weight: bold;
+    }
+
+    .table_wrap {
+      padding-bottom: 50px;
+    }
+
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <div class="table_wrap">
+      <div class="table_item" v-for="(table, index) in tableBox">
+        <table id="table" class="table" contenteditable="true" v-show="activeIndex == index">
+          <tr v-for="(row, rowIndex) in table">
+            <td v-for="(cell, cellIndex) in table[rowIndex]" @click="clickCell($event,rowIndex, cellIndex)">
+              {{cell}}
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- <button @click="exportExcel">保存</button> -->
+    </div>
+    <div class="tabs">
+      <div class="tab" :class="{'active': activeIndex == index}" v-for="(item, index) in originData"
+        @click="changeTable(index)">
+        {{item.sheetName}}
+      </div>
+    </div>
+  </div>
+  <script>
+    const WORD = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    window.onload = function () {
+      // let vConsole = new VConsole();
+      new Vue({
+        el: '#app',
+        data() {
+          return {
+            cols: 50,
+            rows: 50,
+            originData: [
+            ],
+            tableBox: [],
+            activeIndex: 0
+          }
+        },
+        watch: {
+        },
+        mounted() {
+          registerHandler('getExcel', (data, callback) => {
+            console.log('ios data: ', data)
+            if (!/(iPhone|iPad|iPod|iOS)/i.test(u)) {
+              data = JSON.parse(data)
+            }
+
+            console.log('format data: ', data)
+            this.originData = data;
+            this.originData = this.formatOriginData(this.originData);
+            console.log('originData: ', this.originData)
+            this.renderTableBox();
+            this.renderTableData();
+          })
+
+          registerHandler('saveExcel', (data, callback) => {
+            var csv = this.table2csv();
+            console.log('csv data: ', csv)
+            var sheet = this.csv2sheet(csv);
+            console.log('shhet data: ', sheet)
+            let result = this.sheetToIOS(sheet)
+            console.log('result data:', result)
+            callback(result)
+          })
+        },
+        methods: {
+          changeTable(index) {
+            this.activeIndex = index;
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+            document.body.scrollLeft = document.documentElement.scrollLeft = 0;
+          },
+          clickCell(e,rowIndex, cellIndex) {
+            // console.log(85,25)
+            // console.log(e,rowIndex, cellIndex)
+            // console.log(document.body.offsetHeight )
+          },
+          formatOriginData(data) {
+            let tmpArr = [];
+            let formatArr = [];
+            data.forEach((item, index) => {
+              if (tmpArr.indexOf(item.sheetName) === -1) {
+                formatArr.push({
+                  sheetName: item.sheetName,
+                  value: [item]
+                })
+                tmpArr.push(item.sheetName);
+              } else {
+                formatArr.forEach((fitem) => {
+                  if (fitem.sheetName == item.sheetName) {
+                    fitem.value.push(item)
+                    return;
+                  }
+                })
+              }
+            })
+
+            formatArr.forEach(item => {
+              let tmpValue = [];
+              item.value.forEach(i => {
+                let tmp = {};
+                tmp.key = i.keyName;
+                tmp.value = i.value;
+                tmpValue.push(tmp)
+              })
+              item.value = tmpValue
+            })
+
+            return formatArr;
+          },
+          renderTableBox() {
+            for (let item = 0; item < this.originData.length; item++) {
+              let arr = [];
+              for (let row = 0; row < this.rows; row++) {
+                let tmp = [];
+                for (let col = 0; col < this.cols; col++) {
+                  tmp.push('');
+                }
+                arr.push(tmp)
+              }
+              this.tableBox.push(arr)
+            }
+          },
+          // 将数据插入tableBox
+          renderTableData() {
+            for (let i = 0; i < this.originData.length; i++) {
+              let valueArr = this.originData[i].value;
+              for (let valueIndex = 0; valueIndex < valueArr.length; valueIndex++) {
+                let col = valueArr[valueIndex].key.replace(/[^A-Z]/ig, "");
+                let colIndex = WORD.indexOf(col); //TODO 获取列
+                let row = parseInt(valueArr[valueIndex].key.replace(/[^0-9]/ig, "")) - 1; // 获取行数
+                this.tableBox[i][row][colIndex] = valueArr[valueIndex].value
+              }
+            }
+          },
+          table2csv() {
+            let tables = $('.table');
+            let tablesCsv = [];
+            let self = this;
+            $(tables).each(function (index, table) {
+              let csv = [];
+              $(table).find('tr').each(function () {
+                var temp = [];
+                $(this).find('td').each(function () {
+                  temp.push($(this).text().trim());
+                })
+                csv.push(temp.join(','));
+              });
+
+              tablesCsv.push({
+                sheetName: self.originData[index].sheetName,
+                value: csv.join('\n')
+              })
+            })
+            console.log(tablesCsv)
+            return tablesCsv
+          },
+          // csv转sheet对象
+          csv2sheet(csvs) {
+            let sheets = [];
+            csvs.forEach(csv => {
+              var sheet = {}; // 将要生成的sheet
+              let data = csv.value.split('\n');
+              sheet['sheetName'] = csv.sheetName;
+              data.forEach(function (row, i) {
+                row = row.split(',');
+                if (i == 0) sheet['!ref'] = 'A1:' + String.fromCharCode(65 + row.length - 1) + (data.length - 1);
+                row.forEach(function (col, j) {
+                  sheet[String.fromCharCode(65 + j) + (i + 1)] = { v: col };
+                });
+              });
+              sheets.push(sheet)
+            })
+            return sheets;
+          },
+          // sheet
+          sheetToIOS(sheets) {
+            let result = [];
+            sheets.forEach(sheet => {
+              let arr = [];
+              let sheetName = sheet.sheetName;
+              Object.keys(sheet).forEach(key => {
+                if (key != '!ref' && key != 'sheetName') {
+                  if (sheet[key].v != '') {
+                    arr.push({
+                      sheetName: sheetName,
+                      keyName: key,
+                      value: sheet[key].v
+                    })
+                  }
+                }
+              })
+              result.push(arr);
+            })
+            return result.reduce((next, prev) => next.concat(prev), [])
+          },
+          exportExcel() {
+            var csv = this.table2csv();
+            console.log('csv data: ', csv)
+            var sheet = this.csv2sheet(csv);
+            console.log('shhet data: ', sheet)
+            let result = this.sheetToIOS(sheet)
+            console.log('result data:', result)
+            // var blob = sheet2blob(sheet);
+            // console.log(blob) 
+          }
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>

@@ -713,9 +713,16 @@ static NSDictionary* mimeTypes = nil;
     }
     [self clearCache];
     dispatch_async_on_main_queue(^{
-        NSURL *url = [NSURL URLWithString:@"http://192.168.0.27:8088/test/js_excel/vue_excel.html"];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        [weakSelf.webView loadRequest:request];
+//        NSURL *url = [NSURL URLWithString:@"http://192.168.0.27:8088/test/js_excel/vue_excel.html"];
+//        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"js_excel/vue_excel.html" ofType:@""];
+
+        NSURL *url = [NSURL fileURLWithPath:path];
+        
+//        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//        [weakSelf.webView loadRequest:request];
+        [weakSelf.webView loadFileURL:url allowingReadAccessToURL:url];
         
         [weakSelf.bridge callHandler:@"getExcel" data:myData responseCallback:^(id response) {
             NSLog(@"getExcel responded: %@", response);

@@ -13,10 +13,8 @@
 		18172AB525BFC044006531B6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18172AB425BFC044006531B6 /* CoreGraphics.framework */; };
 		18172AB725BFC04F006531B6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18172AB625BFC04F006531B6 /* UIKit.framework */; };
 		184D319825A2BC93004B1E82 /* 测试文档5.docx in Resources */ = {isa = PBXBuildFile; fileRef = 184D319725A2BC93004B1E82 /* 测试文档5.docx */; };
-		187782EB25B533DF007F60FB /* testDemo.html in Resources */ = {isa = PBXBuildFile; fileRef = 187782E625B533DE007F60FB /* testDemo.html */; };
-		187782EC25B533DF007F60FB /* xlsx.core.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 187782E725B533DE007F60FB /* xlsx.core.min.js */; };
-		187782EE25B533DF007F60FB /* test.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 187782E925B533DE007F60FB /* test.xlsx */; };
-		187782EF25B533DF007F60FB /* jquery-1.4.4.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 187782EA25B533DE007F60FB /* jquery-1.4.4.min.js */; };
+		18E3A4DD25C8EC7C008B3FF7 /* test.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 18E3A4DC25C8EC7C008B3FF7 /* test.xlsx */; };
+		18E3A50525C8F745008B3FF7 /* js_excel in Resources */ = {isa = PBXBuildFile; fileRef = 18E3A50425C8F745008B3FF7 /* js_excel */; };
 		18E8526B25B128A400059B14 /* 文本测试文件.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18E8526A25B128A400059B14 /* 文本测试文件.txt */; };
 		8E0CF24D24471B4800B2F676 /* safemail_Details_fujian0696@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24B24471B4700B2F676 /* safemail_Details_fujian0696@2x.png */; };
 		8E0CF24E24471B4800B2F676 /* safemail_Details_fujian0696@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24C24471B4800B2F676 /* safemail_Details_fujian0696@3x.png */; };
@@ -813,10 +811,8 @@
 		18172AB425BFC044006531B6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		18172AB625BFC04F006531B6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		184D319725A2BC93004B1E82 /* 测试文档5.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "测试文档5.docx"; sourceTree = "<group>"; };
-		187782E625B533DE007F60FB /* testDemo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = testDemo.html; sourceTree = "<group>"; };
-		187782E725B533DE007F60FB /* xlsx.core.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = xlsx.core.min.js; sourceTree = "<group>"; };
-		187782E925B533DE007F60FB /* test.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.xlsx; sourceTree = "<group>"; };
-		187782EA25B533DE007F60FB /* jquery-1.4.4.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.4.4.min.js"; sourceTree = "<group>"; };
+		18E3A4DC25C8EC7C008B3FF7 /* test.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.xlsx; sourceTree = "<group>"; };
+		18E3A50425C8F745008B3FF7 /* js_excel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = js_excel; sourceTree = "<group>"; };
 		18E8526A25B128A400059B14 /* 文本测试文件.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "文本测试文件.txt"; sourceTree = "<group>"; };
 		3A3ADC02A63F9C149FC12E18 /* Pods-DecryptionAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecryptionAssistant.debug.xcconfig"; path = "Target Support Files/Pods-DecryptionAssistant/Pods-DecryptionAssistant.debug.xcconfig"; sourceTree = "<group>"; };
 		8E0CF24B24471B4700B2F676 /* safemail_Details_fujian0696@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safemail_Details_fujian0696@2x.png"; sourceTree = "<group>"; };
@@ -2017,17 +2013,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		187782E525B533DE007F60FB /* exportExcel-master */ = {
-			isa = PBXGroup;
-			children = (
-				187782E625B533DE007F60FB /* testDemo.html */,
-				187782E725B533DE007F60FB /* xlsx.core.min.js */,
-				187782E925B533DE007F60FB /* test.xlsx */,
-				187782EA25B533DE007F60FB /* jquery-1.4.4.min.js */,
-			);
-			path = "exportExcel-master";
-			sourceTree = "<group>";
-		};
 		8E0CF2632447FBDB00B2F676 /* launch */ = {
 			isa = PBXGroup;
 			children = (
@@ -2524,8 +2509,9 @@
 		8ECB598E24205EF60021CE39 /* File */ = {
 			isa = PBXGroup;
 			children = (
+				18E3A50425C8F745008B3FF7 /* js_excel */,
+				18E3A4DC25C8EC7C008B3FF7 /* test.xlsx */,
 				181728E225BE60C3006531B6 /* 商务密邮安元版ios.xlsx */,
-				187782E525B533DE007F60FB /* exportExcel-master */,
 				18E8526A25B128A400059B14 /* 文本测试文件.txt */,
 				184D319725A2BC93004B1E82 /* 测试文档5.docx */,
 				8ECB598F24205EF60021CE39 /* 主动加密.txt */,
@@ -4292,7 +4278,6 @@
 				181728E325BE60C3006531B6 /* 商务密邮安元版ios.xlsx in Resources */,
 				8ECB597B241F74B70021CE39 /* unknown@2x.png in Resources */,
 				8ECB596D241F74B70021CE39 /* launch@2x.png in Resources */,
-				187782EF25B533DF007F60FB /* jquery-1.4.4.min.js in Resources */,
 				8ECB597A241F74B70021CE39 /* pdf@2x.png in Resources */,
 				8ECB596B241F74B70021CE39 /* IP@2x.png in Resources */,
 				8ECB5967241F74B70021CE39 /* audio@2x.png in Resources */,
@@ -4303,16 +4288,15 @@
 				8ECB5975241F74B70021CE39 /* login@2x.png in Resources */,
 				8ECB5972241F74B70021CE39 /* file@2x.png in Resources */,
 				8E0CF26A2447FBDB00B2F676 /* Default-568h@2x.png in Resources */,
-				187782EE25B533DF007F60FB /* test.xlsx in Resources */,
 				8ECB5968241F74B70021CE39 /* ps@2x.png in Resources */,
 				8ECB598D241F8A300021CE39 /* safemail_top_back@2x.png in Resources */,
 				8ECB5973241F74B70021CE39 /* photo@2x.png in Resources */,
-				187782EC25B533DF007F60FB /* xlsx.core.min.js in Resources */,
-				187782EB25B533DF007F60FB /* testDemo.html in Resources */,
 				8ECB5F402421FFF70021CE39 /* dh4096.pem in Resources */,
 				8ECB5970241F74B70021CE39 /* flash@2x.png in Resources */,
 				18E8526B25B128A400059B14 /* 文本测试文件.txt in Resources */,
+				18E3A4DD25C8EC7C008B3FF7 /* test.xlsx in Resources */,
 				8E0CF24E24471B4800B2F676 /* safemail_Details_fujian0696@3x.png in Resources */,
+				18E3A50525C8F745008B3FF7 /* js_excel in Resources */,
 				8ECB599824205EF60021CE39 /* 研发部绝密.txt in Resources */,
 				184D319825A2BC93004B1E82 /* 测试文档5.docx in Resources */,
 				8E0CF26B2447FBDB00B2F676 /* Default-667h@2x.png in Resources */,
