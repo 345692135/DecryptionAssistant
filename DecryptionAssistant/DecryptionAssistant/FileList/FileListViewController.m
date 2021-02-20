@@ -9,6 +9,7 @@
 #import "FileListViewController.h"
 #import "FileListView.h"
 #import "FileDetailViewController.h"
+#import "WebViewTestViewController.h"
 #import "FileManager.h"
 #import "AppDelegate.h"
 #import "PCCircleViewConst.h"
@@ -217,7 +218,7 @@
 }
 
 -(void)initData {
-    NSArray *files = [NSArray arrayWithObjects:@"本周工作安排20210104.docx",@"a.html",@"商务密邮安元版ios.xlsx",@"test.xlsx",@"文本测试文件.txt",@"测试文档5.docx",@"主动加密.txt",@"研发部绝密.txt",@"商务部加密.txt",@"售后培训.txt",@"encvlog.txt",@"工程实施部.txt",@"研发部机密.txt",@"普密1.txt", nil];
+    NSArray *files = [NSArray arrayWithObjects:@"222.doc",@"aaa.doc",@"本周工作安排20210104.docx",@"a.html",@"商务密邮安元版ios.xlsx",@"test.xlsx",@"文本测试文件.txt",@"测试文档5.docx",@"主动加密.txt",@"研发部绝密.txt",@"商务部加密.txt",@"售后培训.txt",@"encvlog.txt",@"工程实施部.txt",@"研发部机密.txt",@"普密1.txt", nil];
     if (self.isRecentOpenFile) {
         files = [FileManager.shared fileList];
     }
@@ -244,7 +245,7 @@
         });
     }];
 }
-//福
+
 -(void)pushToFileDetailWithMessage:(NSString*)message title:(NSString*)title {
     FileDetailViewController *vc = [[FileDetailViewController alloc] initWithMessage:message title:title];
     vc.modalPresentationStyle = 0;
@@ -255,7 +256,8 @@
     if ([filePath.pathExtension.lowercaseString isEqualToString:@"zip"] || [filePath .pathExtension.lowercaseString isEqualToString:@"rar"] || [filePath.pathExtension.lowercaseString isEqualToString:@"7z"]) {
         [self handleSourceWithFileName:title];
     }else {
-        FileDetailViewController *vc = [[FileDetailViewController alloc] initWithFilePath:filePath originalFilePath:originalFilePath title:title];
+//        FileDetailViewController *vc = [[FileDetailViewController alloc] initWithFilePath:filePath originalFilePath:originalFilePath title:title];
+        WebViewTestViewController *vc = [[WebViewTestViewController alloc] init];
         vc.modalPresentationStyle = 0;
         [self.navigationController pushViewController:vc animated:YES];
     }

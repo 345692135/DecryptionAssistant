@@ -350,11 +350,25 @@ static NSDictionary* mimeTypes = nil;
         if (self.isEdit) {
             rightTitleString = @"保存";
             //进入编辑状态
-            [self clearCache];
+//            [self clearCache];
+            
+            NSString *jScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+        //    [webView evaluateJavaScript:jScript completionHandler:nil];
+            [self.webView evaluateJavaScript:nil completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                if ([response isKindOfClass:[NSString class]]) {
+                    NSString *htmlString = [NSString stringWithString:response];
+                    if (htmlString.length > 0) {
+                        NSLog(@"%@",response);
+                        
+                    }
+                }
+            }];
+            
+            /*
             WS(weakSelf);
             NSData *data = [NSData dataWithContentsOfFile:self.filePath];
             dispatch_async_on_main_queue(^{
-                NSURL *url = [NSURL URLWithString:@"http://192.168.0.27:8088/test/js_excel/vue_excel.html"];
+                NSURL *url = [NSURL URLWithString:@"http://192.168.0.27:8088/test/js_excel/vue_doc.html"];
                 NSURLRequest *request = [NSURLRequest requestWithURL:url];
                 
 //                NSString *path = [[NSBundle mainBundle] pathForResource:@"js_excel/vue_excel.html" ofType:@""];
@@ -365,11 +379,13 @@ static NSDictionary* mimeTypes = nil;
                 [weakSelf.webView loadRequest:request];
 //                [weakSelf.webView loadFileURL:url allowingReadAccessToURL:url];
 //                NSString * str  =[[NSString alloc] initWithData:[data bytes] encoding:NSUTF8StringEncoding];
-                [weakSelf.bridge callHandler:@"getExcel" data:data responseCallback:^(id response) {
+                [weakSelf.bridge callHandler:@"getExcel" data:data.base64EncodedString responseCallback:^(id response) {
                     NSLog(@"getExcel responded: %@", response);
                 }];
+                
+                [weakSelf.rightBtn setTitle:rightTitleString forState:UIControlStateNormal];
             });
-            
+            */
         }else {
             
         }
@@ -576,7 +592,8 @@ static NSDictionary* mimeTypes = nil;
 // 页面加载完成
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     NSString *jScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
-    [webView evaluateJavaScript:jScript completionHandler:nil];
+//    [webView evaluateJavaScript:jScript completionHandler:nil];
+    
 }
 
 // 页面加载失败
