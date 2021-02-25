@@ -65,7 +65,7 @@
     _bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView];
     [_bridge setWebViewDelegate:self];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"222.doc" ofType:@""];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"abc.doc" ofType:@""];
     NSURL *url = [NSURL fileURLWithPath:path];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
@@ -108,11 +108,22 @@
             if ([response isKindOfClass:[NSString class]]) {
                 NSString *dir = [FileManager.shared recentOpenFilePath];
                 NSString *file = [dir stringByAppendingPathComponent:@"abc.doc"];
-                NSString *string = [NSString stringWithFormat:@"<!DOCTYPE html><html><head></head><body>%@</body></html>",response];
-                NSData *data =[string dataUsingEncoding:NSUTF8StringEncoding];
+                NSString *string = [NSString stringWithFormat:@"%@",response];
+                string = [string stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "];
+//                NSString *string = [NSString stringWithFormat:@"<!DOCTYPE html><html><head></head><body>%@</body></html>",response];
+//                NSData *data =[string dataUsingEncoding:NSUTF8StringEncoding];
 //                NSString *jsonString = [[NSString alloc] initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
-                [data writeToFile:file atomically:YES];
+//                [data writeToFile:file atomically:YES];
 //                [jsonString jk_writeToFile:file atomically:YES];
+                
+//                NSMutableString *muString = [NSMutableString stringWithString:string];
+//                [muString rtf];
+//                NSData *data = [muString dataFromRange:(NSRange){0, [string length]} documentAttributes:@{NSDocumentTypeDocumentAttribute: NSRTFTextDocumentType} error:NULL];
+                
+                NSMutableAttributedString* attributedStr = [[NSMutableAttributedString alloc] initWithString:string];
+
+                NSData *data = [attributedStr dataFromRange:(NSRange){0, [attributedStr length]} documentAttributes:@{NSDocumentTypeDocumentAttribute: NSRTFTextDocumentType} error:NULL];
+                [data writeToFile:file atomically:YES];
                 
             }
         }];
@@ -132,7 +143,7 @@
             [weakSelf.webView loadRequest:request];
     //                [weakSelf.webView loadFileURL:url allowingReadAccessToURL:url];
     //                NSString * str  =[[NSString alloc] initWithData:[data bytes] encoding:NSUTF8StringEncoding];
-            NSString *currentURL = [weakSelf.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.innerHTML"];
+            NSString *currentURL = [weakSelf.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.innerText"];
             NSLog(@"%@",currentURL);
             [weakSelf.bridge callHandler:@"getExcel" data:currentURL responseCallback:^(id response) {
                 NSLog(@"getExcel responded: %@", response);
