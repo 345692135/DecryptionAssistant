@@ -255,9 +255,12 @@
 -(void)pushToFileDetailWithFilePath:(NSString*)filePath originalFilePath:(NSString*)originalFilePath title:(NSString*)title {
     if ([filePath.pathExtension.lowercaseString isEqualToString:@"zip"] || [filePath .pathExtension.lowercaseString isEqualToString:@"rar"] || [filePath.pathExtension.lowercaseString isEqualToString:@"7z"]) {
         [self handleSourceWithFileName:title];
-    }else {
-//        FileDetailViewController *vc = [[FileDetailViewController alloc] initWithFilePath:filePath originalFilePath:originalFilePath title:title];
+    }else if ([filePath.pathExtension.lowercaseString isEqualToString:@"doc"] || [filePath .pathExtension.lowercaseString isEqualToString:@"docx"]) {
         WebViewTestViewController *vc = [[WebViewTestViewController alloc] init];
+        vc.modalPresentationStyle = 0;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else {
+        FileDetailViewController *vc = [[FileDetailViewController alloc] initWithFilePath:filePath originalFilePath:originalFilePath title:title];
         vc.modalPresentationStyle = 0;
         [self.navigationController pushViewController:vc animated:YES];
     }

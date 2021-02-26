@@ -21,6 +21,9 @@
 @property WebViewJavascriptBridge* bridge;
 @property (nonatomic,strong) UIWebView *webView;
 @property (nonatomic,assign) BOOL isEdit;
+@property (nonatomic,strong) NSString *filePath;
+@property (nonatomic,strong) NSString *originalFilePath;
+@property (nonatomic,strong) NSString *titleString;
 
 @end
 
@@ -28,6 +31,22 @@
 - (void)dealloc {
     NSLog(@"%s",__func__);
 }
+
+-(instancetype)initWithFilePath:(NSString*)filePath originalFilePath:(NSString*)originalFilePath title:(NSString*)title {
+    self = [super init];
+    if (self) {
+        self.filePath = filePath;
+        self.originalFilePath = originalFilePath;
+        self.titleString = title;
+        [self loadDataWithFilePath:filePath];
+    }
+    return self;
+}
+
+-(void)loadDataWithFilePath:(NSString*)filePath {
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -41,7 +60,7 @@
     [self.leftButton setImage:[UIImage imageNamed:@"safemail_top_back"] forState:UIControlStateNormal];
     [self.navigationView addSubview:self.leftButton];
     
-    [self.rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    [self.rightBtn setTitle:self.titleString forState:UIControlStateNormal];
     [self.navigationView addSubview:self.rightBtn];
     
     self.navigationView.backgroundColor = RGB(0, 164, 102);
@@ -65,8 +84,8 @@
     _bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView];
     [_bridge setWebViewDelegate:self];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"abc.doc" ofType:@""];
-    NSURL *url = [NSURL fileURLWithPath:path];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"222.doc" ofType:@""];
+    NSURL *url = [NSURL fileURLWithPath:self.filePath];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
     [self.view addSubview:self.webView];
@@ -106,11 +125,14 @@
         [_bridge callHandler:@"saveExcel" data:nil responseCallback:^(id response) {
             NSLog(@"saveDoc responded: %@", response);
             if ([response isKindOfClass:[NSString class]]) {
-                NSString *dir = [FileManager.shared recentOpenFilePath];
-                NSString *file = [dir stringByAppendingPathComponent:@"abc.doc"];
+//                NSString *dir = [FileManager.shared recentOpenFilePath];
+                NSString *file = self.filePath;//[dir stringByAppendingPathComponent:@"abc.doc"];
+                if ([file.pathExtension.lowercaseString isEqualToString:@"docx"]) {
+                    file = [file substringToIndex:file.length-2];
+                    [FileManager.shared deleteFileWithFilePath:self.filePath];
+                    self.filePath = file;
+                }
                 NSString *string = [NSString stringWithFormat:@"%@",response];
-                string = [string stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "];
-//                NSString *string = [NSString stringWithFormat:@"<!DOCTYPE html><html><head></head><body>%@</body></html>",response];
 //                NSData *data =[string dataUsingEncoding:NSUTF8StringEncoding];
 //                NSString *jsonString = [[NSString alloc] initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
 //                [data writeToFile:file atomically:YES];
@@ -124,6 +146,7 @@
 
                 NSData *data = [attributedStr dataFromRange:(NSRange){0, [attributedStr length]} documentAttributes:@{NSDocumentTypeDocumentAttribute: NSRTFTextDocumentType} error:NULL];
                 [data writeToFile:file atomically:YES];
+                
                 
             }
         }];
@@ -143,7 +166,7 @@
             [weakSelf.webView loadRequest:request];
     //                [weakSelf.webView loadFileURL:url allowingReadAccessToURL:url];
     //                NSString * str  =[[NSString alloc] initWithData:[data bytes] encoding:NSUTF8StringEncoding];
-            NSString *currentURL = [weakSelf.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.innerText"];
+            NSString *currentURL = [weakSelf.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.innerHTML"];
             NSLog(@"%@",currentURL);
             [weakSelf.bridge callHandler:@"getExcel" data:currentURL responseCallback:^(id response) {
                 NSLog(@"getExcel responded: %@", response);

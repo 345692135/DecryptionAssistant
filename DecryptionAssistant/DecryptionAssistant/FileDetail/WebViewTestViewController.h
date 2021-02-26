@@ -10,4 +10,6 @@
 #import "BaseViewController.h"
 @interface WebViewTestViewController : BaseViewController
 
+-(instancetype)initWithFilePath:(NSString*)filePath originalFilePath:(NSString*)originalFilePath title:(NSString*)title;
+
 @end
