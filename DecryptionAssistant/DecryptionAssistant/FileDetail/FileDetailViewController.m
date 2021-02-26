@@ -26,6 +26,7 @@
 @property (nonatomic,strong) UIDocumentInteractionController *documentInteractionController;
 @property (nonatomic,strong) NSMutableArray *datas;
 @property WebViewJavascriptBridge* bridge;
+@property (nonatomic,assign) BOOL isRecentOpenFile;
 
 @end
 
@@ -46,22 +47,24 @@ static NSDictionary* mimeTypes = nil;
     
 }
 
--(instancetype)initWithMessage:(NSString*)message title:(NSString*)title {
+-(instancetype)initWithMessage:(NSString*)message title:(NSString*)title isRecentOpenFile:(BOOL)isRecentOpenFile {
     self = [super init];
     if (self) {
         self.content = message;
         self.titleString = title;
+        self.isRecentOpenFile = isRecentOpenFile;
         [self loadDataWithMessage:message];
     }
     return self;
 }
 
--(instancetype)initWithFilePath:(NSString*)filePath originalFilePath:(NSString*)originalFilePath title:(NSString*)title {
+-(instancetype)initWithFilePath:(NSString*)filePath originalFilePath:(NSString*)originalFilePath title:(NSString*)title isRecentOpenFile:(BOOL)isRecentOpenFile {
     self = [super init];
     if (self) {
         self.filePath = filePath;
         self.originalFilePath = originalFilePath;
         self.titleString = title;
+        self.isRecentOpenFile = isRecentOpenFile;
         [self loadDataWithFilePath:filePath];
     }
     return self;
@@ -72,8 +75,10 @@ static NSDictionary* mimeTypes = nil;
     [self.leftButton setImage:[UIImage imageNamed:@"safemail_top_back"] forState:UIControlStateNormal];
     [self.navigationView addSubview:self.leftButton];
     
-    [self.rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
-    [self.navigationView addSubview:self.rightBtn];
+    if (!self.isRecentOpenFile) {
+        [self.rightBtn setTitle:self.titleString forState:UIControlStateNormal];
+        [self.navigationView addSubview:self.rightBtn];
+    }
     
     self.navigationView.backgroundColor = RGB(0, 164, 102);
     

@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FileDetailViewController : BaseViewController
 
--(instancetype)initWithMessage:(NSString*)message title:(NSString*)title;
--(instancetype)initWithFilePath:(NSString*)filePath originalFilePath:(NSString*)originalFilePath title:(NSString*)title;
+-(instancetype)initWithMessage:(NSString*)message title:(NSString*)title isRecentOpenFile:(BOOL)isRecentOpenFile;
+-(instancetype)initWithFilePath:(NSString*)filePath originalFilePath:(NSString*)originalFilePath title:(NSString*)title isRecentOpenFile:(BOOL)isRecentOpenFile;
 
 @end
 

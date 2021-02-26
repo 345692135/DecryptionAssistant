@@ -24,6 +24,7 @@
 @property (nonatomic,strong) NSString *filePath;
 @property (nonatomic,strong) NSString *originalFilePath;
 @property (nonatomic,strong) NSString *titleString;
+@property (nonatomic,assign) BOOL isRecentOpenFile;
 
 @end
 
@@ -32,12 +33,13 @@
     NSLog(@"%s",__func__);
 }
 
--(instancetype)initWithFilePath:(NSString*)filePath originalFilePath:(NSString*)originalFilePath title:(NSString*)title {
+-(instancetype)initWithFilePath:(NSString*)filePath originalFilePath:(NSString*)originalFilePath title:(NSString*)title isRecentOpenFile:(BOOL)isRecentOpenFile {
     self = [super init];
     if (self) {
         self.filePath = filePath;
         self.originalFilePath = originalFilePath;
         self.titleString = title;
+        self.isRecentOpenFile = isRecentOpenFile;
         [self loadDataWithFilePath:filePath];
     }
     return self;
@@ -60,8 +62,10 @@
     [self.leftButton setImage:[UIImage imageNamed:@"safemail_top_back"] forState:UIControlStateNormal];
     [self.navigationView addSubview:self.leftButton];
     
-    [self.rightBtn setTitle:self.titleString forState:UIControlStateNormal];
-    [self.navigationView addSubview:self.rightBtn];
+    if (!self.isRecentOpenFile) {
+        [self.rightBtn setTitle:self.titleString forState:UIControlStateNormal];
+        [self.navigationView addSubview:self.rightBtn];
+    }
     
     self.navigationView.backgroundColor = RGB(0, 164, 102);
     
