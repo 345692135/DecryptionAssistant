@@ -62,7 +62,7 @@
     [self.leftButton setImage:[UIImage imageNamed:@"safemail_top_back"] forState:UIControlStateNormal];
     [self.navigationView addSubview:self.leftButton];
     
-    if (!self.isRecentOpenFile) {
+    if (self.isRecentOpenFile) {
         [self.rightBtn setTitle:self.titleString forState:UIControlStateNormal];
         [self.navigationView addSubview:self.rightBtn];
     }
@@ -159,21 +159,22 @@
         WS(weakSelf);
         rightTitleString = @"保存";
         dispatch_async_on_main_queue(^{
-            NSURL *url = [NSURL URLWithString:@"http://192.168.0.27:8088/test/js_excel/vue_doc.html"];
-            NSURLRequest *request = [NSURLRequest requestWithURL:url];
+            BOOL isLocal = NO;
+            if (isLocal) {
+                NSString *path = [[NSBundle mainBundle] pathForResource:@"js_excel/vue_doc.html" ofType:@""];
+                NSURL *url = [NSURL fileURLWithPath:path];
+                NSURLRequest *request = [NSURLRequest requestWithURL:url];
+                [weakSelf.webView loadRequest:request];
+            }else {
+                NSURL *url = [NSURL URLWithString:@"http://192.168.0.27:8088/test/js_excel/vue_doc.html"];
+                NSURLRequest *request = [NSURLRequest requestWithURL:url];
+                [weakSelf.webView loadRequest:request];
+            }
             
-    //                NSString *path = [[NSBundle mainBundle] pathForResource:@"js_excel/vue_excel.html" ofType:@""];
-    //
-    //                NSURL *url = [NSURL fileURLWithPath:path];
-            
-    //        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-            [weakSelf.webView loadRequest:request];
-    //                [weakSelf.webView loadFileURL:url allowingReadAccessToURL:url];
-    //                NSString * str  =[[NSString alloc] initWithData:[data bytes] encoding:NSUTF8StringEncoding];
             NSString *currentURL = [weakSelf.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.innerHTML"];
             NSLog(@"%@",currentURL);
             [weakSelf.bridge callHandler:@"getExcel" data:currentURL responseCallback:^(id response) {
-                NSLog(@"getExcel responded: %@", response);
+//                NSLog(@"getExcel responded: %@", response);
             }];
             
             

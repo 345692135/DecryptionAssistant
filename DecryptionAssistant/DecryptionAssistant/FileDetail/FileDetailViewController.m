@@ -75,7 +75,7 @@ static NSDictionary* mimeTypes = nil;
     [self.leftButton setImage:[UIImage imageNamed:@"safemail_top_back"] forState:UIControlStateNormal];
     [self.navigationView addSubview:self.leftButton];
     
-    if (!self.isRecentOpenFile) {
+    if (self.isRecentOpenFile) {
         [self.rightBtn setTitle:self.titleString forState:UIControlStateNormal];
         [self.navigationView addSubview:self.rightBtn];
     }

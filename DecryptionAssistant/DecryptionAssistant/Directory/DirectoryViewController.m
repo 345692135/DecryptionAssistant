@@ -135,13 +135,13 @@
 }
 
 -(void)pushToFileDetailWithMessage:(NSString*)message title:(NSString*)title {
-    FileDetailViewController *vc = [[FileDetailViewController alloc] initWithMessage:message title:title];
+    FileDetailViewController *vc = [[FileDetailViewController alloc] initWithMessage:message title:title isRecentOpenFile:YES];
     vc.modalPresentationStyle = 0;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)pushToFileDetailWithFilePath:(NSString*)filePath originalFilePath:(NSString*)originalFilePath title:(NSString*)title {
-    FileDetailViewController *vc = [[FileDetailViewController alloc] initWithFilePath:filePath originalFilePath:originalFilePath title:title];
+    FileDetailViewController *vc = [[FileDetailViewController alloc] initWithFilePath:filePath originalFilePath:originalFilePath title:title isRecentOpenFile:YES];
     vc.modalPresentationStyle = 0;
     [self.navigationController pushViewController:vc animated:YES];
 }
