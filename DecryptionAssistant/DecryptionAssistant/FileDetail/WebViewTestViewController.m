@@ -63,13 +63,15 @@
     [self.navigationView addSubview:self.leftButton];
     
     if (self.isRecentOpenFile) {
-        [self.rightBtn setTitle:self.titleString forState:UIControlStateNormal];
+        [self.rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
         [self.navigationView addSubview:self.rightBtn];
     }
     
     self.navigationView.backgroundColor = RGB(0, 164, 102);
     
     self.titleLabel.textColor = [UIColor whiteColor];
+    self.titleLabel.text = self.titleString;
+    
     [self.navigationView addSubview:self.titleLabel];
     
 }
@@ -132,7 +134,7 @@
 //                NSString *dir = [FileManager.shared recentOpenFilePath];
                 NSString *file = self.filePath;//[dir stringByAppendingPathComponent:@"abc.doc"];
                 if ([file.pathExtension.lowercaseString isEqualToString:@"docx"]) {
-                    file = [file substringToIndex:file.length-2];
+                    file = [file substringToIndex:file.length-1];
                     [FileManager.shared deleteFileWithFilePath:self.filePath];
                     self.filePath = file;
                 }

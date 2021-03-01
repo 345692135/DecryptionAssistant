@@ -76,7 +76,7 @@ static NSDictionary* mimeTypes = nil;
     [self.navigationView addSubview:self.leftButton];
     
     if (self.isRecentOpenFile) {
-        [self.rightBtn setTitle:self.titleString forState:UIControlStateNormal];
+        [self.rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
         [self.navigationView addSubview:self.rightBtn];
     }
     
@@ -717,7 +717,7 @@ static NSDictionary* mimeTypes = nil;
     }
     [self clearCache];
     dispatch_async_on_main_queue(^{
-        BOOL isLocal = NO;
+        BOOL isLocal = YES;
         if (isLocal) {
             NSString *path = [[NSBundle mainBundle] pathForResource:@"js_excel/vue_excel.html" ofType:@""];
             NSURL *url = [NSURL fileURLWithPath:path];
