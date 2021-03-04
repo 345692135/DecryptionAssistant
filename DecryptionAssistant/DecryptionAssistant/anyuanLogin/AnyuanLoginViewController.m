@@ -189,7 +189,7 @@
 }
 
 -(void)initView {
-    [self.view bringSubviewToFront:self.navigationView];
+//    [self.view bringSubviewToFront:self.navigationView];
 //    [self.leftButton setTitle:@"取消" forState:UIControlStateNormal];
 //    [self.leftButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 //    [self.navigationView addSubview:self.leftButton];
@@ -236,7 +236,7 @@
 -(void)initEvent {
     WS(weakSelf);
     [self.loginButton jk_addTapActionWithBlock:^(UIGestureRecognizer *gestureRecoginzer) {
-        /*
+        
         if ([weakSelf.emailField.text isEqualToString:@""] || [weakSelf.passField.text isEqualToString:@""] || [weakSelf.serverField.text isEqualToString:@""]) {
             [ToastManager showMsg:@"数据不能为空"];
             return;
@@ -246,12 +246,12 @@
 //            return;
 //        }
         [weakSelf loginClick];
-         */
-        AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-        delegate.isActiving = YES;
-        FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:NO];
-        vc.modalPresentationStyle = 0;
-        [weakSelf.navigationController pushViewController:vc animated:YES];
+         
+//        AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+//        delegate.isActiving = YES;
+//        FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:NO];
+//        vc.modalPresentationStyle = 0;
+//        [weakSelf.navigationController pushViewController:vc animated:YES];
     }];
     
     [self.button_eye jk_addTapActionWithBlock:^(UIGestureRecognizer *gestureRecoginzer) {
@@ -416,7 +416,7 @@
     [self.checkYuButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.passView.mas_bottom).offset(kYSBL(10));
         make.left.equalTo(weakSelf.view).offset(kYSBL(30));
-        make.width.mas_equalTo(kYSBL(80));
+        make.width.mas_equalTo(kYSBL(100));
         make.height.mas_equalTo(kYSBL(30));
     }];
     

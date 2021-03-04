@@ -15,6 +15,7 @@
 		189A2EC525DFAFE4004CA644 /* WebViewTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A2EC425DFAFE4004CA644 /* WebViewTestViewController.m */; };
 		18E3A50525C8F745008B3FF7 /* js_excel in Resources */ = {isa = PBXBuildFile; fileRef = 18E3A50425C8F745008B3FF7 /* js_excel */; };
 		18E8526B25B128A400059B14 /* 文本测试文件.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18E8526A25B128A400059B14 /* 文本测试文件.txt */; };
+		18ECBD6425F087A200756C84 /* Default-812h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18ECBD6325F087A200756C84 /* Default-812h@3x.png */; };
 		8E0CF24D24471B4800B2F676 /* safemail_Details_fujian0696@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24B24471B4700B2F676 /* safemail_Details_fujian0696@2x.png */; };
 		8E0CF24E24471B4800B2F676 /* safemail_Details_fujian0696@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24C24471B4800B2F676 /* safemail_Details_fujian0696@3x.png */; };
 		8E0CF25124471B9700B2F676 /* safemail_Details_fujian0596@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24F24471B9600B2F676 /* safemail_Details_fujian0596@3x.png */; };
@@ -813,6 +814,7 @@
 		189A2EC425DFAFE4004CA644 /* WebViewTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewTestViewController.m; sourceTree = "<group>"; };
 		18E3A50425C8F745008B3FF7 /* js_excel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = js_excel; sourceTree = "<group>"; };
 		18E8526A25B128A400059B14 /* 文本测试文件.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "文本测试文件.txt"; sourceTree = "<group>"; };
+		18ECBD6325F087A200756C84 /* Default-812h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-812h@3x.png"; sourceTree = "<group>"; };
 		3A3ADC02A63F9C149FC12E18 /* Pods-DecryptionAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecryptionAssistant.debug.xcconfig"; path = "Target Support Files/Pods-DecryptionAssistant/Pods-DecryptionAssistant.debug.xcconfig"; sourceTree = "<group>"; };
 		8E0CF24B24471B4700B2F676 /* safemail_Details_fujian0696@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safemail_Details_fujian0696@2x.png"; sourceTree = "<group>"; };
 		8E0CF24C24471B4800B2F676 /* safemail_Details_fujian0696@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safemail_Details_fujian0696@3x.png"; sourceTree = "<group>"; };
@@ -2015,6 +2017,7 @@
 		8E0CF2632447FBDB00B2F676 /* launch */ = {
 			isa = PBXGroup;
 			children = (
+				18ECBD6325F087A200756C84 /* Default-812h@3x.png */,
 				8E0CF2642447FBDB00B2F676 /* Default@2x.png */,
 				8E0CF2652447FBDB00B2F676 /* Default-736h@3x.png */,
 				8E0CF2662447FBDB00B2F676 /* Default-568h@2x.png */,
@@ -4260,6 +4263,7 @@
 				8ECB596F241F74B70021CE39 /* account@2x.png in Resources */,
 				8ECB599924205EF60021CE39 /* 商务部加密.txt in Resources */,
 				8ECB5F482421FFF70021CE39 /* dh2048.pem in Resources */,
+				18ECBD6425F087A200756C84 /* Default-812h@3x.png in Resources */,
 				8E487855241F2B6B00DA9963 /* LaunchScreen.storyboard in Resources */,
 				8ECB593A241F6EC30021CE39 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				8E0CF2682447FBDB00B2F676 /* Default@2x.png in Resources */,
