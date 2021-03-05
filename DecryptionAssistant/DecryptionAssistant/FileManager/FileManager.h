@@ -48,6 +48,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param Dir Dir description
 -(void)copyFile:(NSString*)filePath toDir:(NSString*)Dir;
 
+/// 获取文件名
+/// @param filePath filePath description
+-(NSString*)getFileNameWithFile:(NSString*)filePath;
+
 //递归读取解压路径下的所有.png文件
 - (id)showAllFileWithPath:(NSString *) path;
 

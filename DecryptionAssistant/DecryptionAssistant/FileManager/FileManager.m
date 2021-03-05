@@ -83,6 +83,15 @@ static NSArray* attachmentTypeArray = nil;
     return retVal;
 }
 
+/// 获取文件名
+/// @param filePath filePath description
+-(NSString*)getFileNameWithFile:(NSString*)filePath {
+    NSString *stringPath = filePath;
+    NSArray *array = [stringPath componentsSeparatedByString:@"/"];
+    NSString *fileName = array[array.count-1];
+    return fileName;
+}
+
 //递归读取解压路径下的所有.png文件 0329，0306，0404，0305
 - (id)showAllFileWithPath:(NSString *) path {
     NSFileManager * fileManger = [NSFileManager defaultManager];

@@ -331,6 +331,7 @@ static NSDictionary* mimeTypes = nil;
 
         }else {
             WS(weakSelf);
+            
             [_bridge callHandler:@"saveExcel" data:nil responseCallback:^(id response) {
                 NSLog(@"saveExcel responded: %@", response);
                 if ([response isKindOfClass:[NSArray class]]) {
@@ -379,6 +380,25 @@ static NSDictionary* mimeTypes = nil;
 -(void)createXlsxFileWithDatas:(NSArray*)datas {
 //    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) objectAtIndex:0];
 //    NSString *filename = [documentPath stringByAppendingPathComponent:@"c_demo.xlsx"];
+    
+    NSString *file = self.filePath;
+    if ([file.pathExtension.lowercaseString isEqualToString:@"xls"]) {
+        NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"template.xlsx" ofType:@""];
+        NSString *recentOpenFile = [FileManager.shared recentOpenFilePath];
+        NSFileManager *fm = [FileManager.shared createDir:recentOpenFile];
+        [FileManager.shared copyFile:templatePath toDir:recentOpenFile];
+        
+        NSString *templateFile = [recentOpenFile stringByAppendingPathComponent:templatePath.lastPathComponent];
+        
+        file = [file stringByAppendingString:@"x"];
+        [FileManager.shared deleteFileWithFilePath:self.filePath];
+        self.filePath = file;
+        BOOL isSuccess = [fm moveItemAtPath:templateFile toPath:file error:nil];
+//        [FileManager.shared deleteFileWithFilePath:self.filePath];
+        NSLog(@"%d",isSuccess);
+        
+    }
+    
     workbook  = workbook_new([self.filePath UTF8String]);// 创建新xlsx文件，路径需要转成c字符串
     [self setupFormat];
     
@@ -692,7 +712,7 @@ static NSDictionary* mimeTypes = nil;
 
 - (void)parser:(LAWExcelTool *)parser success:(id)responseObj
 {
-//    NSLog(@"%@",responseObj);
+    NSLog(@"responseObj=%@",responseObj);
     if ([responseObj isKindOfClass:[NSArray class]]) {
         [self.datas removeAllObjects];
         [self.datas addObjectsFromArray:responseObj];

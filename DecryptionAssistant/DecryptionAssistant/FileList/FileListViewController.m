@@ -218,7 +218,7 @@
 }
 
 -(void)initData {
-    NSArray *files = [NSArray arrayWithObjects:@"文本测试文件.txt",@"测试文档5.docx",@"主动加密.txt",@"研发部绝密.txt",@"商务部加密.txt",@"售后培训.txt",@"encvlog.txt",@"工程实施部.txt",@"研发部机密.txt",@"普密1.txt", nil];
+    NSArray *files = [NSArray arrayWithObjects:@"test3.xlsx",@"全部BUG (1).xlsx",@"工作簿2.xls",@"文本测试文件.txt",@"测试文档5.docx",@"主动加密.txt",@"研发部绝密.txt",@"商务部加密.txt",@"售后培训.txt",@"encvlog.txt",@"工程实施部.txt",@"研发部机密.txt",@"普密1.txt", nil];
     if (self.isRecentOpenFile) {
         files = [FileManager.shared fileList];
     }

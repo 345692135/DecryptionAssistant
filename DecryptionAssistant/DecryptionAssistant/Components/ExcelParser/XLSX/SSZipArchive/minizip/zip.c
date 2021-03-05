@@ -933,7 +933,7 @@ extern zipFile ZEXPORT zipOpen64(const void *pathname, int append)
     return zipOpen3(pathname, append, 0, NULL, NULL);
 }
 
-extern int ZEXPORT zipOpenNewFileInZip4_64(zipFile file, const char *filename, const zip_fileinfo *zipfi,
+extern int ZEXPORT zzipOpenNewFileInZip4_64(zipFile file, const char *filename, const zip_fileinfo *zipfi,
                                            const void *extrafield_local, uInt size_extrafield_local, const void *extrafield_global,
                                            uInt size_extrafield_global, const char *comment, int method, int level, int raw, int windowBits, int memLevel,
                                            int strategy, const char *password, uLong crcForCrypting, uLong versionMadeBy, uLong flagBase, int zip64)
@@ -1269,7 +1269,7 @@ extern int ZEXPORT zipOpenNewFileInZip4(zipFile file, const char *filename, cons
                                         uInt size_extrafield_global, const char *comment, int method, int level, int raw, int windowBits,
                                         int memLevel, int strategy, const char *password, uLong crcForCrypting, uLong versionMadeBy, uLong flagBase)
 {
-    return zipOpenNewFileInZip4_64(file, filename, zipfi, extrafield_local, size_extrafield_local,
+    return zzipOpenNewFileInZip4_64(file, filename, zipfi, extrafield_local, size_extrafield_local,
                                    extrafield_global, size_extrafield_global, comment, method, level, raw, windowBits, memLevel,
                                    strategy, password, crcForCrypting, versionMadeBy, flagBase, 0);
 }
@@ -1279,7 +1279,7 @@ extern int ZEXPORT zipOpenNewFileInZip3(zipFile file, const char *filename, cons
                                         uInt size_extrafield_global, const char *comment, int method, int level, int raw, int windowBits,
                                         int memLevel, int strategy, const char *password, uLong crcForCrypting)
 {
-    return zipOpenNewFileInZip4_64(file, filename, zipfi, extrafield_local, size_extrafield_local,
+    return zzipOpenNewFileInZip4_64(file, filename, zipfi, extrafield_local, size_extrafield_local,
                                    extrafield_global, size_extrafield_global, comment, method, level, raw, windowBits, memLevel,
                                    strategy, password, crcForCrypting, VERSIONMADEBY, 0, 0);
 }
@@ -1289,7 +1289,7 @@ extern int ZEXPORT zipOpenNewFileInZip3_64(zipFile file, const char *filename, c
                                            uInt size_extrafield_global, const char *comment, int method, int level, int raw, int windowBits,
                                            int memLevel, int strategy, const char *password, uLong crcForCrypting, int zip64)
 {
-    return zipOpenNewFileInZip4_64(file, filename, zipfi, extrafield_local, size_extrafield_local,
+    return zzipOpenNewFileInZip4_64(file, filename, zipfi, extrafield_local, size_extrafield_local,
                                    extrafield_global, size_extrafield_global, comment, method, level, raw, windowBits, memLevel, strategy,
                                    password, crcForCrypting, VERSIONMADEBY, 0, zip64);
 }
@@ -1298,7 +1298,7 @@ extern int ZEXPORT zipOpenNewFileInZip2(zipFile file, const char *filename, cons
                                         const void *extrafield_local, uInt size_extrafield_local, const void *extrafield_global,
                                         uInt size_extrafield_global, const char *comment, int method, int level, int raw)
 {
-    return zipOpenNewFileInZip4_64(file, filename, zipfi, extrafield_local, size_extrafield_local,
+    return zzipOpenNewFileInZip4_64(file, filename, zipfi, extrafield_local, size_extrafield_local,
                                    extrafield_global, size_extrafield_global, comment, method, level, raw, -MAX_WBITS, DEF_MEM_LEVEL,
                                    Z_DEFAULT_STRATEGY, NULL, 0, VERSIONMADEBY, 0, 0);
 }
@@ -1307,7 +1307,7 @@ extern int ZEXPORT zipOpenNewFileInZip2_64(zipFile file, const char *filename, c
                                            const void *extrafield_local, uInt size_extrafield_local, const void *extrafield_global,
                                            uInt size_extrafield_global, const char *comment, int method, int level, int raw, int zip64)
 {
-    return zipOpenNewFileInZip4_64(file, filename, zipfi, extrafield_local, size_extrafield_local,
+    return zzipOpenNewFileInZip4_64(file, filename, zipfi, extrafield_local, size_extrafield_local,
                                    extrafield_global, size_extrafield_global, comment, method, level, raw, -MAX_WBITS, DEF_MEM_LEVEL,
                                    Z_DEFAULT_STRATEGY, NULL, 0, VERSIONMADEBY, 0, zip64);
 }
@@ -1316,7 +1316,7 @@ extern int ZEXPORT zipOpenNewFileInZip64(zipFile file, const char *filename, con
                                          const void *extrafield_local, uInt size_extrafield_local, const void *extrafield_global,
                                          uInt size_extrafield_global, const char *comment, int method, int level, int zip64)
 {
-    return zipOpenNewFileInZip4_64(file, filename, zipfi, extrafield_local, size_extrafield_local,
+    return zzipOpenNewFileInZip4_64(file, filename, zipfi, extrafield_local, size_extrafield_local,
                                    extrafield_global, size_extrafield_global, comment, method, level, 0, -MAX_WBITS, DEF_MEM_LEVEL,
                                    Z_DEFAULT_STRATEGY, NULL, 0, VERSIONMADEBY, 0, zip64);
 }
@@ -1325,7 +1325,7 @@ extern int ZEXPORT zipOpenNewFileInZip(zipFile file, const char *filename, const
                                        const void *extrafield_local, uInt size_extrafield_local, const void *extrafield_global,
                                        uInt size_extrafield_global, const char *comment, int method, int level)
 {
-    return zipOpenNewFileInZip4_64(file, filename, zipfi, extrafield_local, size_extrafield_local,
+    return zzipOpenNewFileInZip4_64(file, filename, zipfi, extrafield_local, size_extrafield_local,
                                    extrafield_global, size_extrafield_global, comment, method, level, 0, -MAX_WBITS, DEF_MEM_LEVEL,
                                    Z_DEFAULT_STRATEGY, NULL, 0, VERSIONMADEBY, 0, 0);
 }

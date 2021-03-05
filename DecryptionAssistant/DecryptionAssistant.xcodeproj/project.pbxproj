@@ -37,7 +37,6 @@
 		18ECBE0125F1C0AC00756C84 /* ZContentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECBDC625F1C0AC00756C84 /* ZContentParser.m */; };
 		18ECBE0225F1C0AC00756C84 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 18ECBDC925F1C0AC00756C84 /* unzip.c */; };
 		18ECBE0325F1C0AC00756C84 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 18ECBDCA25F1C0AC00756C84 /* zip.c */; };
-		18ECBE0425F1C0AC00756C84 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 18ECBDCB25F1C0AC00756C84 /* ioapi.c */; };
 		18ECBE0525F1C0AC00756C84 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 18ECBDCC25F1C0AC00756C84 /* mztools.c */; };
 		18ECBE0725F1C0AC00756C84 /* aeskey.c in Sources */ = {isa = PBXBuildFile; fileRef = 18ECBDD725F1C0AC00756C84 /* aeskey.c */; };
 		18ECBE0825F1C0AC00756C84 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 18ECBDD825F1C0AC00756C84 /* hmac.c */; };
@@ -49,6 +48,11 @@
 		18ECBE0E25F1C0AC00756C84 /* aestab.c in Sources */ = {isa = PBXBuildFile; fileRef = 18ECBDE725F1C0AC00756C84 /* aestab.c */; };
 		18ECBE0F25F1C0AC00756C84 /* entropy.c in Sources */ = {isa = PBXBuildFile; fileRef = 18ECBDEA25F1C0AC00756C84 /* entropy.c */; };
 		18ECBE1025F1C0AC00756C84 /* CSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECBDEE25F1C0AC00756C84 /* CSVParser.m */; };
+		18ECBE1525F1CF7600756C84 /* 工作簿2.xls in Resources */ = {isa = PBXBuildFile; fileRef = 18ECBE1425F1CF7600756C84 /* 工作簿2.xls */; };
+		18ECBE1825F1D4F300756C84 /* template.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 18ECBE1725F1D4F300756C84 /* template.xlsx */; };
+		18ECBE9C25F1E1FE00756C84 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 18ECBE9A25F1E1FE00756C84 /* ioapi.c */; };
+		18ECBEF425F1E39200756C84 /* 全部BUG (1).xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 18ECBEF325F1E39200756C84 /* 全部BUG (1).xlsx */; };
+		18ECBEF725F1E40100756C84 /* test3.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 18ECBEF625F1E40100756C84 /* test3.xlsx */; };
 		8E0CF24D24471B4800B2F676 /* safemail_Details_fujian0696@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24B24471B4700B2F676 /* safemail_Details_fujian0696@2x.png */; };
 		8E0CF24E24471B4800B2F676 /* safemail_Details_fujian0696@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24C24471B4800B2F676 /* safemail_Details_fujian0696@3x.png */; };
 		8E0CF25124471B9700B2F676 /* safemail_Details_fujian0596@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0CF24F24471B9600B2F676 /* safemail_Details_fujian0596@3x.png */; };
@@ -892,13 +896,11 @@
 		18ECBDC625F1C0AC00756C84 /* ZContentParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZContentParser.m; sourceTree = "<group>"; };
 		18ECBDC925F1C0AC00756C84 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
 		18ECBDCA25F1C0AC00756C84 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		18ECBDCB25F1C0AC00756C84 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		18ECBDCC25F1C0AC00756C84 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
 		18ECBDCD25F1C0AC00756C84 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		18ECBDCE25F1C0AC00756C84 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		18ECBDCF25F1C0AC00756C84 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
 		18ECBDD025F1C0AC00756C84 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
-		18ECBDD125F1C0AC00756C84 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
 		18ECBDD325F1C0AC00756C84 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		18ECBDD625F1C0AC00756C84 /* prng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prng.h; sourceTree = "<group>"; };
 		18ECBDD725F1C0AC00756C84 /* aeskey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aeskey.c; sourceTree = "<group>"; };
@@ -924,6 +926,12 @@
 		18ECBDEB25F1C0AC00756C84 /* LAWExcelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAWExcelTool.h; sourceTree = "<group>"; };
 		18ECBDED25F1C0AC00756C84 /* CSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVParser.h; sourceTree = "<group>"; };
 		18ECBDEE25F1C0AC00756C84 /* CSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVParser.m; sourceTree = "<group>"; };
+		18ECBE1425F1CF7600756C84 /* 工作簿2.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = "工作簿2.xls"; sourceTree = "<group>"; };
+		18ECBE1725F1D4F300756C84 /* template.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = template.xlsx; sourceTree = "<group>"; };
+		18ECBE9A25F1E1FE00756C84 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		18ECBE9B25F1E1FE00756C84 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		18ECBEF325F1E39200756C84 /* 全部BUG (1).xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "全部BUG (1).xlsx"; sourceTree = "<group>"; };
+		18ECBEF625F1E40100756C84 /* test3.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = test3.xlsx; sourceTree = "<group>"; };
 		3A3ADC02A63F9C149FC12E18 /* Pods-DecryptionAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecryptionAssistant.debug.xcconfig"; path = "Target Support Files/Pods-DecryptionAssistant/Pods-DecryptionAssistant.debug.xcconfig"; sourceTree = "<group>"; };
 		8E0CF24B24471B4700B2F676 /* safemail_Details_fujian0696@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safemail_Details_fujian0696@2x.png"; sourceTree = "<group>"; };
 		8E0CF24C24471B4800B2F676 /* safemail_Details_fujian0696@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safemail_Details_fujian0696@3x.png"; sourceTree = "<group>"; };
@@ -2260,15 +2268,15 @@
 		18ECBDC825F1C0AC00756C84 /* minizip */ = {
 			isa = PBXGroup;
 			children = (
+				18ECBE9A25F1E1FE00756C84 /* ioapi.c */,
+				18ECBE9B25F1E1FE00756C84 /* ioapi.h */,
 				18ECBDC925F1C0AC00756C84 /* unzip.c */,
 				18ECBDCA25F1C0AC00756C84 /* zip.c */,
-				18ECBDCB25F1C0AC00756C84 /* ioapi.c */,
 				18ECBDCC25F1C0AC00756C84 /* mztools.c */,
 				18ECBDCD25F1C0AC00756C84 /* crypt.h */,
 				18ECBDCE25F1C0AC00756C84 /* zip.h */,
 				18ECBDCF25F1C0AC00756C84 /* unzip.h */,
 				18ECBDD025F1C0AC00756C84 /* mztools.h */,
-				18ECBDD125F1C0AC00756C84 /* ioapi.h */,
 			);
 			path = minizip;
 			sourceTree = "<group>";
@@ -2810,6 +2818,10 @@
 		8ECB598E24205EF60021CE39 /* File */ = {
 			isa = PBXGroup;
 			children = (
+				18ECBEF625F1E40100756C84 /* test3.xlsx */,
+				18ECBEF325F1E39200756C84 /* 全部BUG (1).xlsx */,
+				18ECBE1725F1D4F300756C84 /* template.xlsx */,
+				18ECBE1425F1CF7600756C84 /* 工作簿2.xls */,
 				18E3A50425C8F745008B3FF7 /* js_excel */,
 				18E8526A25B128A400059B14 /* 文本测试文件.txt */,
 				184D319725A2BC93004B1E82 /* 测试文档5.docx */,
@@ -4559,6 +4571,7 @@
 				8ECB599724205EF60021CE39 /* 主动加密.txt in Resources */,
 				8ECB596F241F74B70021CE39 /* account@2x.png in Resources */,
 				8ECB599924205EF60021CE39 /* 商务部加密.txt in Resources */,
+				18ECBEF425F1E39200756C84 /* 全部BUG (1).xlsx in Resources */,
 				8ECB5F482421FFF70021CE39 /* dh2048.pem in Resources */,
 				18ECBD6425F087A200756C84 /* Default-812h@3x.png in Resources */,
 				8E487855241F2B6B00DA9963 /* LaunchScreen.storyboard in Resources */,
@@ -4603,11 +4616,14 @@
 				8ECB599A24205EF60021CE39 /* 售后培训.txt in Resources */,
 				8ECB597D241F74B70021CE39 /* ae@2x.png in Resources */,
 				8ECB5977241F74B70021CE39 /* ppt@2x.png in Resources */,
+				18ECBE1525F1CF7600756C84 /* 工作簿2.xls in Resources */,
 				8ECB596C241F74B70021CE39 /* txt@2x.png in Resources */,
 				8ECB599B24205EF60021CE39 /* encvlog.txt in Resources */,
 				8ECB5978241F74B70021CE39 /* word@2x.png in Resources */,
 				8ECB5969241F74B70021CE39 /* zip@2x.png in Resources */,
+				18ECBE1825F1D4F300756C84 /* template.xlsx in Resources */,
 				8ECB596A241F74B70021CE39 /* password@2x.png in Resources */,
+				18ECBEF725F1E40100756C84 /* test3.xlsx in Resources */,
 				8ECB5971241F74B70021CE39 /* cdr@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5024,7 +5040,6 @@
 				18ECBDFC25F1C0AC00756C84 /* ZSheet.m in Sources */,
 				8ECB5FB62421FFF70021CE39 /* v3_bitst.c in Sources */,
 				8ECB5EA22421FFF60021CE39 /* a_print.c in Sources */,
-				18ECBE0425F1C0AC00756C84 /* ioapi.c in Sources */,
 				8ECB5EFA2421FFF70021CE39 /* seed_cfb.c in Sources */,
 				8ECB5FDC2421FFF80021CE39 /* cms_dd.c in Sources */,
 				8ECB5F882421FFF70021CE39 /* ex_data.c in Sources */,
@@ -5355,6 +5370,7 @@
 				8ECB5987241F83D60021CE39 /* FileListView.m in Sources */,
 				8ECB5F5C2421FFF70021CE39 /* rsa_eay.c in Sources */,
 				8ECB5E6F2421FFF60021CE39 /* stdafx.c in Sources */,
+				18ECBE9C25F1E1FE00756C84 /* ioapi.c in Sources */,
 				8ECB5FE82421FFF80021CE39 /* p_open.c in Sources */,
 				8ECB60262421FFF80021CE39 /* bn_depr.c in Sources */,
 				8ECB60762421FFF80021CE39 /* eng_ctrl.c in Sources */,
