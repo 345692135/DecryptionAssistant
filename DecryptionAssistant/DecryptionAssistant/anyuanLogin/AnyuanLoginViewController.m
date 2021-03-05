@@ -236,7 +236,7 @@
 -(void)initEvent {
     WS(weakSelf);
     [self.loginButton jk_addTapActionWithBlock:^(UIGestureRecognizer *gestureRecoginzer) {
-        
+        /*
         if ([weakSelf.emailField.text isEqualToString:@""] || [weakSelf.passField.text isEqualToString:@""] || [weakSelf.serverField.text isEqualToString:@""]) {
             [ToastManager showMsg:@"数据不能为空"];
             return;
@@ -246,12 +246,12 @@
 //            return;
 //        }
         [weakSelf loginClick];
-         
-//        AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-//        delegate.isActiving = YES;
-//        FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:NO];
-//        vc.modalPresentationStyle = 0;
-//        [weakSelf.navigationController pushViewController:vc animated:YES];
+         */
+        AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        delegate.isActiving = YES;
+        FileListViewController *vc = [[FileListViewController alloc] initWithIsRecentOpenFile:NO];
+        vc.modalPresentationStyle = 0;
+        [weakSelf.navigationController pushViewController:vc animated:YES];
     }];
     
     [self.button_eye jk_addTapActionWithBlock:^(UIGestureRecognizer *gestureRecoginzer) {
