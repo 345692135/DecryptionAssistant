@@ -120,6 +120,7 @@
 
 -(void)updateViewWithFiles:(NSArray*)files {
     if (files.count) {
+        [self.files removeAllObjects];
         [self.files addObjectsFromArray:files];
     }
     [self.tableView reloadData];
